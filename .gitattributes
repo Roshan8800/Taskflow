@@ -1,1 +1,4 @@
-node_modules/realm/prebuilds/android/**/*.a filter=lfs diff=lfs merge=lfs -text
+* text=auto eol=lf
+package-lock.json binary
+yarn.lock binary
+.vscode/* text eol=lf
