@@ -25,16 +25,16 @@ export const ExportImportScreen: React.FC = () => {
             description: todo.description,
             completed: todo.completed,
             priority: todo.priority,
-            project: todo.project,
-            dueDate: todo.dueDate?.toISOString(),
-            createdAt: todo.createdAt.toISOString(),
+            projectId: todo.projectId,
+            dueAt: todo.dueAt?.toISOString(),
+            createdAt: todo.createdAt instanceof Date ? todo.createdAt.toISOString() : '',
           })),
-          projects: projects.map(project => ({
-            id: project._id.toString(),
-            name: project.name,
-            description: project.description,
-            color: project.color,
-            createdAt: project.createdAt.toISOString(),
+          projects: projects.map(projectId => ({
+            id: projectId._id.toString(),
+            name: projectId.name,
+            description: projectId.description,
+            color: projectId.color,
+            createdAt: projectId.createdAt instanceof Date ? projectId.createdAt.toISOString() : '',
           })),
         },
       };
@@ -63,7 +63,7 @@ export const ExportImportScreen: React.FC = () => {
     try {
       const csvHeader = 'Title,Description,Completed,Priority,Project,Due Date,Created Date\n';
       const csvRows = todos.map(todo => 
-        `"${todo.title}","${todo.description || ''}","${todo.completed}","${todo.priority}","${todo.project || ''}","${todo.dueDate?.toLocaleDateString() || ''}","${todo.createdAt.toLocaleDateString()}"`
+        `"${todo.title}","${todo.description || ''}","${todo.completed}","${todo.priority}","${todo.projectId || ''}","${todo.dueAt?.toLocaleDateString() || ''}","${todo.createdAt.toLocaleDateString()}"`
       ).join('\n');
       
       const csvContent = csvHeader + csvRows;
@@ -149,28 +149,28 @@ export const ExportImportScreen: React.FC = () => {
     color?: string;
   }) => (
     <TouchableOpacity
-      style={[styles.actionCard, { backgroundColor: theme.surface }]}
+      style={[styles.actionCard, { backgroundColor: '#FFFFFF' }]}
       onPress={onPress}
       disabled={loading}
     >
       <View style={styles.cardContent}>
         <Text style={[styles.cardTitle, { color: color || theme.text }]}>{title}</Text>
-        <Text style={[styles.cardDescription, { color: theme.textSecondary }]}>
+        <Text style={[styles.cardDescription, { color: '#000000' }]}>
           {description}
         </Text>
       </View>
-      <Text style={[styles.arrow, { color: theme.textSecondary }]}>
-        {loading ? '...' : '→'}
+      <Text style={[styles.arrow, { color: '#000000' }]}>
+        {loading ? '→'}
       </Text>
     </TouchableOpacity>
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Backup & Export</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Backup & Export</Text>
       
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Export Data</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Export Data</Text>
         
         <ActionCard
           title="Export as JSON"
@@ -188,7 +188,7 @@ export const ExportImportScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Import Data</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Import Data</Text>
         
         <ActionCard
           title="Import from Backup"
@@ -199,7 +199,7 @@ export const ExportImportScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Data Management</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Data Management</Text>
         
         <ActionCard
           title="Clear All Data"
@@ -209,15 +209,15 @@ export const ExportImportScreen: React.FC = () => {
         />
       </View>
 
-      <View style={[styles.infoCard, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.infoTitle, { color: theme.text }]}>📋 Data Summary</Text>
-        <Text style={[styles.infoText, { color: theme.textSecondary }]}>
+      <View style={[styles.infoCard, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.infoTitle, { color: '#000000' }]}>📋 Data Summary</Text>
+        <Text style={[styles.infoText, { color: '#000000' }]}>
           Tasks: {todos.length}
         </Text>
-        <Text style={[styles.infoText, { color: theme.textSecondary }]}>
+        <Text style={[styles.infoText, { color: '#000000' }]}>
           Projects: {projects.length}
         </Text>
-        <Text style={[styles.infoText, { color: theme.textSecondary }]}>
+        <Text style={[styles.infoText, { color: '#000000' }]}>
           Completed: {todos.filter(t => t.completed).length}
         </Text>
       </View>
@@ -303,3 +303,5 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 });
+
+export default ExportImportScreen;

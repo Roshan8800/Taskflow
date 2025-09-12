@@ -19,7 +19,7 @@ export const FirstTimeUserWorkflow: React.FC<Props> = ({ onComplete }) => {
   const createSampleTasks = async () => {
     const sampleTasks = [
       { title: 'Welcome to TaskFlow!', description: 'Complete this task to get started', priority: 'high' as const },
-      { title: 'Set up your first project', description: 'Organize your tasks with projects', priority: 'medium' as const },
+      { title: 'Set up your first projectId', description: 'Organize your tasks with projects', priority: 'medium' as const },
       { title: 'Try the calendar view', description: 'See your tasks in calendar format', priority: 'low' as const }
     ];
 
@@ -57,8 +57,8 @@ const ThemePickerScreen: React.FC<{ onComplete: () => void }> = ({ onComplete })
   const colors = ['#4A90E2', '#50C878', '#FF6B6B', '#FFD93D'];
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Choose Your Theme</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Choose Your Theme</Text>
       <View style={styles.colorGrid}>
         {colors.map(color => (
           <TouchableOpacity
@@ -68,7 +68,7 @@ const ThemePickerScreen: React.FC<{ onComplete: () => void }> = ({ onComplete })
           />
         ))}
       </View>
-      <TouchableOpacity style={[styles.button, { backgroundColor: theme.primary }]} onPress={onComplete}>
+      <TouchableOpacity style={[styles.button, { backgroundColor: '#FFFFFF' }]} onPress={onComplete}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>
     </View>
@@ -79,12 +79,12 @@ const TutorialScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
   const { theme } = useTheme();
   
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Quick Tutorial</Text>
-      <Text style={[styles.text, { color: theme.textSecondary }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Quick Tutorial</Text>
+      <Text style={[styles.text, { color: '#000000' }]}>
         • Tap + to add tasks{'\n'}• Swipe to complete or delete{'\n'}• Use projects to organize{'\n'}• Set reminders for important tasks
       </Text>
-      <TouchableOpacity style={[styles.button, { backgroundColor: theme.primary }]} onPress={onComplete}>
+      <TouchableOpacity style={[styles.button, { backgroundColor: '#FFFFFF' }]} onPress={onComplete}>
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
     </View>
@@ -100,3 +100,5 @@ const styles = StyleSheet.create({
   button: { padding: 16, borderRadius: 8, alignItems: 'center' },
   buttonText: { color: 'white', fontSize: 16, fontWeight: '600' }
 });
+
+export default FirstTimeUserWorkflow;

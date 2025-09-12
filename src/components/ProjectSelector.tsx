@@ -49,7 +49,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({ selectedProjec
             <Text style={{ flex: 1, fontSize: 16 }}>{selectedProject.name}</Text>
           </>
         ) : (
-          <Text style={{ flex: 1, fontSize: 16, color: '#666' }}>Select project (optional)</Text>
+          <Text style={{ flex: 1, fontSize: 16, color: '#666' }}>Select projectId (optional)</Text>
         )}
         <Text style={{ fontSize: 16, color: '#666' }}>▼</Text>
       </TouchableOpacity>
@@ -61,7 +61,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({ selectedProjec
           </View>
           
           <FlatList
-            data={[null, ...projects]}
+            data={[null, ...projectIds]}
             keyExtractor={(item, index) => item?._id.toString() || 'none'}
             renderItem={({ item }) => (
               <TouchableOpacity
@@ -107,3 +107,5 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({ selectedProjec
     </View>
   );
 };
+
+export default ProjectSelector;

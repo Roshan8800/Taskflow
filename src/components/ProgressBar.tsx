@@ -18,8 +18,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   const { theme } = useTheme();
   const animatedWidth = new Animated.Value(0);
   
-  const bgColor = backgroundColor || theme.colors.surfaceSecondary;
-  const pgColor = progressColor || theme.colors.primary;
+  const bgColor = backgroundColor || theme.surfaceSecondary;
+  const pgColor = progressColor || theme.primary;
 
   useEffect(() => {
     Animated.timing(animatedWidth, {
@@ -41,8 +41,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
               inputRange: [0, 1],
               outputRange: ['0%', '100%'],
             }),
-          },
-        ]}
+          }]}
       />
     </View>
   );
@@ -57,3 +56,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 });
+
+export default ProgressBar;

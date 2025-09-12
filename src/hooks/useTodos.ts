@@ -35,7 +35,7 @@ export const useTodos = () => {
     title: string;
     description?: string;
     priority: 'low' | 'medium' | 'high';
-    project?: string;
+    projectId?: string;
     dueDate?: Date;
   }) => {
     try {
@@ -48,8 +48,8 @@ export const useTodos = () => {
           description: data.description || '',
           completed: false,
           priority: data.priority,
-          project: data.project || '',
-          dueDate: data.dueDate,
+          projectId: data.projectId || '',
+          dueAt: data.dueAt,
           createdAt: new Date(),
           updatedAt: new Date(),
           userId: user?.id || '',
@@ -102,6 +102,7 @@ export const useTodos = () => {
       if (todo) {
         realm.write(() => {
           todo.completed = !todo.completed;
+          todo.status = todo.completed ? 'completed' : 'pending';
           todo.updatedAt = new Date();
         });
         await loadTodos();
@@ -109,6 +110,39 @@ export const useTodos = () => {
     } catch (error) {
       handleError(error, 'Toggling Todo');
     }
+  };
+
+  const getTodayTasks = () => {
+    const today = new Date();
+    const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const endOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
+    
+    return todos.filter(todo => {
+      if (todo.dueAt || todo.dueAt) {
+        const dueDate = todo.dueAt || todo.dueAt;
+        return dueDate && dueDate >= startOfDay && dueDate <= endOfDay;
+      }
+      return false;
+    });
+  };
+
+  const getOverdueTasks = () => {
+    const now = new Date();
+    return todos.filter(todo => {
+      const dueDate = todo.dueAt || todo.dueAt;
+      return dueDate && dueDate < now && !todo.completed;
+    });
+  };
+
+  const getCompletedTasks = () => {
+    return todos.filter(todo => todo.completed || todo.status === 'completed');
+  };
+
+  const updateTodoStatus = async (id: string, status: 'pending' | 'completed' | 'cancelled') => {
+    await updateTodo(id, { 
+      status, 
+      completed: status === 'completed' 
+    });
   };
 
   return {
@@ -119,5 +153,9 @@ export const useTodos = () => {
     deleteTodo,
     toggleTodo,
     loadTodos,
+    getTodayTasks,
+    getOverdueTasks,
+    getCompletedTasks,
+    updateTodoStatus,
   };
 };

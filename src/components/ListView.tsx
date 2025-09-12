@@ -48,3 +48,5 @@ export const ListView: React.FC<ListViewProps> = ({ tasks, onTaskToggle, onTaskE
     </View>
   );
 };
+
+export default ListView;

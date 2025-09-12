@@ -21,20 +21,20 @@ export const OfflineSyncScreen: React.FC = () => {
   };
 
   const SyncStatusCard = ({ title, data }: { title: string; data: any }) => (
-    <View style={[styles.statusCard, { backgroundColor: theme.surface }]}>
-      <Text style={[styles.statusTitle, { color: theme.text }]}>{title}</Text>
+    <View style={[styles.statusCard, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.statusTitle, { color: '#000000' }]}>{title}</Text>
       <View style={styles.statusRow}>
         <View style={styles.statusItem}>
           <Text style={[styles.statusNumber, { color: '#FFD93D' }]}>{data.pending}</Text>
-          <Text style={[styles.statusLabel, { color: theme.textSecondary }]}>Pending</Text>
+          <Text style={[styles.statusLabel, { color: '#000000' }]}>Pending</Text>
         </View>
         <View style={styles.statusItem}>
           <Text style={[styles.statusNumber, { color: '#6BCF7F' }]}>{data.synced}</Text>
-          <Text style={[styles.statusLabel, { color: theme.textSecondary }]}>Synced</Text>
+          <Text style={[styles.statusLabel, { color: '#000000' }]}>Synced</Text>
         </View>
         <View style={styles.statusItem}>
           <Text style={[styles.statusNumber, { color: '#FF6B6B' }]}>{data.failed}</Text>
-          <Text style={[styles.statusLabel, { color: theme.textSecondary }]}>Failed</Text>
+          <Text style={[styles.statusLabel, { color: '#000000' }]}>Failed</Text>
         </View>
       </View>
     </View>
@@ -44,15 +44,15 @@ export const OfflineSyncScreen: React.FC = () => {
   const totalFailed = Object.values(syncData).reduce((sum, item) => sum + item.failed, 0);
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Offline Sync Manager</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Offline Sync Manager</Text>
 
-      <View style={[styles.overview, { backgroundColor: theme.surface }]}>
+      <View style={[styles.overview, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.overviewItem}>
-          <Text style={[styles.overviewNumber, { color: theme.primary }]}>
+          <Text style={[styles.overviewNumber, { color: '#000000' }]}>
             {totalPending}
           </Text>
-          <Text style={[styles.overviewLabel, { color: theme.textSecondary }]}>
+          <Text style={[styles.overviewLabel, { color: '#000000' }]}>
             Pending Changes
           </Text>
         </View>
@@ -60,7 +60,7 @@ export const OfflineSyncScreen: React.FC = () => {
           <Text style={[styles.overviewNumber, { color: totalFailed > 0 ? '#FF6B6B' : '#6BCF7F' }]}>
             {totalFailed > 0 ? 'Issues' : 'All Good'}
           </Text>
-          <Text style={[styles.overviewLabel, { color: theme.textSecondary }]}>
+          <Text style={[styles.overviewLabel, { color: '#000000' }]}>
             Sync Status
           </Text>
         </View>
@@ -68,16 +68,16 @@ export const OfflineSyncScreen: React.FC = () => {
 
       <View style={styles.syncStatus}>
         <SyncStatusCard title="Tasks" data={syncData.tasks} />
-        <SyncStatusCard title="Projects" data={syncData.projects} />
+        <SyncStatusCard title="Projects" data={syncData.projectIds} />
         <SyncStatusCard title="Notes" data={syncData.notes} />
         <SyncStatusCard title="Attachments" data={syncData.attachments} />
       </View>
 
-      <View style={[styles.settings, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.settingsTitle, { color: theme.text }]}>Sync Settings</Text>
+      <View style={[styles.settings, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.settingsTitle, { color: '#000000' }]}>Sync Settings</Text>
         
         <View style={styles.settingRow}>
-          <Text style={[styles.settingLabel, { color: theme.text }]}>Auto Sync</Text>
+          <Text style={[styles.settingLabel, { color: '#000000' }]}>Auto Sync</Text>
           <Switch
             value={autoSync}
             onValueChange={setAutoSync}
@@ -86,7 +86,7 @@ export const OfflineSyncScreen: React.FC = () => {
         </View>
         
         <View style={styles.settingRow}>
-          <Text style={[styles.settingLabel, { color: theme.text }]}>WiFi Only</Text>
+          <Text style={[styles.settingLabel, { color: '#000000' }]}>WiFi Only</Text>
           <Switch
             value={wifiOnly}
             onValueChange={setWifiOnly}
@@ -95,24 +95,24 @@ export const OfflineSyncScreen: React.FC = () => {
         </View>
       </View>
 
-      <View style={[styles.lastSync, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.lastSyncLabel, { color: theme.textSecondary }]}>
+      <View style={[styles.lastSync, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.lastSyncLabel, { color: '#000000' }]}>
           Last sync: {lastSync.toLocaleString()}
         </Text>
       </View>
 
       <TouchableOpacity
-        style={[styles.syncBtn, { backgroundColor: theme.primary }]}
+        style={[styles.syncBtn, { backgroundColor: '#FFFFFF' }]}
         onPress={handleManualSync}
       >
-        <Text style={[styles.syncBtnText, { color: theme.background }]}>
+        <Text style={[styles.syncBtnText, { color: '#000000' }]}>
           🔄 Sync Now
         </Text>
       </TouchableOpacity>
 
-      <View style={[styles.info, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.infoTitle, { color: theme.text }]}>ℹ️ About Offline Sync</Text>
-        <Text style={[styles.infoText, { color: theme.textSecondary }]}>
+      <View style={[styles.info, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.infoTitle, { color: '#000000' }]}>ℹ️ About Offline Sync</Text>
+        <Text style={[styles.infoText, { color: '#000000' }]}>
           TaskFlow works completely offline. Changes are stored locally and will sync when you're back online. 
           No data is lost during offline usage.
         </Text>
@@ -147,3 +147,5 @@ const styles = StyleSheet.create({
   infoTitle: { fontSize: 16, fontWeight: '600', marginBottom: 8 },
   infoText: { fontSize: 14, lineHeight: 20 },
 });
+
+export default OfflineSyncScreen;

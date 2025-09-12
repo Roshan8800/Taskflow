@@ -59,11 +59,11 @@ export const useProjects = () => {
   const updateProject = async (id: string, updates: Partial<Project>) => {
     try {
       const realm = await getRealm();
-      const project = realm.objectForPrimaryKey<Project>('Project', new BSON.ObjectId(id));
+      const projectId = realm.objectForPrimaryKey<Project>('Project', new BSON.ObjectId(id));
       
-      if (project) {
+      if (projectId) {
         realm.write(() => {
-          Object.assign(project, updates);
+          Object.assign(projectId, updates);
         });
         await loadProjects();
       }
@@ -75,11 +75,11 @@ export const useProjects = () => {
   const deleteProject = async (id: string) => {
     try {
       const realm = await getRealm();
-      const project = realm.objectForPrimaryKey<Project>('Project', new BSON.ObjectId(id));
+      const projectId = realm.objectForPrimaryKey<Project>('Project', new BSON.ObjectId(id));
       
-      if (project) {
+      if (projectId) {
         realm.write(() => {
-          realm.delete(project);
+          realm.delete(projectId);
         });
         await loadProjects();
       }

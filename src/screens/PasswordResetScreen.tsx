@@ -103,19 +103,19 @@ export const PasswordResetScreen: React.FC<PasswordResetScreenProps> = ({ onBack
 
   const renderEmailStep = () => (
     <>
-      <Text style={styles.stepTitle(theme)}>Reset Password</Text>
-      <Text style={styles.stepDescription(theme)}>
+      <Text style={[styles.stepTitle]}>Reset Password</Text>
+      <Text style={[styles.stepDescription]}>
         Enter your email address to begin password recovery
       </Text>
 
       <View style={styles.inputGroup}>
-        <Text style={styles.label(theme)}>Email</Text>
+        <Text style={[styles.label]}>Email</Text>
         <TextInput
-          style={styles.input(theme)}
+          style={[styles.input]}
           value={email}
           onChangeText={setEmail}
           placeholder="Enter your email"
-          placeholderTextColor={theme.colors.textMuted}
+          placeholderTextColor={theme.textSecondary}
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
@@ -123,12 +123,12 @@ export const PasswordResetScreen: React.FC<PasswordResetScreenProps> = ({ onBack
       </View>
 
       <TouchableOpacity 
-        style={[styles.submitButton(theme), loading && styles.disabledButton(theme)]} 
+        style={[styles.submitButton, loading && styles.disabledButton]} 
         onPress={handleEmailSubmit}
         disabled={loading}
       >
         <Text style={styles.submitButtonText}>
-          {loading ? 'Searching...' : 'Continue'}
+          {loading ? 'SearchingContinue'}
         </Text>
       </TouchableOpacity>
     </>
@@ -136,29 +136,29 @@ export const PasswordResetScreen: React.FC<PasswordResetScreenProps> = ({ onBack
 
   const renderSecurityStep = () => (
     <>
-      <Text style={styles.stepTitle(theme)}>Security Question</Text>
-      <Text style={styles.stepDescription(theme)}>
+      <Text style={[styles.stepTitle]}>Security Question</Text>
+      <Text style={[styles.stepDescription]}>
         Answer your security question to verify your identity
       </Text>
 
-      <View style={styles.questionBox(theme)}>
-        <Text style={styles.questionText(theme)}>{user?.securityQuestion}</Text>
+      <View style={[styles.questionBox]}>
+        <Text style={[styles.questionText]}>{user?.securityQuestion}</Text>
       </View>
 
       <View style={styles.inputGroup}>
-        <Text style={styles.label(theme)}>Your Answer</Text>
+        <Text style={[styles.label]}>Your Answer</Text>
         <TextInput
-          style={styles.input(theme)}
+          style={[styles.input]}
           value={securityAnswer}
           onChangeText={setSecurityAnswer}
           placeholder="Enter your answer"
-          placeholderTextColor={theme.colors.textMuted}
+          placeholderTextColor={theme.textSecondary}
           autoCapitalize="none"
         />
       </View>
 
       <TouchableOpacity 
-        style={styles.submitButton(theme)} 
+        style={[styles.submitButton]} 
         onPress={handleSecuritySubmit}
       >
         <Text style={styles.submitButtonText}>Verify Answer</Text>
@@ -168,52 +168,52 @@ export const PasswordResetScreen: React.FC<PasswordResetScreenProps> = ({ onBack
 
   const renderResetStep = () => (
     <>
-      <Text style={styles.stepTitle(theme)}>New Password</Text>
-      <Text style={styles.stepDescription(theme)}>
+      <Text style={[styles.stepTitle]}>New Password</Text>
+      <Text style={[styles.stepDescription]}>
         Create a new password for your account
       </Text>
 
       <View style={styles.inputGroup}>
-        <Text style={styles.label(theme)}>New Password</Text>
+        <Text style={[styles.label]}>New Password</Text>
         <TextInput
-          style={styles.input(theme)}
+          style={[styles.input]}
           value={newPassword}
           onChangeText={setNewPassword}
           placeholder="Enter new password (min 6 characters)"
-          placeholderTextColor={theme.colors.textMuted}
+          placeholderTextColor={theme.textSecondary}
           secureTextEntry
         />
       </View>
 
       <View style={styles.inputGroup}>
-        <Text style={styles.label(theme)}>Confirm Password</Text>
+        <Text style={[styles.label]}>Confirm Password</Text>
         <TextInput
-          style={styles.input(theme)}
+          style={[styles.input]}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           placeholder="Confirm new password"
-          placeholderTextColor={theme.colors.textMuted}
+          placeholderTextColor={theme.textSecondary}
           secureTextEntry
         />
       </View>
 
       <TouchableOpacity 
-        style={[styles.submitButton(theme), loading && styles.disabledButton(theme)]} 
+        style={[styles.submitButton, loading && styles.disabledButton]} 
         onPress={handlePasswordReset}
         disabled={loading}
       >
         <Text style={styles.submitButtonText}>
-          {loading ? 'Resetting...' : 'Reset Password'}
+          {loading ? 'ResettingReset Password'}
         </Text>
       </TouchableOpacity>
     </>
   );
 
   return (
-    <View style={styles.container(theme)}>
+    <View style={[styles.container]}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton} onPress={onBackToLogin}>
-          <Text style={styles.backIcon(theme)}>←</Text>
+          <Text style={[styles.backIcon]}>←</Text>
         </TouchableOpacity>
       </View>
 
@@ -225,7 +225,7 @@ export const PasswordResetScreen: React.FC<PasswordResetScreenProps> = ({ onBack
 
       <View style={styles.footer}>
         <TouchableOpacity onPress={onBackToLogin}>
-          <Text style={styles.backToLoginText(theme)}>Back to Sign In</Text>
+          <Text style={[styles.backToLoginText]}>Back to Sign In</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -233,11 +233,11 @@ export const PasswordResetScreen: React.FC<PasswordResetScreenProps> = ({ onBack
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     padding: 20,
-  }),
+  },
   header: {
     marginTop: 40,
     marginBottom: 30,
@@ -246,66 +246,66 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     padding: 8,
   },
-  backIcon: (theme: any) => ({
+  backIcon: {
     fontSize: 24,
-    color: theme.colors.text,
-  }),
+    color: '#000000',
+  },
   content: {
     flex: 1,
   },
-  stepTitle: (theme: any) => ({
+  stepTitle: {
     fontSize: 28,
     fontWeight: '700',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  stepDescription: (theme: any) => ({
+  },
+  stepDescription: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     marginBottom: 30,
     lineHeight: 22,
-  }),
+  },
   inputGroup: {
     marginBottom: 20,
   },
-  label: (theme: any) => ({
+  label: {
     fontSize: 16,
     fontWeight: '500',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  input: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  },
+  input: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    color: theme.colors.text,
+    color: '#000000',
     borderWidth: 1,
-    borderColor: theme.colors.border,
-  }),
-  questionBox: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+    borderColor: '#000000',
+  },
+  questionBox: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: theme.colors.border,
-  }),
-  questionText: (theme: any) => ({
+    borderColor: '#000000',
+  },
+  questionText: {
     fontSize: 16,
-    color: theme.colors.text,
+    color: '#000000',
     fontWeight: '500',
-  }),
-  submitButton: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
+  },
+  submitButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
     marginTop: 10,
-  }),
-  disabledButton: (theme: any) => ({
+  },
+  disabledButton: {
     opacity: 0.6,
-  }),
+  },
   submitButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
@@ -315,9 +315,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 40,
   },
-  backToLoginText: (theme: any) => ({
+  backToLoginText: {
     fontSize: 16,
-    color: theme.colors.primary,
+    color: '#000000',
     fontWeight: '500',
-  }),
+  },
 });
+
+export default PasswordResetScreen;

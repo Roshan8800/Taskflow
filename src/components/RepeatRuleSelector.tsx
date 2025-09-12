@@ -44,13 +44,13 @@ export const RepeatRuleSelector: React.FC<Props> = ({ value, onChange }) => {
         style={styles.toggle} 
         onPress={handleToggle}
       >
-        <Text style={[styles.toggleText, { color: theme.text }]}>
+        <Text style={[styles.toggleText, { color: '#000000' }]}>
           Repeat Task
         </Text>
         <View style={[
           styles.checkbox, 
-          { borderColor: theme.border },
-          isEnabled && { backgroundColor: theme.primary }
+          { borderColor: '#CCCCCC' },
+          isEnabled && { backgroundColor: '#FFFFFF' }
         ]}>
           {isEnabled && <Text style={styles.checkmark}>✓</Text>}
         </View>
@@ -64,8 +64,8 @@ export const RepeatRuleSelector: React.FC<Props> = ({ value, onChange }) => {
                 key={type.key}
                 style={[
                   styles.typeButton,
-                  { borderColor: theme.border },
-                  rule.type === type.key && { backgroundColor: theme.primary }
+                  { borderColor: '#CCCCCC' },
+                  rule.type === type.key && { backgroundColor: '#FFFFFF' }
                 ]}
                 onPress={() => handleRuleChange({ type: type.key as any })}
               >
@@ -80,18 +80,18 @@ export const RepeatRuleSelector: React.FC<Props> = ({ value, onChange }) => {
           </View>
 
           <View style={styles.intervalRow}>
-            <Text style={[styles.label, { color: theme.text }]}>Every</Text>
+            <Text style={[styles.label, { color: '#000000' }]}>Every</Text>
             <TextInput
               style={[styles.intervalInput, { 
-                borderColor: theme.border, 
-                color: theme.text,
-                backgroundColor: theme.surface 
+                borderColor: '#CCCCCC', 
+                color: '#000000',
+                backgroundColor: '#FFFFFF' 
               }]}
               value={rule.interval?.toString() || '1'}
               onChangeText={text => handleRuleChange({ interval: parseInt(text) || 1 })}
               keyboardType="numeric"
             />
-            <Text style={[styles.label, { color: theme.text }]}>
+            <Text style={[styles.label, { color: '#000000' }]}>
               {rule.type === 'daily' ? 'day(s)' :
                rule.type === 'weekly' ? 'week(s)' :
                rule.type === 'monthly' ? 'month(s)' :
@@ -101,12 +101,12 @@ export const RepeatRuleSelector: React.FC<Props> = ({ value, onChange }) => {
 
           {rule.type === 'custom' && (
             <View style={styles.cronRow}>
-              <Text style={[styles.label, { color: theme.text }]}>Cron Rule:</Text>
+              <Text style={[styles.label, { color: '#000000' }]}>Cron Rule:</Text>
               <TextInput
                 style={[styles.cronInput, { 
-                  borderColor: theme.border, 
-                  color: theme.text,
-                  backgroundColor: theme.surface 
+                  borderColor: '#CCCCCC', 
+                  color: '#000000',
+                  backgroundColor: '#FFFFFF' 
                 }]}
                 value={rule.cronRule || ''}
                 onChangeText={text => handleRuleChange({ cronRule: text })}
@@ -137,3 +137,5 @@ const styles = StyleSheet.create({
   cronRow: { flexDirection: 'column', gap: 8 },
   cronInput: { height: 36, borderWidth: 1, borderRadius: 6, paddingHorizontal: 12, fontSize: 14 }
 });
+
+export default RepeatRuleSelector;

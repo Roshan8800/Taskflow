@@ -14,7 +14,7 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
   const [isBreak, setIsBreak] = useState(false);
   const [sessions, setSessions] = useState(0);
 
-  const focusTasks = tasks.filter(t => !t.completed && !t.isDeleted);
+  const focusTasks = tasks.filter(t => !t.completed && !t.deletedAt !== null);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -35,8 +35,7 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
     
     if (isBreak) {
       Alert.alert('Break Complete!', 'Ready to start another focus session?', [
-        { text: 'Start Session', onPress: startFocusSession },
-      ]);
+        { text: 'Start Session', onPress: startFocusSession }]);
     } else {
       setSessions(prev => prev + 1);
       Alert.alert(
@@ -45,8 +44,7 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
         [
           { text: 'Take Break', onPress: startBreak },
           { text: 'Another Session', onPress: startFocusSession },
-          selectedTask && { text: 'Mark Complete', onPress: () => completeTask() },
-        ].filter(Boolean) as any
+          selectedTask && { text: 'Mark Complete', onPress: () => completeTask() }].filter(Boolean) as any
       );
     }
   };
@@ -93,7 +91,7 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
 
   return (
     <View style={{ flex: 1, backgroundColor: '#f5f5f5', padding: 20 }}>
-      {/* Timer Display */}
+      {}
       <View style={{
         backgroundColor: 'white',
         borderRadius: 20,
@@ -124,7 +122,7 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
         </Text>
       </View>
 
-      {/* Current Task */}
+      {}
       {selectedTask && (
         <View style={{
           backgroundColor: 'white',
@@ -144,7 +142,7 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
         </View>
       )}
 
-      {/* Timer Controls */}
+      {}
       <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 16, marginBottom: 30 }}>
         <TouchableOpacity
           onPress={isRunning ? pauseTimer : startFocusSession}
@@ -177,7 +175,7 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
         </TouchableOpacity>
       </View>
 
-      {/* Task Selection */}
+      {}
       {!selectedTask && focusTasks.length > 0 && (
         <View style={{ backgroundColor: 'white', borderRadius: 12, padding: 16 }}>
           <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 12 }}>
@@ -229,3 +227,5 @@ export const FocusView: React.FC<FocusViewProps> = ({ tasks, onTaskComplete }) =
     </View>
   );
 };
+
+export default FocusView;

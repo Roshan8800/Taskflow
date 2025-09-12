@@ -7,16 +7,16 @@ export const ThemesScreen: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <View style={styles.container(theme)}>
-      <View style={styles.section(theme)}>
-        <Text style={styles.sectionTitle(theme)}>Themes & Customization</Text>
+    <View style={[styles.container]}>
+      <View style={[styles.section]}>
+        <Text style={[styles.sectionTitle]}>Themes & Customization</Text>
         
         <View style={styles.setting}>
-          <Text style={styles.settingLabel(theme)}>Dark Mode</Text>
+          <Text style={[styles.settingLabel]}>Dark Mode</Text>
           <ThemeToggle />
         </View>
         
-        <Text style={styles.description(theme)}>
+        <Text style={[styles.description]}>
           Switch between light and dark themes for comfortable viewing in any environment.
         </Text>
       </View>
@@ -25,23 +25,23 @@ export const ThemesScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     padding: 20,
-  }),
-  section: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  },
+  section: {
+    backgroundColor: '#000000',
     borderRadius: 16,
     padding: 20,
-    ...theme.shadows.md,
-  }),
-  sectionTitle: (theme: any) => ({
+    ,
+  },
+  sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 16,
-  }),
+  },
   setting: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -49,13 +49,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     marginBottom: 16,
   },
-  settingLabel: (theme: any) => ({
+  settingLabel: {
     fontSize: 16,
-    color: theme.colors.text,
-  }),
-  description: (theme: any) => ({
+    color: '#000000',
+  },
+  description: {
     fontSize: 14,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     lineHeight: 20,
-  }),
+  },
 });
+
+export default ThemesScreen;

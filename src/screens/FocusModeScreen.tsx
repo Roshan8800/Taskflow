@@ -5,7 +5,7 @@ import { useTaskManager } from '../hooks/useTaskManager';
 
 export const FocusModeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { getTasks, toggleTask } = useTaskManager();
-  const tasks = Array.from(getTasks()).filter(t => !t.isDeleted);
+  const tasks = Array.from(getTasks()).filter(t => !t.deletedAt !== null);
 
   const handleTaskComplete = async (task: any) => {
     try {
@@ -37,3 +37,5 @@ export const FocusModeScreen: React.FC<{ navigation: any }> = ({ navigation }) =
     </View>
   );
 };
+
+export default FocusModeScreen;

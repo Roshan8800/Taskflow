@@ -54,18 +54,18 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onForgotPassword, onSi
   const isFormValid = email.trim() && password.trim() && !errors.email && !errors.password;
 
   return (
-    <View style={styles.container(theme)}>
+    <View style={[styles.container]}>
       <View style={styles.header}>
         <Text style={styles.logo}>📱</Text>
-        <Text style={styles.title(theme)}>Welcome Back</Text>
-        <Text style={styles.subtitle(theme)}>Sign in to continue to TaskFlow</Text>
+        <Text style={[styles.title]}>Welcome Back</Text>
+        <Text style={[styles.subtitle]}>Sign in to continue to TaskFlow</Text>
       </View>
 
       <View style={styles.form}>
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Email</Text>
+          <Text style={[styles.label]}>Email</Text>
           <TextInput
-            style={styles.input(theme)}
+            style={[styles.input]}
             value={email}
             onChangeText={setEmail}
             placeholder="Enter your email"
@@ -78,9 +78,9 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onForgotPassword, onSi
         </View>
 
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Password</Text>
+          <Text style={[styles.label]}>Password</Text>
           <TextInput
-            style={styles.input(theme)}
+            style={[styles.input]}
             value={password}
             onChangeText={setPassword}
             placeholder="Enter your password"
@@ -91,27 +91,27 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onForgotPassword, onSi
         </View>
 
         <TouchableOpacity onPress={onForgotPassword}>
-          <Text style={styles.forgotPassword(theme)}>Forgot Password?</Text>
+          <Text style={[styles.forgotPassword]}>Forgot Password?</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
           style={[
-            styles.loginButton(theme), 
-            (loading || !isFormValid) && styles.disabledButton(theme)
+            styles.loginButton, 
+            (loading || !isFormValid) && styles.disabledButton
           ]} 
           onPress={handleLogin}
           disabled={loading || !isFormValid}
         >
           <Text style={styles.loginButtonText}>
-            {loading ? 'Signing In...' : 'Sign In'}
+            {loading ? 'Signing InSign In'}
           </Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText(theme)}>Don't have an account? </Text>
+        <Text style={[styles.footerText]}>Don't have an account? </Text>
         <TouchableOpacity onPress={onSignUp}>
-          <Text style={styles.signUpLink(theme)}>Sign Up</Text>
+          <Text style={[styles.signUpLink]}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -119,11 +119,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onForgotPassword, onSi
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     padding: 20,
-  }),
+  },
   header: {
     alignItems: 'center',
     marginTop: 60,
@@ -133,54 +133,54 @@ const styles = StyleSheet.create({
     fontSize: 60,
     marginBottom: 20,
   },
-  title: (theme: any) => ({
+  title: {
     fontSize: 28,
     fontWeight: '700',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  subtitle: (theme: any) => ({
+  },
+  subtitle: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     textAlign: 'center',
-  }),
+  },
   form: {
     flex: 1,
   },
   inputGroup: {
     marginBottom: 20,
   },
-  label: (theme: any) => ({
+  label: {
     fontSize: 16,
     fontWeight: '500',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  input: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  },
+  input: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    color: theme.colors.text,
+    color: '#000000',
     borderWidth: 1,
-    borderColor: theme.colors.border,
-  }),
-  forgotPassword: (theme: any) => ({
+    borderColor: '#000000',
+  },
+  forgotPassword: {
     fontSize: 14,
-    color: theme.colors.primary,
+    color: '#000000',
     textAlign: 'right',
     marginBottom: 30,
     fontWeight: '500',
-  }),
-  loginButton: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
+  },
+  loginButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
-  disabledButton: (theme: any) => ({
+  },
+  disabledButton: {
     opacity: 0.6,
-  }),
+  },
   loginButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
@@ -192,18 +192,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 40,
   },
-  footerText: (theme: any) => ({
+  footerText: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
-  }),
-  signUpLink: (theme: any) => ({
+    color: '#000000',
+  },
+  signUpLink: {
     fontSize: 16,
-    color: theme.primary,
+    color: '#000000',
     fontWeight: '600',
-  }),
+  },
   errorText: {
     color: '#FF3B30',
     fontSize: 14,
     marginTop: 4,
   },
 });
+
+export default LoginScreen;

@@ -13,12 +13,7 @@ interface Note {
 export const NotesScreen: React.FC = () => {
   const { theme } = useTheme();
   const [notes, setNotes] = useState<Note[]>([
-    { id: '1', title: 'Meeting Notes', content: 'Discussed project timeline...', createdAt: new Date(), updatedAt: new Date() },
-    { id: '2', title: 'Ideas', content: 'New feature concepts...', createdAt: new Date(), updatedAt: new Date() },
-  ]);
-  const [showEditor, setShowEditor] = useState(false);
-  const [editingNote, setEditingNote] = useState<Note | null>(null);
-  const [title, setTitle] = useState('');
+    { id: '1', title: 'Meeting Notes', content: 'Discussed projectId timeline2', title: 'Ideas', content: 'New feature concepts');
   const [content, setContent] = useState('');
 
   const openEditor = (note?: Note) => {
@@ -58,28 +53,28 @@ export const NotesScreen: React.FC = () => {
 
   const renderNote = ({ item }: { item: Note }) => (
     <TouchableOpacity
-      style={[styles.noteCard, { backgroundColor: theme.surface }]}
+      style={[styles.noteCard, { backgroundColor: '#FFFFFF' }]}
       onPress={() => openEditor(item)}
     >
-      <Text style={[styles.noteTitle, { color: theme.text }]}>{item.title}</Text>
-      <Text style={[styles.noteContent, { color: theme.textSecondary }]} numberOfLines={2}>
+      <Text style={[styles.noteTitle, { color: '#000000' }]}>{item.title}</Text>
+      <Text style={[styles.noteContent, { color: '#000000' }]} numberOfLines={2}>
         {item.content}
       </Text>
-      <Text style={[styles.noteDate, { color: theme.textSecondary }]}>
+      <Text style={[styles.noteDate, { color: '#000000' }]}>
         {item.updatedAt.toLocaleDateString()}
       </Text>
     </TouchableOpacity>
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.text }]}>Notes</Text>
+        <Text style={[styles.title, { color: '#000000' }]}>Notes</Text>
         <TouchableOpacity
-          style={[styles.addBtn, { backgroundColor: theme.primary }]}
+          style={[styles.addBtn, { backgroundColor: '#FFFFFF' }]}
           onPress={() => openEditor()}
         >
-          <Text style={[styles.addBtnText, { color: theme.background }]}>+</Text>
+          <Text style={[styles.addBtnText, { color: '#000000' }]}>+</Text>
         </TouchableOpacity>
       </View>
 
@@ -93,32 +88,20 @@ export const NotesScreen: React.FC = () => {
       />
 
       <Modal visible={showEditor} animationType="slide">
-        <View style={[styles.editorContainer, { backgroundColor: theme.background }]}>
+        <View style={[styles.editorContainer, { backgroundColor: '#FFFFFF' }]}>
           <View style={styles.editorHeader}>
             <TouchableOpacity onPress={() => setShowEditor(false)}>
-              <Text style={[styles.cancelBtn, { color: theme.textSecondary }]}>Cancel</Text>
+              <Text style={[styles.cancelBtn, { color: '#000000' }]}>Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={saveNote}>
-              <Text style={[styles.saveBtn, { color: theme.primary }]}>Save</Text>
+              <Text style={[styles.saveBtn, { color: '#000000' }]}>Save</Text>
             </TouchableOpacity>
           </View>
 
           <TextInput
-            style={[styles.titleInput, { backgroundColor: theme.surface, color: theme.text }]}
-            placeholder="Note title..."
-            placeholderTextColor={theme.textSecondary}
-            value={title}
-            onChangeText={setTitle}
-          />
-
-          <TextInput
-            style={[styles.contentInput, { backgroundColor: theme.surface, color: theme.text }]}
-            placeholder="Write your note here..."
-            placeholderTextColor={theme.textSecondary}
-            value={content}
-            onChangeText={setContent}
-            multiline
-            textAlignVertical="top"
+            style={[styles.titleInput, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+            placeholder="Note title#FFFFFF', color: '#000000' }]}
+            placeholder="Write your note heretop"
           />
         </View>
       </Modal>
@@ -145,3 +128,5 @@ const styles = StyleSheet.create({
   titleInput: { padding: 12, borderRadius: 8, fontSize: 18, fontWeight: '600', marginBottom: 16 },
   contentInput: { flex: 1, padding: 12, borderRadius: 8, fontSize: 16 },
 });
+
+export default NotesScreen;

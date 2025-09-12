@@ -17,7 +17,7 @@ export const ProductivityScreen: React.FC<{ navigation: any }> = ({ navigation }
 
   return (
     <View style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
-      {/* Header */}
+      {}
       <View style={{
         backgroundColor: 'white',
         paddingTop: 50,
@@ -31,14 +31,14 @@ export const ProductivityScreen: React.FC<{ navigation: any }> = ({ navigation }
             <Text style={{ fontSize: 18 }}>←</Text>
           </TouchableOpacity>
           <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Productivity</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Analytics')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Analytics' as never)}>
             <Text style={{ fontSize: 16, color: '#4A90E2' }}>Full Report</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <ScrollView style={{ flex: 1 }}>
-        {/* Key Metrics */}
+        {}
         <View style={{ padding: 8 }}>
           <Text style={{ fontSize: 18, fontWeight: 'bold', marginLeft: 8, marginBottom: 8, color: '#333' }}>
             Today's Overview
@@ -63,10 +63,10 @@ export const ProductivityScreen: React.FC<{ navigation: any }> = ({ navigation }
           </View>
         </View>
 
-        {/* Weekly Chart */}
+        {}
         <WeeklyChart data={weeklyData} />
 
-        {/* Quick Actions */}
+        {}
         <View style={{
           backgroundColor: 'white',
           margin: 8,
@@ -82,7 +82,7 @@ export const ProductivityScreen: React.FC<{ navigation: any }> = ({ navigation }
             Quick Actions
           </Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('FocusMode')}
+            onPress={() => navigation.navigate('FocusMode' as never)}
             style={{
               backgroundColor: '#4A90E2',
               padding: 12,
@@ -96,7 +96,7 @@ export const ProductivityScreen: React.FC<{ navigation: any }> = ({ navigation }
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Analytics')}
+            onPress={() => navigation.navigate('Analytics' as never)}
             style={{
               backgroundColor: '#50C878',
               padding: 12,
@@ -110,7 +110,7 @@ export const ProductivityScreen: React.FC<{ navigation: any }> = ({ navigation }
           </TouchableOpacity>
         </View>
 
-        {/* Productivity Tips */}
+        {}
         <View style={{
           backgroundColor: 'white',
           margin: 8,
@@ -142,3 +142,5 @@ export const ProductivityScreen: React.FC<{ navigation: any }> = ({ navigation }
     </View>
   );
 };
+
+export default ProductivityScreen;

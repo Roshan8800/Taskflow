@@ -15,11 +15,11 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
   const [title, setTitle] = useState(task?.title || '');
   const [description, setDescription] = useState(task?.description || '');
   const [priority, setPriority] = useState<'low' | 'medium' | 'high' | 'urgent'>(task?.priority || 'medium');
-  const [project, setProject] = useState(task?.project || '');
+  const [projectId, setProject] = useState(task?.projectId || '');
   const [labels, setLabels] = useState<string[]>(task?.labels || []);
   const [color, setColor] = useState(task?.color || '#4A90E2');
   const [notes, setNotes] = useState(task?.notes || '');
-  const [dueDate, setDueDate] = useState<Date | undefined>(task?.dueDate);
+  const [dueDate, setDueDate] = useState<Date | undefined>(task?.dueAt);
   const [reminderDate, setReminderDate] = useState<Date | undefined>(task?.reminderDate);
   const [isRecurring, setIsRecurring] = useState(task?.isRecurring || false);
   const [recurringType, setRecurringType] = useState<'daily' | 'weekly' | 'monthly'>(task?.recurringType || 'daily');
@@ -30,8 +30,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
     { value: 'low', label: 'Low', color: '#6BCF7F' },
     { value: 'medium', label: 'Medium', color: '#FFD93D' },
     { value: 'high', label: 'High', color: '#FF6B6B' },
-    { value: 'urgent', label: 'Urgent', color: '#FF0000' },
-  ];
+    { value: 'urgent', label: 'Urgent', color: '#FF0000' }];
 
   const colors = ['#4A90E2', '#FF6B6B', '#4ECDC4', '#FFD93D', '#96CEB4', '#DDA0DD'];
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -60,7 +59,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
       title: title.trim(),
       description: description.trim(),
       priority,
-      project: project.trim(),
+      projectId: projectId.trim(),
       labels,
       color,
       notes: notes.trim(),
@@ -76,24 +75,24 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onCancel}>
-          <Text style={[styles.cancelBtn, { color: theme.textSecondary }]}>Cancel</Text>
+          <Text style={[styles.cancelBtn, { color: '#000000' }]}>Cancel</Text>
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>
+        <Text style={[styles.title, { color: '#000000' }]}>
           {task ? 'Edit Task' : 'New Task'}
         </Text>
         <TouchableOpacity onPress={handleSave}>
-          <Text style={[styles.saveBtn, { color: theme.primary }]}>Save</Text>
+          <Text style={[styles.saveBtn, { color: '#000000' }]}>Save</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.form}>
         <View style={styles.section}>
-          <Text style={[styles.label, { color: theme.text }]}>Title *</Text>
+          <Text style={[styles.label, { color: '#000000' }]}>Title *</Text>
           <TextInput
-            style={[styles.input, { backgroundColor: theme.surface, color: theme.text }]}
+            style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
             value={title}
             onChangeText={setTitle}
             placeholder="Task title"
@@ -102,9 +101,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
         </View>
 
         <View style={styles.section}>
-          <Text style={[styles.label, { color: theme.text }]}>Description</Text>
+          <Text style={[styles.label, { color: '#000000' }]}>Description</Text>
           <TextInput
-            style={[styles.textArea, { backgroundColor: theme.surface, color: theme.text }]}
+            style={[styles.textArea, { backgroundColor: '#FFFFFF', color: '#000000' }]}
             value={description}
             onChangeText={setDescription}
             placeholder="Task description"
@@ -115,7 +114,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
         </View>
 
         <View style={styles.section}>
-          <Text style={[styles.label, { color: theme.text }]}>Priority</Text>
+          <Text style={[styles.label, { color: '#000000' }]}>Priority</Text>
           <View style={styles.priorityGrid}>
             {priorities.map((p) => (
               <TouchableOpacity
@@ -138,7 +137,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
         </View>
 
         <View style={styles.section}>
-          <Text style={[styles.label, { color: theme.text }]}>Color</Text>
+          <Text style={[styles.label, { color: '#000000' }]}>Color</Text>
           <View style={styles.colorGrid}>
             {colors.map((c) => (
               <TouchableOpacity
@@ -155,10 +154,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
         </View>
 
         <View style={styles.section}>
-          <Text style={[styles.label, { color: theme.text }]}>Project</Text>
+          <Text style={[styles.label, { color: '#000000' }]}>Project</Text>
           <TextInput
-            style={[styles.input, { backgroundColor: theme.surface, color: theme.text }]}
-            value={project}
+            style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+            value={projectId}
             onChangeText={setProject}
             placeholder="Project name"
             placeholderTextColor={theme.textSecondary}
@@ -166,10 +165,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
         </View>
 
         <View style={styles.section}>
-          <Text style={[styles.label, { color: theme.text }]}>Labels</Text>
+          <Text style={[styles.label, { color: '#000000' }]}>Labels</Text>
           <View style={styles.labelInput}>
             <TextInput
-              style={[styles.input, { flex: 1, backgroundColor: theme.surface, color: theme.text }]}
+              style={[styles.input, { flex: 1, backgroundColor: '#FFFFFF', color: '#000000' }]}
               value={newLabel}
               onChangeText={setNewLabel}
               placeholder="Add label"
@@ -177,30 +176,30 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
               onSubmitEditing={addLabel}
             />
             <TouchableOpacity
-              style={[styles.addBtn, { backgroundColor: theme.primary }]}
+              style={[styles.addBtn, { backgroundColor: '#FFFFFF' }]}
               onPress={addLabel}
             >
-              <Text style={[styles.addBtnText, { color: theme.background }]}>Add</Text>
+              <Text style={[styles.addBtnText, { color: '#000000' }]}>Add</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.labelsContainer}>
             {labels.map((label) => (
               <TouchableOpacity
                 key={label}
-                style={[styles.labelChip, { backgroundColor: theme.primary + '20' }]}
+                style={[styles.labelChip, { backgroundColor: '#FFFFFF' + '20' }]}
                 onPress={() => removeLabel(label)}
               >
-                <Text style={[styles.labelText, { color: theme.primary }]}>{label}</Text>
-                <Text style={[styles.removeLabel, { color: theme.primary }]}>×</Text>
+                <Text style={[styles.labelText, { color: '#000000' }]}>{label}</Text>
+                <Text style={[styles.removeLabel, { color: '#000000' }]}>×</Text>
               </TouchableOpacity>
             ))}
           </View>
         </View>
 
         <View style={styles.section}>
-          <Text style={[styles.label, { color: theme.text }]}>Notes</Text>
+          <Text style={[styles.label, { color: '#000000' }]}>Notes</Text>
           <TextInput
-            style={[styles.textArea, { backgroundColor: theme.surface, color: theme.text }]}
+            style={[styles.textArea, { backgroundColor: '#FFFFFF', color: '#000000' }]}
             value={notes}
             onChangeText={setNotes}
             placeholder="Additional notes"
@@ -212,7 +211,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
 
         <View style={styles.section}>
           <View style={styles.row}>
-            <Text style={[styles.label, { color: theme.text }]}>Recurring Task</Text>
+            <Text style={[styles.label, { color: '#000000' }]}>Recurring Task</Text>
             <Switch
               value={isRecurring}
               onValueChange={setIsRecurring}
@@ -251,7 +250,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSave, onCancel, proj
                         styles.dayBtn,
                         { 
                           backgroundColor: recurringDays.includes(index) ? theme.primary : theme.surface,
-                          borderColor: theme.border 
+                          borderColor: '#CCCCCC' 
                         }
                       ]}
                       onPress={() => toggleRecurringDay(index)}
@@ -306,3 +305,5 @@ const styles = StyleSheet.create({
   dayBtn: { width: 40, height: 40, borderRadius: 20, justifyContent: 'center', alignItems: 'center', borderWidth: 1 },
   dayText: { fontSize: 12, fontWeight: '500' },
 });
+
+export default TaskForm;

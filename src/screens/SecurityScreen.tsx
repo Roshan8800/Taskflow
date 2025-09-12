@@ -49,8 +49,7 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
               Alert.alert('Success', 'App lock disabled');
             }
           },
-        },
-      ]
+        }]
     );
   };
 
@@ -63,9 +62,9 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.background }}>
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={{
-        backgroundColor: theme.surface,
+        backgroundColor: '#FFFFFF',
         paddingTop: 50,
         paddingHorizontal: 16,
         paddingBottom: 16,
@@ -74,28 +73,28 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
       }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginRight: 16 }}>
-            <Text style={{ fontSize: 18, color: theme.text }}>←</Text>
+            <Text style={{ fontSize: 18, color: '#000000' }}>←</Text>
           </TouchableOpacity>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: theme.text }}>Security</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>Security</Text>
         </View>
       </View>
 
       <ScrollView style={{ flex: 1, padding: 16 }}>
-        {/* App Lock */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 16 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 16 }}>
             🔒 App Lock
           </Text>
           
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>Enable App Lock</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>Enable App Lock</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Require PIN or biometric to open app
               </Text>
             </View>
@@ -114,7 +113,7 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
 
           {!appSettings.appLock && (
             <View>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text, marginBottom: 12 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000', marginBottom: 12 }}>
                 Set PIN Code
               </Text>
               <TextInput
@@ -126,13 +125,13 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
                 maxLength={4}
                 secureTextEntry
                 style={{
-                  backgroundColor: theme.background,
+                  backgroundColor: '#FFFFFF',
                   borderRadius: 8,
                   padding: 12,
                   fontSize: 16,
-                  color: theme.text,
+                  color: '#000000',
                   borderWidth: 1,
-                  borderColor: theme.border,
+                  borderColor: '#CCCCCC',
                   marginBottom: 12,
                 }}
               />
@@ -145,20 +144,20 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
                 maxLength={4}
                 secureTextEntry
                 style={{
-                  backgroundColor: theme.background,
+                  backgroundColor: '#FFFFFF',
                   borderRadius: 8,
                   padding: 12,
                   fontSize: 16,
-                  color: theme.text,
+                  color: '#000000',
                   borderWidth: 1,
-                  borderColor: theme.border,
+                  borderColor: '#CCCCCC',
                   marginBottom: 12,
                 }}
               />
               <TouchableOpacity
                 onPress={handleSetPIN}
                 style={{
-                  backgroundColor: theme.primary,
+                  backgroundColor: '#FFFFFF',
                   padding: 12,
                   borderRadius: 8,
                   alignItems: 'center',
@@ -170,21 +169,21 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
           )}
         </View>
 
-        {/* Biometric Authentication */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 16 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 16 }}>
             👆 Biometric Authentication
           </Text>
           
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>Biometric Unlock</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>Biometric Unlock</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Use fingerprint or face recognition
               </Text>
             </View>
@@ -198,7 +197,7 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
           <TouchableOpacity
             onPress={testBiometric}
             style={{
-              backgroundColor: theme.success,
+              backgroundColor: '#FFFFFF',
               padding: 12,
               borderRadius: 8,
               alignItems: 'center',
@@ -208,21 +207,21 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
           </TouchableOpacity>
         </View>
 
-        {/* Encryption */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 16 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 16 }}>
             🔐 Data Encryption
           </Text>
           
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>End-to-End Encryption</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>End-to-End Encryption</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Encrypt all local data with AES-256
               </Text>
             </View>
@@ -234,25 +233,25 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
           </View>
         </View>
 
-        {/* Security Info */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
         }}>
-          <Text style={{ fontSize: 16, fontWeight: 'bold', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#000000', marginBottom: 12 }}>
             🛡️ Security Information
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • All data is stored locally on your device
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • PIN and biometric data never leave your device
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • Encryption keys are generated and stored securely
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20 }}>
             • No personal data is transmitted to external servers
           </Text>
         </View>
@@ -260,3 +259,5 @@ export const SecurityScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
     </View>
   );
 };
+
+export default SecurityScreen;

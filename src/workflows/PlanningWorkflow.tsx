@@ -19,12 +19,12 @@ export const PlanningWorkflow = () => {
   const availableLabels = ['urgent', 'work', 'personal', 'shopping', 'health'];
 
   const createNewProject = async (name: string) => {
-    const project = await createProject({
+    const projectId = await createProject({
       name,
       description: `Project created for planning`,
-      color: theme.primary
+      color: '#000000'
     });
-    setSelectedProject(project._id.toString());
+    setSelectedProject(projectId._id.toString());
   };
 
   const addTaskToProject = async () => {
@@ -32,10 +32,10 @@ export const PlanningWorkflow = () => {
 
     await addTask({
       title: newTaskTitle,
-      project: selectedProject,
+      projectId: selectedProject,
       labels: selectedLabels,
       priority: 'medium',
-      dueDate: new Date(),
+      dueAt: new Date(),
       repeatRule: repeatRule ? JSON.stringify(repeatRule) : undefined
     });
 
@@ -53,29 +53,29 @@ export const PlanningWorkflow = () => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Project Planning</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Project Planning</Text>
 
-      {/* Project Selection */}
+      {}
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Select Project</Text>
-        <View style={styles.projectGrid}>
-          {projects.map(project => (
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Select Project</Text>
+        <View style={styles.projectIdGrid}>
+          {projects.map(projectId => (
             <TouchableOpacity
-              key={project._id.toString()}
+              key={projectId._id.toString()}
               style={[
-                styles.projectCard,
-                { backgroundColor: theme.surface, borderColor: theme.border },
-                selectedProject === project._id.toString() && { borderColor: theme.primary, borderWidth: 2 }
+                styles.projectIdCard,
+                { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' },
+                selectedProject === projectId._id.toString() && { borderColor: '#CCCCCC', borderWidth: 2 }
               ]}
-              onPress={() => setSelectedProject(project._id.toString())}
+              onPress={() => setSelectedProject(projectId._id.toString())}
             >
-              <Text style={[styles.projectName, { color: theme.text }]}>{project.name}</Text>
+              <Text style={[styles.projectIdName, { color: '#000000' }]}>{projectId.name}</Text>
             </TouchableOpacity>
           ))}
           
           <TouchableOpacity
-            style={[styles.projectCard, styles.newProject, { backgroundColor: theme.primary }]}
+            style={[styles.projectIdCard, styles.newProject, { backgroundColor: '#FFFFFF' }]}
             onPress={() => createNewProject(`Project ${projects.length + 1}`)}
           >
             <Text style={styles.newProjectText}>+ New Project</Text>
@@ -83,30 +83,30 @@ export const PlanningWorkflow = () => {
         </View>
       </View>
 
-      {/* Task Creation */}
+      {}
       {selectedProject && (
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: theme.text }]}>Add Task</Text>
+          <Text style={[styles.sectionTitle, { color: '#000000' }]}>Add Task</Text>
           
           <TextInput
-            style={[styles.input, { backgroundColor: theme.surface, color: theme.text, borderColor: theme.border }]}
+            style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000', borderColor: '#CCCCCC' }]}
             placeholder="Task title"
             placeholderTextColor={theme.textSecondary}
             value={newTaskTitle}
             onChangeText={setNewTaskTitle}
           />
 
-          {/* Labels */}
+          {}
           <View style={styles.labelSection}>
-            <Text style={[styles.labelTitle, { color: theme.text }]}>Labels</Text>
+            <Text style={[styles.labelTitle, { color: '#000000' }]}>Labels</Text>
             <View style={styles.labelGrid}>
               {availableLabels.map(label => (
                 <TouchableOpacity
                   key={label}
                   style={[
                     styles.labelChip,
-                    { backgroundColor: theme.surface, borderColor: theme.border },
-                    selectedLabels.includes(label) && { backgroundColor: theme.primary }
+                    { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' },
+                    selectedLabels.includes(label) && { backgroundColor: '#FFFFFF' }
                   ]}
                   onPress={() => toggleLabel(label)}
                 >
@@ -121,11 +121,11 @@ export const PlanningWorkflow = () => {
             </View>
           </View>
 
-          {/* Repeat Rule */}
+          {}
           <RepeatRuleSelector value={repeatRule} onChange={setRepeatRule} />
 
           <TouchableOpacity
-            style={[styles.addButton, { backgroundColor: theme.primary }]}
+            style={[styles.addButton, { backgroundColor: '#FFFFFF' }]}
             onPress={addTaskToProject}
           >
             <Text style={styles.addButtonText}>Add Task</Text>

@@ -47,7 +47,7 @@ export const useTaskCRUD = () => {
         task.title,
         task.description || '',
         ...task.labels,
-        // Add project name when available
+        // Add projectId name when available
       ].join(' ').toLowerCase();
       
       const words = searchTerms.split(/\s+/);

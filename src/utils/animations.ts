@@ -15,8 +15,7 @@ export const animations = {
         duration: 100,
         easing: Easing.out(Easing.quad),
         useNativeDriver: true,
-      }),
-    ]);
+      })]);
   },
 
   // Fade in animation

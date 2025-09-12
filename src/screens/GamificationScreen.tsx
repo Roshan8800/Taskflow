@@ -31,72 +31,69 @@ export const GamificationScreen: React.FC = () => {
     { id: '3', name: 'Task Crusher', description: 'Complete 100 tasks', icon: '💪', earned: false, progress: 67, target: 100 },
     { id: '4', name: 'Project Pro', description: 'Complete 10 projects', icon: '🎯', earned: false, progress: 3, target: 10 },
     { id: '5', name: 'Speed Demon', description: 'Complete 20 tasks in one day', icon: '⚡', earned: false, progress: 8, target: 20 },
-    { id: '6', name: 'Organizer', description: 'Create 50 projects', icon: '📋', earned: true },
-  ];
+    { id: '6', name: 'Organizer', description: 'Create 50 projects', icon: '📋', earned: true }];
 
   const recentAchievements: Achievement[] = [
     { id: '1', title: 'Streak Master', description: 'Completed 7 days in a row', points: 100, date: '2024-01-15' },
     { id: '2', title: 'Early Bird', description: 'Completed morning tasks', points: 50, date: '2024-01-14' },
-    { id: '3', title: 'Task Warrior', description: 'Completed 50 tasks', points: 75, date: '2024-01-12' },
-  ];
+    { id: '3', title: 'Task Warrior', description: 'Completed 50 tasks', points: 75, date: '2024-01-12' }];
 
   const leaderboard = [
     { rank: 1, name: 'You', points: 1250, streak: 7 },
     { rank: 2, name: 'Alex', points: 1180, streak: 5 },
     { rank: 3, name: 'Sarah', points: 1050, streak: 3 },
     { rank: 4, name: 'Mike', points: 980, streak: 2 },
-    { rank: 5, name: 'Emma', points: 920, streak: 4 },
-  ];
+    { rank: 5, name: 'Emma', points: 920, streak: 4 }];
 
   const BadgeCard = ({ badge }: { badge: Badge }) => (
     <View style={[
       styles.badgeCard,
-      { backgroundColor: theme.surface },
-      badge.earned && { borderColor: theme.primary, borderWidth: 2 }
+      { backgroundColor: '#FFFFFF' },
+      badge.earned && { borderColor: '#CCCCCC', borderWidth: 2 }
     ]}>
       <Text style={styles.badgeIcon}>{badge.icon}</Text>
-      <Text style={[styles.badgeName, { color: theme.text }]}>{badge.name}</Text>
-      <Text style={[styles.badgeDesc, { color: theme.textSecondary }]} numberOfLines={2}>
+      <Text style={[styles.badgeName, { color: '#000000' }]}>{badge.name}</Text>
+      <Text style={[styles.badgeDesc, { color: '#000000' }]} numberOfLines={2}>
         {badge.description}
       </Text>
       {!badge.earned && badge.progress && badge.target && (
         <View style={styles.progressContainer}>
-          <View style={[styles.progressBg, { backgroundColor: theme.border }]}>
+          <View style={[styles.progressBg, { backgroundColor: '#FFFFFF' }]}>
             <View 
               style={[
                 styles.progressFill,
                 { 
                   width: `${(badge.progress / badge.target) * 100}%`,
-                  backgroundColor: theme.primary 
+                  backgroundColor: '#FFFFFF' 
                 }
               ]} 
             />
           </View>
-          <Text style={[styles.progressText, { color: theme.textSecondary }]}>
+          <Text style={[styles.progressText, { color: '#000000' }]}>
             {badge.progress}/{badge.target}
           </Text>
         </View>
       )}
       {badge.earned && (
-        <View style={[styles.earnedBadge, { backgroundColor: theme.primary }]}>
-          <Text style={[styles.earnedText, { color: theme.background }]}>Earned!</Text>
+        <View style={[styles.earnedBadge, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.earnedText, { color: '#000000' }]}>Earned!</Text>
         </View>
       )}
     </View>
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.text }]}>Achievements</Text>
-        <View style={[styles.pointsCard, { backgroundColor: theme.primary }]}>
-          <Text style={[styles.pointsLabel, { color: theme.background }]}>Total Points</Text>
-          <Text style={[styles.pointsValue, { color: theme.background }]}>1,250</Text>
+        <Text style={[styles.title, { color: '#000000' }]}>Achievements</Text>
+        <View style={[styles.pointsCard, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.pointsLabel, { color: '#000000' }]}>Total Points</Text>
+          <Text style={[styles.pointsValue, { color: '#000000' }]}>1,250</Text>
         </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Badges</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Badges</Text>
         <View style={styles.badgesGrid}>
           {badges.map((badge) => (
             <BadgeCard key={badge.id} badge={badge} />
@@ -105,23 +102,23 @@ export const GamificationScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Recent Achievements</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Recent Achievements</Text>
         <View style={styles.achievementsList}>
           {recentAchievements.map((achievement) => (
-            <View key={achievement.id} style={[styles.achievementCard, { backgroundColor: theme.surface }]}>
+            <View key={achievement.id} style={[styles.achievementCard, { backgroundColor: '#FFFFFF' }]}>
               <View style={styles.achievementInfo}>
-                <Text style={[styles.achievementTitle, { color: theme.text }]}>
+                <Text style={[styles.achievementTitle, { color: '#000000' }]}>
                   {achievement.title}
                 </Text>
-                <Text style={[styles.achievementDesc, { color: theme.textSecondary }]}>
+                <Text style={[styles.achievementDesc, { color: '#000000' }]}>
                   {achievement.description}
                 </Text>
-                <Text style={[styles.achievementDate, { color: theme.textSecondary }]}>
+                <Text style={[styles.achievementDate, { color: '#000000' }]}>
                   {new Date(achievement.date).toLocaleDateString()}
                 </Text>
               </View>
-              <View style={[styles.pointsBadge, { backgroundColor: theme.primary }]}>
-                <Text style={[styles.pointsBadgeText, { color: theme.background }]}>
+              <View style={[styles.pointsBadge, { backgroundColor: '#FFFFFF' }]}>
+                <Text style={[styles.pointsBadgeText, { color: '#000000' }]}>
                   +{achievement.points}
                 </Text>
               </View>
@@ -131,24 +128,24 @@ export const GamificationScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Leaderboard</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Leaderboard</Text>
         <View style={styles.leaderboardList}>
           {leaderboard.map((user) => (
             <View key={user.rank} style={[
               styles.leaderboardItem,
-              { backgroundColor: theme.surface },
+              { backgroundColor: '#FFFFFF' },
               user.rank === 1 && { borderColor: '#FFD700', borderWidth: 2 }
             ]}>
               <View style={styles.rankContainer}>
-                <Text style={[styles.rank, { color: theme.text }]}>#{user.rank}</Text>
+                <Text style={[styles.rank, { color: '#000000' }]}>#{user.rank}</Text>
                 {user.rank === 1 && <Text style={styles.crown}>👑</Text>}
               </View>
-              <Text style={[styles.userName, { color: theme.text }]}>{user.name}</Text>
+              <Text style={[styles.userName, { color: '#000000' }]}>{user.name}</Text>
               <View style={styles.userStats}>
-                <Text style={[styles.userPoints, { color: theme.primary }]}>
+                <Text style={[styles.userPoints, { color: '#000000' }]}>
                   {user.points} pts
                 </Text>
-                <Text style={[styles.userStreak, { color: theme.textSecondary }]}>
+                <Text style={[styles.userStreak, { color: '#000000' }]}>
                   🔥 {user.streak}
                 </Text>
               </View>
@@ -157,11 +154,11 @@ export const GamificationScreen: React.FC = () => {
         </View>
       </View>
 
-      <View style={[styles.motivationCard, { backgroundColor: theme.primary }]}>
-        <Text style={[styles.motivationTitle, { color: theme.background }]}>
+      <View style={[styles.motivationCard, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.motivationTitle, { color: '#000000' }]}>
           Keep Going! 🚀
         </Text>
-        <Text style={[styles.motivationText, { color: theme.background }]}>
+        <Text style={[styles.motivationText, { color: '#000000' }]}>
           You're only 3 tasks away from earning the "Task Crusher" badge!
         </Text>
       </View>
@@ -346,3 +343,5 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 });
+
+export default GamificationScreen;

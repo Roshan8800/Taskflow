@@ -11,10 +11,9 @@ interface ChecklistItem {
 export const ChecklistScreen: React.FC = () => {
   const { theme } = useTheme();
   const [items, setItems] = useState<ChecklistItem[]>([
-    { id: '1', text: 'Review project requirements', completed: true },
+    { id: '1', text: 'Review projectId requirements', completed: true },
     { id: '2', text: 'Update documentation', completed: false },
-    { id: '3', text: 'Test new features', completed: false },
-  ]);
+    { id: '3', text: 'Test new features', completed: false }]);
   const [newItemText, setNewItemText] = useState('');
 
   const toggleItem = (id: string) => {
@@ -44,22 +43,22 @@ export const ChecklistScreen: React.FC = () => {
   const progress = items.length > 0 ? (completedCount / items.length) * 100 : 0;
 
   const renderItem = ({ item }: { item: ChecklistItem }) => (
-    <View style={[styles.itemCard, { backgroundColor: theme.surface }]}>
+    <View style={[styles.itemCard, { backgroundColor: '#FFFFFF' }]}>
       <TouchableOpacity
         style={[
           styles.checkbox,
-          { borderColor: theme.border },
-          item.completed && { backgroundColor: theme.primary, borderColor: theme.primary }
+          { borderColor: '#CCCCCC' },
+          item.completed && { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' }
         ]}
         onPress={() => toggleItem(item.id)}
       >
-        {item.completed && <Text style={[styles.checkmark, { color: theme.background }]}>✓</Text>}
+        {item.completed && <Text style={[styles.checkmark, { color: '#000000' }]}>✓</Text>}
       </TouchableOpacity>
       
       <Text style={[
         styles.itemText,
-        { color: theme.text },
-        item.completed && { textDecorationLine: 'line-through', color: theme.textSecondary }
+        { color: '#000000' },
+        item.completed && { textDecorationLine: 'line-through', color: '#000000' }
       ]}>
         {item.text}
       </Text>
@@ -74,43 +73,36 @@ export const ChecklistScreen: React.FC = () => {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Quick Checklist</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Quick Checklist</Text>
       
-      <View style={[styles.progressCard, { backgroundColor: theme.surface }]}>
+      <View style={[styles.progressCard, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.progressHeader}>
-          <Text style={[styles.progressTitle, { color: theme.text }]}>Progress</Text>
-          <Text style={[styles.progressCount, { color: theme.textSecondary }]}>
+          <Text style={[styles.progressTitle, { color: '#000000' }]}>Progress</Text>
+          <Text style={[styles.progressCount, { color: '#000000' }]}>
             {completedCount} of {items.length} completed
           </Text>
         </View>
-        <View style={[styles.progressBar, { backgroundColor: theme.border }]}>
+        <View style={[styles.progressBar, { backgroundColor: '#FFFFFF' }]}>
           <View 
             style={[
               styles.progressFill,
-              { width: `${progress}%`, backgroundColor: theme.primary }
+              { width: `${progress}%`, backgroundColor: '#FFFFFF' }
             ]} 
           />
         </View>
-        <Text style={[styles.progressPercent, { color: theme.primary }]}>
+        <Text style={[styles.progressPercent, { color: '#000000' }]}>
           {Math.round(progress)}%
         </Text>
       </View>
 
-      <View style={[styles.addSection, { backgroundColor: theme.surface }]}>
+      <View style={[styles.addSection, { backgroundColor: '#FFFFFF' }]}>
         <TextInput
-          style={[styles.addInput, { color: theme.text }]}
-          placeholder="Add new item..."
-          placeholderTextColor={theme.textSecondary}
-          value={newItemText}
-          onChangeText={setNewItemText}
-          onSubmitEditing={addItem}
-        />
-        <TouchableOpacity
-          style={[styles.addBtn, { backgroundColor: theme.primary }]}
+          style={[styles.addInput, { color: '#000000' }]}
+          placeholder="Add new item#FFFFFF' }]}
           onPress={addItem}
         >
-          <Text style={[styles.addBtnText, { color: theme.background }]}>Add</Text>
+          <Text style={[styles.addBtnText, { color: '#000000' }]}>Add</Text>
         </TouchableOpacity>
       </View>
 
@@ -122,11 +114,11 @@ export const ChecklistScreen: React.FC = () => {
       />
 
       <View style={styles.actions}>
-        <TouchableOpacity style={[styles.actionBtn, { backgroundColor: theme.border }]}>
-          <Text style={[styles.actionBtnText, { color: theme.text }]}>Clear Completed</Text>
+        <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.actionBtnText, { color: '#000000' }]}>Clear Completed</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.actionBtn, { backgroundColor: theme.primary }]}>
-          <Text style={[styles.actionBtnText, { color: theme.background }]}>Save as Template</Text>
+        <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.actionBtnText, { color: '#000000' }]}>Save as Template</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -158,3 +150,5 @@ const styles = StyleSheet.create({
   actionBtn: { flex: 1, padding: 12, borderRadius: 8, alignItems: 'center' },
   actionBtnText: { fontSize: 14, fontWeight: '600' },
 });
+
+export default ChecklistScreen;

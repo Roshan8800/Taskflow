@@ -14,15 +14,14 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
       [
         { text: 'Encrypted', onPress: () => exportBackup(format, true) },
         { text: 'Plain Text', onPress: () => exportBackup(format, false) },
-        { text: 'Cancel', style: 'cancel' },
-      ]
+        { text: 'Cancel', style: 'cancel' }]
     );
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.background }}>
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={{
-        backgroundColor: theme.surface,
+        backgroundColor: '#FFFFFF',
         paddingTop: 50,
         paddingHorizontal: 16,
         paddingBottom: 16,
@@ -31,24 +30,24 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
       }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginRight: 16 }}>
-            <Text style={{ fontSize: 18, color: theme.text }}>←</Text>
+            <Text style={{ fontSize: 18, color: '#000000' }}>←</Text>
           </TouchableOpacity>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: theme.text }}>Backup & Sync</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>Backup & Sync</Text>
         </View>
       </View>
 
       <ScrollView style={{ flex: 1, padding: 16 }}>
-        {/* Export Backup */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 12 }}>
             📤 Export Backup
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, marginBottom: 16 }}>
+          <Text style={{ fontSize: 14, color: '#000000', marginBottom: 16 }}>
             Create a backup of all your tasks and projects
           </Text>
           
@@ -58,14 +57,14 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
               disabled={loading}
               style={{
                 flex: 1,
-                backgroundColor: theme.primary,
+                backgroundColor: '#FFFFFF',
                 padding: 12,
                 borderRadius: 8,
                 alignItems: 'center',
               }}
             >
               <Text style={{ color: 'white', fontSize: 16, fontWeight: '600' }}>
-                {loading ? 'Exporting...' : 'JSON Format'}
+                {loading ? 'ExportingJSON Format'}
               </Text>
             </TouchableOpacity>
             
@@ -74,7 +73,7 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
               disabled={loading}
               style={{
                 flex: 1,
-                backgroundColor: theme.success,
+                backgroundColor: '#FFFFFF',
                 padding: 12,
                 borderRadius: 8,
                 alignItems: 'center',
@@ -87,17 +86,17 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Import Backup */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 12 }}>
             📥 Import Backup
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, marginBottom: 16 }}>
+          <Text style={{ fontSize: 14, color: '#000000', marginBottom: 16 }}>
             Restore your data from a backup file
           </Text>
           
@@ -105,29 +104,29 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
             onPress={importBackup}
             disabled={loading}
             style={{
-              backgroundColor: theme.warning,
+              backgroundColor: '#FFFFFF',
               padding: 12,
               borderRadius: 8,
               alignItems: 'center',
             }}
           >
             <Text style={{ color: 'white', fontSize: 16, fontWeight: '600' }}>
-              {loading ? 'Importing...' : 'Select Backup File'}
+              {loading ? 'ImportingSelect Backup File'}
             </Text>
           </TouchableOpacity>
         </View>
 
-        {/* Manual Sync */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 12 }}>
             🔄 Manual Sync
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, marginBottom: 16 }}>
+          <Text style={{ fontSize: 14, color: '#000000', marginBottom: 16 }}>
             Synchronize your data with cloud storage
           </Text>
           
@@ -135,37 +134,37 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
             onPress={syncData}
             disabled={loading}
             style={{
-              backgroundColor: theme.primary,
+              backgroundColor: '#FFFFFF',
               padding: 12,
               borderRadius: 8,
               alignItems: 'center',
             }}
           >
             <Text style={{ color: 'white', fontSize: 16, fontWeight: '600' }}>
-              {loading ? 'Syncing...' : 'Sync Now'}
+              {loading ? 'SyncingSync Now'}
             </Text>
           </TouchableOpacity>
         </View>
 
-        {/* Security Info */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
         }}>
-          <Text style={{ fontSize: 16, fontWeight: 'bold', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#000000', marginBottom: 12 }}>
             🔒 Security Features
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • End-to-end encryption for all local data
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • Encrypted backup files with AES-256
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • Local storage with secure key management
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20 }}>
             • No data transmitted without encryption
           </Text>
         </View>
@@ -173,3 +172,5 @@ export const BackupScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
     </View>
   );
 };
+
+export default BackupScreen;

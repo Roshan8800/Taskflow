@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch, Slider } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch } from 'react-native';
 import { useTheme } from '../hooks/useTheme';
 
 export const ThemeCustomizationScreen: React.FC = () => {
@@ -22,7 +22,7 @@ export const ThemeCustomizationScreen: React.FC = () => {
     onColorChange: (color: string) => void;
   }) => (
     <View style={styles.colorSection}>
-      <Text style={[styles.colorTitle, { color: theme.text }]}>{title}</Text>
+      <Text style={[styles.colorTitle, { color: '#000000' }]}>{title}</Text>
       <View style={styles.colorGrid}>
         {colorOptions.map((color) => (
           <TouchableOpacity
@@ -40,11 +40,11 @@ export const ThemeCustomizationScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>Theme Mode</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.sectionTitle, { color: '#000000' }]}>Theme Mode</Text>
       
-      <View style={[styles.row, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.rowTitle, { color: theme.text }]}>Dark Mode</Text>
+      <View style={[styles.row, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.rowTitle, { color: '#000000' }]}>Dark Mode</Text>
         <Switch
           value={isDark}
           onValueChange={toggleTheme}
@@ -52,27 +52,30 @@ export const ThemeCustomizationScreen: React.FC = () => {
         />
       </View>
 
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>Font Size</Text>
+      <Text style={[styles.sectionTitle, { color: '#000000' }]}>Font Size</Text>
       
-      <View style={[styles.row, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.rowTitle, { color: theme.text }]}>Text Size</Text>
+      <View style={[styles.row, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.rowTitle, { color: '#000000' }]}>Text Size</Text>
         <View style={styles.sliderContainer}>
-          <Text style={[styles.sliderLabel, { color: theme.textSecondary }]}>Small</Text>
-          <Slider
-            style={styles.slider}
-            minimumValue={12}
-            maximumValue={20}
-            value={fontSize}
-            onValueChange={setFontSize}
-            minimumTrackTintColor={theme.primary}
-            maximumTrackTintColor={theme.border}
-            thumbTintColor={theme.primary}
-          />
-          <Text style={[styles.sliderLabel, { color: theme.textSecondary }]}>Large</Text>
+          <Text style={[styles.sliderLabel, { color: '#000000' }]}>Small</Text>
+          <View style={styles.fontSizeButtons}>
+            {[12, 14, 16, 18, 20].map(size => (
+              <TouchableOpacity
+                key={size}
+                style={[styles.fontSizeButton, { backgroundColor: fontSize === size ? theme.primary : theme.border }]}
+                onPress={() => setFontSize(size)}
+              >
+                <Text style={[styles.fontSizeButtonText, { color: fontSize === size ? theme.background : theme.text }]}>
+                  {size}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+          <Text style={[styles.sliderLabel, { color: '#000000' }]}>Large</Text>
         </View>
       </View>
 
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>Task Colors</Text>
+      <Text style={[styles.sectionTitle, { color: '#000000' }]}>Task Colors</Text>
       
       <ColorPicker
         title="High Priority"
@@ -99,10 +102,10 @@ export const ThemeCustomizationScreen: React.FC = () => {
       />
 
       <TouchableOpacity
-        style={[styles.saveButton, { backgroundColor: theme.primary }]}
+        style={[styles.saveButton, { backgroundColor: '#FFFFFF' }]}
         onPress={() => console.log('Save theme settings')}
       >
-        <Text style={[styles.saveButtonText, { color: theme.background }]}>Save Changes</Text>
+        <Text style={[styles.saveButtonText, { color: '#000000' }]}>Save Changes</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -137,9 +140,22 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 16,
   },
-  slider: {
+  fontSizeButtons: {
+    flexDirection: 'row',
+    gap: 8,
     flex: 1,
-    marginHorizontal: 12,
+    justifyContent: 'center',
+  },
+  fontSizeButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  fontSizeButtonText: {
+    fontSize: 12,
+    fontWeight: '500',
   },
   sliderLabel: {
     fontSize: 12,
@@ -179,3 +195,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export default ThemeCustomizationScreen;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Animated, PanGestureHandler, State } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
+import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import { BSON } from 'realm';
 import { useTheme } from '../hooks/useTheme';
 import { useNavigation } from '@react-navigation/native';
@@ -55,10 +56,10 @@ export const SwipeableTodoItem: React.FC<SwipeableTodoItemProps> = ({
 
   const getPriorityColor = () => {
     switch (priority) {
-      case 'high': return theme.colors.error;
-      case 'medium': return theme.colors.warning;
-      case 'low': return theme.colors.success;
-      default: return theme.colors.textMuted;
+      case 'high': return theme.error;
+      case 'medium': return theme.warning;
+      case 'low': return theme.success;
+      default: return theme.textSecondary;
     }
   };
 
@@ -67,7 +68,7 @@ export const SwipeableTodoItem: React.FC<SwipeableTodoItemProps> = ({
       onGestureEvent={onGestureEvent}
       onHandlerStateChange={onHandlerStateChange}
     >
-      <Animated.View style={[styles.container(theme), { transform: [{ translateX }] }]}>
+      <Animated.View style={[styles.container, { backgroundColor: '#FFFFFF', transform: [{ translateX }] }]}>
         <TouchableOpacity
           style={styles.content}
           onPress={() => navigation.navigate('TaskDetail' as never, { taskId: id.toString() } as never)}
@@ -77,17 +78,17 @@ export const SwipeableTodoItem: React.FC<SwipeableTodoItemProps> = ({
           <View style={[styles.priorityBar, { backgroundColor: getPriorityColor() }]} />
           
           <TouchableOpacity
-            style={[styles.checkbox(theme), completed && styles.checked(theme)]}
+            style={[styles.checkbox, { borderColor: '#CCCCCC' }, completed && [styles.checked, { backgroundColor: '#FFFFFF' }]]}
             onPress={() => onToggle(id)}
           >
             {completed && <Text style={styles.checkmark}>✓</Text>}
           </TouchableOpacity>
           
           <View style={styles.taskContent}>
-            <Text style={[styles.title(theme), completed && styles.completedTitle(theme)]}>
+            <Text style={[styles.title, { color: '#000000' }, completed && [styles.completedTitle, { color: '#000000' }]]}>
               {title}
             </Text>
-            <Text style={styles.status(theme)}>{status.toUpperCase()}</Text>
+            <Text style={[styles.status, { color: '#000000' }]}>{status.toUpperCase()}</Text>
           </View>
         </TouchableOpacity>
       </Animated.View>
@@ -96,13 +97,11 @@ export const SwipeableTodoItem: React.FC<SwipeableTodoItemProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  container: {
     marginVertical: 4,
     marginHorizontal: 16,
     borderRadius: 12,
-    ...theme.shadows.sm,
-  }),
+  },
   content: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -114,19 +113,16 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     marginRight: 12,
   },
-  checkbox: (theme: any) => ({
+  checkbox: {
     width: 24,
     height: 24,
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: theme.colors.primary,
     marginRight: 12,
     alignItems: 'center',
     justifyContent: 'center',
-  }),
-  checked: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
-  }),
+  },
+  checked: {},
   checkmark: {
     color: '#FFFFFF',
     fontSize: 14,
@@ -135,18 +131,17 @@ const styles = StyleSheet.create({
   taskContent: {
     flex: 1,
   },
-  title: (theme: any) => ({
+  title: {
     fontSize: 16,
     fontWeight: '500',
-    color: theme.colors.text,
-  }),
-  completedTitle: (theme: any) => ({
+  },
+  completedTitle: {
     textDecorationLine: 'line-through',
-    color: theme.colors.textMuted,
-  }),
-  status: (theme: any) => ({
+  },
+  status: {
     fontSize: 12,
-    color: theme.colors.textSecondary,
     marginTop: 4,
-  }),
+  },
 });
+
+export default SwipeableTodoItem;

@@ -16,7 +16,7 @@ export const DailyUseWorkflow = () => {
     const taskData = {
       title,
       priority: 'medium' as const,
-      dueDate: dueTime || new Date()
+      dueAt: dueTime || new Date()
     };
 
     await addTask(taskData);
@@ -63,19 +63,19 @@ export const DailyUseWorkflow = () => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Today's Tasks</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Today's Tasks</Text>
       
       <View style={styles.quickActions}>
         <TouchableOpacity 
-          style={[styles.quickButton, { backgroundColor: theme.primary }]}
+          style={[styles.quickButton, { backgroundColor: '#FFFFFF' }]}
           onPress={() => quickAdd('Quick task')}
         >
           <Text style={styles.buttonText}>Quick Add</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
-          style={[styles.quickButton, { backgroundColor: theme.success }]}
+          style={[styles.quickButton, { backgroundColor: '#FFFFFF' }]}
           onPress={() => {
             const dueTime = new Date();
             dueTime.setHours(dueTime.getHours() + 1);
@@ -90,11 +90,11 @@ export const DailyUseWorkflow = () => {
         {todayTasks.map(task => (
           <TouchableOpacity
             key={task._id.toString()}
-            style={[styles.taskItem, { backgroundColor: theme.surface }]}
+            style={[styles.taskItem, { backgroundColor: '#FFFFFF' }]}
             onPress={() => completeTask(task._id.toString())}
           >
-            <Text style={[styles.taskTitle, { color: theme.text }]}>{task.title}</Text>
-            <Text style={[styles.taskTime, { color: theme.textSecondary }]}>
+            <Text style={[styles.taskTitle, { color: '#000000' }]}>{task.title}</Text>
+            <Text style={[styles.taskTime, { color: '#000000' }]}>
               {task.dueAt?.toLocaleTimeString()}
             </Text>
           </TouchableOpacity>

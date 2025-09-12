@@ -28,8 +28,7 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
     { field: 'dueDate', label: 'Due Date' },
     { field: 'priority', label: 'Priority' },
     { field: 'createdAt', label: 'Created' },
-    { field: 'title', label: 'Title' },
-  ];
+    { field: 'title', label: 'Title' }];
 
   const togglePriority = (priority: string) => {
     const currentPriorities = filters.priority || [];
@@ -49,8 +48,8 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
     onFiltersChange({ ...filters, labels: newLabels });
   };
 
-  const setProject = (project: string) => {
-    onFiltersChange({ ...filters, project: project === filters.project ? undefined : project });
+  const setProject = (projectId: string) => {
+    onFiltersChange({ ...filters, projectId: projectId === filters.project ? undefined : projectId });
   };
 
   const setCompleted = (completed: boolean | undefined) => {
@@ -87,21 +86,21 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
 
   return (
     <>
-      <View style={[styles.container, { backgroundColor: theme.surface }]}>
+      <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-          {/* Sort */}
+          {}
           <View style={styles.sortContainer}>
             <TouchableOpacity
-              style={[styles.sortBtn, { backgroundColor: theme.background }]}
+              style={[styles.sortBtn, { backgroundColor: '#FFFFFF' }]}
               onPress={() => onSortChange({ ...sort, direction: sort.direction === 'asc' ? 'desc' : 'asc' })}
             >
-              <Text style={[styles.sortText, { color: theme.text }]}>
+              <Text style={[styles.sortText, { color: '#000000' }]}>
                 {sortFields.find(f => f.field === sort.field)?.label} {sort.direction === 'asc' ? '↑' : '↓'}
               </Text>
             </TouchableOpacity>
           </View>
 
-          {/* Quick Filters */}
+          {}
           <TouchableOpacity
             style={[
               styles.filterBtn,
@@ -132,7 +131,7 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
             </Text>
           </TouchableOpacity>
 
-          {/* Priority Filters */}
+          {}
           {priorities.map(priority => (
             <TouchableOpacity
               key={priority}
@@ -159,35 +158,35 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
             </TouchableOpacity>
           ))}
 
-          {/* More Filters Button */}
+          {}
           <TouchableOpacity
-            style={[styles.moreFiltersBtn, { backgroundColor: theme.primary }]}
+            style={[styles.moreFiltersBtn, { backgroundColor: '#FFFFFF' }]}
             onPress={() => setShowFilters(true)}
           >
-            <Text style={[styles.moreFiltersText, { color: theme.background }]}>
+            <Text style={[styles.moreFiltersText, { color: '#000000' }]}>
               Filters {getActiveFiltersCount() > 0 && `(${getActiveFiltersCount()})`}
             </Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
 
-      {/* Filters Modal */}
+      {}
       <Modal visible={showFilters} animationType="slide">
-        <View style={[styles.modalContainer, { backgroundColor: theme.background }]}>
+        <View style={[styles.modalContainer, { backgroundColor: '#FFFFFF' }]}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={() => setShowFilters(false)}>
-              <Text style={[styles.modalCloseBtn, { color: theme.textSecondary }]}>Cancel</Text>
+              <Text style={[styles.modalCloseBtn, { color: '#000000' }]}>Cancel</Text>
             </TouchableOpacity>
-            <Text style={[styles.modalTitle, { color: theme.text }]}>Filters & Sort</Text>
+            <Text style={[styles.modalTitle, { color: '#000000' }]}>Filters & Sort</Text>
             <TouchableOpacity onPress={clearFilters}>
-              <Text style={[styles.modalClearBtn, { color: theme.primary }]}>Clear All</Text>
+              <Text style={[styles.modalClearBtn, { color: '#000000' }]}>Clear All</Text>
             </TouchableOpacity>
           </View>
 
           <ScrollView style={styles.modalContent}>
-            {/* Sort Options */}
+            {}
             <View style={styles.modalSection}>
-              <Text style={[styles.sectionTitle, { color: theme.text }]}>Sort By</Text>
+              <Text style={[styles.sectionTitle, { color: '#000000' }]}>Sort By</Text>
               {sortFields.map(field => (
                 <TouchableOpacity
                   key={field.field}
@@ -207,7 +206,7 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
                     <TouchableOpacity
                       onPress={() => onSortChange({ ...sort, direction: sort.direction === 'asc' ? 'desc' : 'asc' })}
                     >
-                      <Text style={[styles.sortDirection, { color: theme.primary }]}>
+                      <Text style={[styles.sortDirection, { color: '#000000' }]}>
                         {sort.direction === 'asc' ? '↑' : '↓'}
                       </Text>
                     </TouchableOpacity>
@@ -216,34 +215,34 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
               ))}
             </View>
 
-            {/* Projects */}
+            {}
             {availableProjects.length > 0 && (
               <View style={styles.modalSection}>
-                <Text style={[styles.sectionTitle, { color: theme.text }]}>Project</Text>
-                {availableProjects.map(project => (
+                <Text style={[styles.sectionTitle, { color: '#000000' }]}>Project</Text>
+                {availableProjects.map(projectId => (
                   <TouchableOpacity
-                    key={project}
+                    key={projectId}
                     style={[
                       styles.optionBtn,
-                      { backgroundColor: filters.project === project ? theme.primary + '20' : theme.surface }
+                      { backgroundColor: filters.project === projectId ? theme.primary + '20' : theme.surface }
                     ]}
-                    onPress={() => setProject(project)}
+                    onPress={() => setProject(projectId)}
                   >
                     <Text style={[
                       styles.optionText,
-                      { color: filters.project === project ? theme.primary : theme.text }
+                      { color: filters.project === projectId ? theme.primary : theme.text }
                     ]}>
-                      📁 {project}
+                      📁 {projectId}
                     </Text>
                   </TouchableOpacity>
                 ))}
               </View>
             )}
 
-            {/* Labels */}
+            {}
             {availableLabels.length > 0 && (
               <View style={styles.modalSection}>
-                <Text style={[styles.sectionTitle, { color: theme.text }]}>Labels</Text>
+                <Text style={[styles.sectionTitle, { color: '#000000' }]}>Labels</Text>
                 <View style={styles.labelsGrid}>
                   {availableLabels.map(label => (
                     <TouchableOpacity
@@ -274,9 +273,9 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
               </View>
             )}
 
-            {/* Status */}
+            {}
             <View style={styles.modalSection}>
-              <Text style={[styles.sectionTitle, { color: theme.text }]}>Status</Text>
+              <Text style={[styles.sectionTitle, { color: '#000000' }]}>Status</Text>
               <TouchableOpacity
                 style={[
                   styles.optionBtn,
@@ -338,3 +337,5 @@ const styles = StyleSheet.create({
   labelChip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 16 },
   labelChipText: { fontSize: 14, fontWeight: '500' },
 });
+
+export default TaskFilters;

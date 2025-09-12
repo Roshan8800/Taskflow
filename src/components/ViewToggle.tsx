@@ -14,8 +14,7 @@ export const ViewToggle: React.FC<ViewToggleProps> = ({ currentView, onViewChang
     { key: 'kanban', icon: '📋', label: 'Board' },
     { key: 'calendar', icon: '📅', label: 'Calendar' },
     { key: 'checklist', icon: '✓', label: 'Check' },
-    { key: 'focus', icon: '🎯', label: 'Focus' },
-  ];
+    { key: 'focus', icon: '🎯', label: 'Focus' }];
 
   return (
     <View style={{ flexDirection: 'row', backgroundColor: '#f0f0f0', borderRadius: 8, padding: 2 }}>
@@ -45,3 +44,5 @@ export const ViewToggle: React.FC<ViewToggleProps> = ({ currentView, onViewChang
     </View>
   );
 };
+
+export default ViewToggle;

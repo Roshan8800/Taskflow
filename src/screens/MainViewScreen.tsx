@@ -16,10 +16,10 @@ export const MainViewScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
   const [showSearch, setShowSearch] = useState(false);
   const { getTasks, toggleTask, deleteTask, snoozeTask, archiveTask } = useTaskManager();
   
-  const tasks = Array.from(getTasks()).filter(t => !t.isDeleted);
+  const tasks = Array.from(getTasks()).filter(t => !t.deletedAt !== null);
 
   const handleTaskEdit = (task: any) => {
-    navigation.navigate('TaskForm', { task });
+    navigation.navigate('TaskForm' as never, { task });
   };
 
   const handleTaskToggle = async (task: any) => {
@@ -112,7 +112,7 @@ export const MainViewScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
 
   return (
     <View style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
-      {/* Header */}
+      {}
       <View style={{
         backgroundColor: 'white',
         paddingTop: 50,
@@ -134,10 +134,10 @@ export const MainViewScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
         <ViewToggle currentView={currentView} onViewChange={setCurrentView} />
       </View>
 
-      {/* Current View */}
+      {}
       {renderCurrentView()}
 
-      {/* Global Search */}
+      {}
       <GlobalSearch
         visible={showSearch}
         onClose={() => setShowSearch(false)}
@@ -146,9 +146,11 @@ export const MainViewScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
           if (task) handleTaskEdit(task);
         }}
         onProjectSelect={(projectId) => {
-          navigation.navigate('ProjectOverview', { projectId });
+          navigation.navigate('ProjectOverview' as never, { projectId });
         }}
       />
     </View>
   );
 };
+
+export default MainViewScreen;

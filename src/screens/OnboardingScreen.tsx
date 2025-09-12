@@ -28,8 +28,7 @@ const slides = [
     icon: '📱',
     title: 'Works Offline',
     description: 'All your data is stored locally. No internet required. Your tasks are always available.',
-  },
-];
+  }];
 
 export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
   const { theme } = useTheme();
@@ -48,15 +47,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
   };
 
   return (
-    <View style={styles.container(theme)}>
+    <View style={[styles.container]}>
       <TouchableOpacity style={styles.skipButton} onPress={skipOnboarding}>
-        <Text style={styles.skipText(theme)}>Skip</Text>
+        <Text style={[styles.skipText]}>Skip</Text>
       </TouchableOpacity>
 
       <View style={styles.slideContainer}>
         <Text style={styles.slideIcon}>{slides[currentSlide].icon}</Text>
-        <Text style={styles.slideTitle(theme)}>{slides[currentSlide].title}</Text>
-        <Text style={styles.slideDescription(theme)}>{slides[currentSlide].description}</Text>
+        <Text style={[styles.slideTitle]}>{slides[currentSlide].title}</Text>
+        <Text style={[styles.slideDescription]}>{slides[currentSlide].description}</Text>
       </View>
 
       <View style={styles.pagination}>
@@ -64,15 +63,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
           <View
             key={index}
             style={[
-              styles.paginationDot(theme),
-              currentSlide === index && styles.activeDot(theme)
+              styles.paginationDot,
+              currentSlide === index && styles.activeDot
             ]}
           />
         ))}
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.nextButton(theme)} onPress={nextSlide}>
+        <TouchableOpacity style={[styles.nextButton]} onPress={nextSlide}>
           <Text style={styles.nextButtonText}>
             {currentSlide === slides.length - 1 ? 'Get Started' : 'Next'}
           </Text>
@@ -83,21 +82,21 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     paddingHorizontal: 20,
-  }),
+  },
   skipButton: {
     alignSelf: 'flex-end',
     marginTop: 60,
     padding: 12,
   },
-  skipText: (theme: any) => ({
+  skipText: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     fontWeight: '500',
-  }),
+  },
   slideContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -108,49 +107,51 @@ const styles = StyleSheet.create({
     fontSize: 80,
     marginBottom: 40,
   },
-  slideTitle: (theme: any) => ({
+  slideTitle: {
     fontSize: 28,
     fontWeight: '700',
-    color: theme.colors.text,
+    color: '#000000',
     textAlign: 'center',
     marginBottom: 20,
-  }),
-  slideDescription: (theme: any) => ({
+  },
+  slideDescription: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     textAlign: 'center',
     lineHeight: 24,
     paddingHorizontal: 20,
-  }),
+  },
   pagination: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 40,
   },
-  paginationDot: (theme: any) => ({
+  paginationDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: theme.colors.border,
+    backgroundColor: '#000000',
     marginHorizontal: 4,
-  }),
-  activeDot: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
+  },
+  activeDot: {
+    backgroundColor: '#000000',
     width: 24,
-  }),
+  },
   buttonContainer: {
     paddingBottom: 40,
   },
-  nextButton: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
+  nextButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
+  },
   nextButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
   },
 });
+
+export default OnboardingScreen;

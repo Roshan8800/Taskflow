@@ -17,12 +17,11 @@ const CustomDrawerContent = ({ navigation }: any) => {
     { name: 'Memory Bank', icon: '🧠', screen: 'MemoryBank' },
     { name: 'Productivity', icon: '📊', screen: 'Productivity' },
     { name: 'Analytics', icon: '📈', screen: 'Analytics' },
-    { name: 'Backup & Sync', icon: '☁️', screen: 'Backup' },
-  ];
+    { name: 'Backup & Sync', icon: '☁️', screen: 'Backup' }];
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      {/* Header */}
+      {}
       <View style={{
         backgroundColor: '#4A90E2',
         paddingTop: 50,
@@ -35,7 +34,7 @@ const CustomDrawerContent = ({ navigation }: any) => {
         </Text>
       </View>
 
-      {/* Menu Items */}
+      {}
       <ScrollView style={{ flex: 1, paddingTop: 20 }}>
         {menuItems.map(item => (
           <TouchableOpacity
@@ -58,7 +57,7 @@ const CustomDrawerContent = ({ navigation }: any) => {
         ))}
       </ScrollView>
 
-      {/* Footer */}
+      {}
       <View style={{
         padding: 20,
         borderTopWidth: 1,

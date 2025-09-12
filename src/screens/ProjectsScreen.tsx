@@ -27,10 +27,10 @@ export const ProjectsScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
     }
   };
 
-  const handleDelete = (project: Project) => {
+  const handleDelete = (projectId: Project) => {
     Alert.alert(
       'Delete Project',
-      `Are you sure you want to delete "${project.name}"? All tasks will be unassigned.`,
+      `Are you sure you want to delete "${projectId.name}"? All tasks will be unassigned.`,
       [
         { text: 'Cancel', style: 'cancel' },
         {
@@ -38,23 +38,22 @@ export const ProjectsScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
           style: 'destructive',
           onPress: async () => {
             try {
-              await deleteProject(project._id);
+              await deleteProject(projectId._id);
               setRefreshKey(prev => prev + 1);
             } catch (error) {
-              Alert.alert('Error', 'Failed to delete project');
+              Alert.alert('Error', 'Failed to delete projectId');
             }
           },
-        },
-      ]
+        }]
     );
   };
 
-  const handleArchive = async (project: Project) => {
+  const handleArchive = async (projectId: Project) => {
     try {
-      await archiveProject(project._id, !project.isArchived);
+      await archiveProject(projectId._id, !projectId.archived);
       setRefreshKey(prev => prev + 1);
     } catch (error) {
-      Alert.alert('Error', 'Failed to archive project');
+      Alert.alert('Error', 'Failed to archive projectId');
     }
   };
 
@@ -95,8 +94,8 @@ export const ProjectsScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
         keyExtractor={item => item._id.toString()}
         renderItem={({ item }) => (
           <ProjectCard
-            project={item}
-            onPress={() => navigation.navigate('ProjectOverview', { projectId: item._id })}
+            projectId={item}
+            onPress={() => navigation.navigate('ProjectOverview' as never, { projectId: item._id })}
             onEdit={() => {
               setEditingProject(item);
               setShowForm(true);
@@ -107,14 +106,14 @@ export const ProjectsScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
         ListEmptyComponent={
           <View style={{ alignItems: 'center', marginTop: 50 }}>
             <Text style={{ fontSize: 18, color: '#666' }}>No projects yet</Text>
-            <Text style={{ color: '#999', marginTop: 8 }}>Create your first project to get started</Text>
+            <Text style={{ color: '#999', marginTop: 8 }}>Create your first projectId to get started</Text>
           </View>
         }
       />
 
       <Modal visible={showForm} animationType="slide" presentationStyle="pageSheet">
         <ProjectForm
-          project={editingProject}
+          projectId={editingProject}
           onClose={() => {
             setShowForm(false);
             setEditingProject(undefined);
@@ -125,3 +124,5 @@ export const ProjectsScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
     </View>
   );
 };
+
+export default ProjectsScreen;

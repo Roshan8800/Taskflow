@@ -24,8 +24,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
         tension: 50,
         friction: 8,
         useNativeDriver: true,
-      }),
-    ]).start();
+      })]).start();
 
     const timer = setTimeout(() => {
       onFinish();
@@ -35,7 +34,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
   }, []);
 
   return (
-    <View style={styles.container(theme)}>
+    <View style={[styles.container]}>
       <Animated.View 
         style={[
           styles.logoContainer,
@@ -46,13 +45,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
         ]}
       >
         <AppLogo size={120} variant="full" />
-        <Text style={styles.tagline(theme)}>Organize. Focus. Achieve.</Text>
-        <Text style={styles.creator(theme)}>Created by Roshan 💗</Text>
+        <Text style={[styles.tagline]}>Organize. Focus. Achieve.</Text>
+        <Text style={[styles.creator]}>Created by Roshan 💗</Text>
       </Animated.View>
       
       <Animated.View style={[styles.loadingContainer, { opacity: fadeAnim }]}>
-        <View style={styles.loadingBar(theme)}>
-          <Animated.View style={[styles.loadingProgress(theme), { width: '70%' }]} />
+        <View style={[styles.loadingBar]}>
+          <Animated.View style={[styles.loadingProgress, { width: '70%' }]} />
         </View>
       </Animated.View>
     </View>
@@ -60,47 +59,49 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: '#000000',
     justifyContent: 'center',
     alignItems: 'center',
-  }),
+  },
   logoContainer: {
     alignItems: 'center',
     marginBottom: 80,
   },
-  appName: (theme: any) => ({
+  appName: {
     fontSize: 32,
     fontWeight: '700',
     color: '#FFFFFF',
     marginBottom: 8,
-  }),
-  tagline: (theme: any) => ({
+  },
+  tagline: {
     fontSize: 16,
     color: 'rgba(255, 255, 255, 0.8)',
     fontWeight: '500',
-  }),
-  creator: (theme: any) => ({
+  },
+  creator: {
     fontSize: 14,
     color: 'rgba(255, 255, 255, 0.9)',
     fontWeight: '600',
     marginTop: 12,
-  }),
+  },
   loadingContainer: {
     position: 'absolute',
     bottom: 100,
     width: '60%',
   },
-  loadingBar: (theme: any) => ({
+  loadingBar: {
     height: 4,
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
     borderRadius: 2,
     overflow: 'hidden',
-  }),
-  loadingProgress: (theme: any) => ({
+  },
+  loadingProgress: {
     height: '100%',
     backgroundColor: '#FFFFFF',
     borderRadius: 2,
-  }),
+  },
 });
+
+export default SplashScreen;

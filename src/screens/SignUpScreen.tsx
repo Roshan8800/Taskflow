@@ -44,24 +44,24 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onBackToLogin }) => 
   };
 
   return (
-    <View style={styles.container(theme)}>
+    <View style={[styles.container]}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton} onPress={onBackToLogin}>
-          <Text style={styles.backIcon(theme)}>←</Text>
+          <Text style={[styles.backIcon]}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.title(theme)}>Create Account</Text>
-        <Text style={styles.subtitle(theme)}>Join TaskFlow to get organized</Text>
+        <Text style={[styles.title]}>Create Account</Text>
+        <Text style={[styles.subtitle]}>Join TaskFlow to get organized</Text>
       </View>
 
       <View style={styles.form}>
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Email *</Text>
+          <Text style={[styles.label]}>Email *</Text>
           <TextInput
-            style={styles.input(theme)}
+            style={[styles.input]}
             value={email}
             onChangeText={setEmail}
             placeholder="Enter your email"
-            placeholderTextColor={theme.colors.textMuted}
+            placeholderTextColor={theme.textSecondary}
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
@@ -69,86 +69,86 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onBackToLogin }) => 
         </View>
 
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Username *</Text>
+          <Text style={[styles.label]}>Username *</Text>
           <TextInput
-            style={styles.input(theme)}
+            style={[styles.input]}
             value={username}
             onChangeText={setUsername}
             placeholder="Choose a username"
-            placeholderTextColor={theme.colors.textMuted}
+            placeholderTextColor={theme.textSecondary}
             autoCapitalize="none"
             autoCorrect={false}
           />
         </View>
 
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Password *</Text>
+          <Text style={[styles.label]}>Password *</Text>
           <TextInput
-            style={styles.input(theme)}
+            style={[styles.input]}
             value={password}
             onChangeText={setPassword}
             placeholder="Create a password (min 6 characters)"
-            placeholderTextColor={theme.colors.textMuted}
+            placeholderTextColor={theme.textSecondary}
             secureTextEntry
           />
         </View>
 
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Confirm Password *</Text>
+          <Text style={[styles.label]}>Confirm Password *</Text>
           <TextInput
-            style={styles.input(theme)}
+            style={[styles.input]}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             placeholder="Confirm your password"
-            placeholderTextColor={theme.colors.textMuted}
+            placeholderTextColor={theme.textSecondary}
             secureTextEntry
           />
         </View>
 
         <View style={styles.securitySection}>
-          <Text style={styles.sectionTitle(theme)}>Security Question (Optional)</Text>
-          <Text style={styles.sectionDescription(theme)}>
+          <Text style={[styles.sectionTitle]}>Security Question (Optional)</Text>
+          <Text style={[styles.sectionDescription]}>
             For password recovery if you forget your password
           </Text>
           
           <View style={styles.inputGroup}>
-            <Text style={styles.label(theme)}>Security Question</Text>
+            <Text style={[styles.label]}>Security Question</Text>
             <TextInput
-              style={styles.input(theme)}
+              style={[styles.input]}
               value={securityQuestion}
               onChangeText={setSecurityQuestion}
               placeholder="e.g., What was your first pet's name?"
-              placeholderTextColor={theme.colors.textMuted}
+              placeholderTextColor={theme.textSecondary}
             />
           </View>
 
           <View style={styles.inputGroup}>
-            <Text style={styles.label(theme)}>Answer</Text>
+            <Text style={[styles.label]}>Answer</Text>
             <TextInput
-              style={styles.input(theme)}
+              style={[styles.input]}
               value={securityAnswer}
               onChangeText={setSecurityAnswer}
               placeholder="Your answer"
-              placeholderTextColor={theme.colors.textMuted}
+              placeholderTextColor={theme.textSecondary}
             />
           </View>
         </View>
 
         <TouchableOpacity 
-          style={[styles.signUpButton(theme), loading && styles.disabledButton(theme)]} 
+          style={[styles.signUpButton, loading && styles.disabledButton]} 
           onPress={handleSignUp}
           disabled={loading}
         >
           <Text style={styles.signUpButtonText}>
-            {loading ? 'Creating Account...' : 'Create Account'}
+            {loading ? 'Creating AccountCreate Account'}
           </Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText(theme)}>Already have an account? </Text>
+        <Text style={[styles.footerText]}>Already have an account? </Text>
         <TouchableOpacity onPress={onBackToLogin}>
-          <Text style={styles.loginLink(theme)}>Sign In</Text>
+          <Text style={[styles.loginLink]}>Sign In</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -156,11 +156,11 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ onBackToLogin }) => 
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     padding: 20,
-  }),
+  },
   header: {
     marginTop: 40,
     marginBottom: 30,
@@ -170,66 +170,66 @@ const styles = StyleSheet.create({
     padding: 8,
     marginBottom: 20,
   },
-  backIcon: (theme: any) => ({
+  backIcon: {
     fontSize: 24,
-    color: theme.colors.text,
-  }),
-  title: (theme: any) => ({
+    color: '#000000',
+  },
+  title: {
     fontSize: 28,
     fontWeight: '700',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  subtitle: (theme: any) => ({
+  },
+  subtitle: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
-  }),
+    color: '#000000',
+  },
   form: {
     flex: 1,
   },
   inputGroup: {
     marginBottom: 16,
   },
-  label: (theme: any) => ({
+  label: {
     fontSize: 16,
     fontWeight: '500',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  input: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  },
+  input: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    color: theme.colors.text,
+    color: '#000000',
     borderWidth: 1,
-    borderColor: theme.colors.border,
-  }),
+    borderColor: '#000000',
+  },
   securitySection: {
     marginTop: 20,
     marginBottom: 30,
   },
-  sectionTitle: (theme: any) => ({
+  sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  sectionDescription: (theme: any) => ({
+  },
+  sectionDescription: {
     fontSize: 14,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     marginBottom: 16,
     lineHeight: 20,
-  }),
-  signUpButton: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
+  },
+  signUpButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
-  disabledButton: (theme: any) => ({
+  },
+  disabledButton: {
     opacity: 0.6,
-  }),
+  },
   signUpButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
@@ -241,13 +241,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 40,
   },
-  footerText: (theme: any) => ({
+  footerText: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
-  }),
-  loginLink: (theme: any) => ({
+    color: '#000000',
+  },
+  loginLink: {
     fontSize: 16,
-    color: theme.colors.primary,
+    color: '#000000',
     fontWeight: '600',
-  }),
+  },
 });
+
+export default SignUpScreen;

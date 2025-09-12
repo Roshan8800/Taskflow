@@ -31,20 +31,20 @@ export const createBackup = async (): Promise<string | null> => {
       description: todo.description,
       completed: todo.completed,
       priority: todo.priority,
-      project: todo.project,
-      dueDate: todo.dueDate?.toISOString(),
-      createdAt: todo.createdAt.toISOString(),
-      updatedAt: todo.updatedAt.toISOString(),
+      projectId: todo.projectId,
+      dueAt: todo.dueAt?.toISOString(),
+      createdAt: todo.createdAt instanceof Date ? todo.createdAt.toISOString() : '',
+      updatedAt: todo.updatedAt instanceof Date ? todo.updatedAt.toISOString() : '',
       userId: todo.userId,
     }));
 
-    const projects = Array.from(realm.objects('Project')).map(project => ({
-      id: project._id.toString(),
-      name: project.name,
-      description: project.description,
-      color: project.color,
-      createdAt: project.createdAt.toISOString(),
-      userId: project.userId,
+    const projects = Array.from(realm.objects('Project')).map(projectId => ({
+      id: projectId._id.toString(),
+      name: projectId.name,
+      description: projectId.description,
+      color: projectId.color,
+      createdAt: projectId.createdAt instanceof Date ? projectId.createdAt.toISOString() : '',
+      userId: projectId.userId,
     }));
 
     const stats = Array.from(realm.objects('UserStats')).map(stat => ({
@@ -148,7 +148,7 @@ export const exportToCSV = async (): Promise<void> => {
     
     const csvHeader = 'Title,Description,Completed,Priority,Project,Due Date,Created Date\n';
     const csvRows = todos.map(todo => 
-      `"${todo.title}","${todo.description || ''}","${todo.completed}","${todo.priority}","${todo.project || ''}","${todo.dueDate?.toLocaleDateString() || ''}","${todo.createdAt.toLocaleDateString()}"`
+      `"${todo.title}","${todo.description || ''}","${todo.completed}","${todo.priority}","${todo.projectId || ''}","${todo.dueAt?.toLocaleDateString() || ''}","${todo.createdAt.toLocaleDateString()}"`
     ).join('\n');
     
     const csvContent = csvHeader + csvRows;

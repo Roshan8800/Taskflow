@@ -69,14 +69,14 @@ export const ScreenNavigator: React.FC<ScreenNavigatorProps> = ({
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.surface }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       {showBackButton && (
         <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-          <Text style={[styles.backIcon, { color: theme.primary }]}>←</Text>
+          <Text style={[styles.backIcon, { color: '#000000' }]}>←</Text>
         </TouchableOpacity>
       )}
       
-      <Text style={[styles.title, { color: theme.text }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>
         {getScreenTitle(currentScreen)}
       </Text>
       
@@ -111,3 +111,5 @@ const styles = StyleSheet.create({
     width: 40,
   },
 });
+
+export default ScreenNavigator;

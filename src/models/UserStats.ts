@@ -7,6 +7,10 @@ export class UserStats extends Realm.Object<UserStats> {
   longestStreak!: number;
   lastActiveDate!: Date;
   totalCompleted!: number;
+  totalTasks?: number;
+  completedTasks?: number;
+  totalFocusTime?: number;
+  updatedAt?: Date;
 
   static schema: Realm.ObjectSchema = {
     name: 'UserStats',
@@ -18,6 +22,10 @@ export class UserStats extends Realm.Object<UserStats> {
       longestStreak: { type: 'int', default: 0 },
       lastActiveDate: { type: 'date', default: () => new Date() },
       totalCompleted: { type: 'int', default: 0 },
+      totalTasks: { type: 'int', default: 0 },
+      completedTasks: { type: 'int', default: 0 },
+      totalFocusTime: { type: 'int', default: 0 },
+      updatedAt: { type: 'date', default: () => new Date() },
     },
   };
 }

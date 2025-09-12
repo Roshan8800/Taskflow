@@ -33,24 +33,24 @@ const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={({ navigation }) => ({
         tabBarStyle: {
-          backgroundColor: theme.colors.surface,
-          borderTopColor: theme.colors.border,
+          backgroundColor: '#FFFFFF',
+          borderTopColor: theme.border,
           height: 60,
           paddingBottom: 8,
         },
-        tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: theme.colors.textMuted,
+        tabBarActiveTintColor: theme.primary,
+        tabBarInactiveTintColor: theme.textSecondary,
         headerStyle: {
-          backgroundColor: theme.colors.surface,
-          shadowColor: theme.colors.shadow,
+          backgroundColor: '#FFFFFF',
+          shadowColor: theme.shadow,
         },
-        headerTintColor: theme.colors.text,
+        headerTintColor: theme.text,
         headerRight: () => (
           <TouchableOpacity
             style={{ marginRight: 16 }}
             onPress={() => navigation.openDrawer()}
           >
-            <Text style={{ fontSize: 20, color: theme.colors.text }}>☰</Text>
+            <Text style={{ fontSize: 20, color: '#000000' }}>☰</Text>
           </TouchableOpacity>
         ),
         headerLeft: ({ canGoBack, route }) => {
@@ -60,7 +60,7 @@ const TabNavigator = () => {
               style={{ marginLeft: 16 }}
               onPress={() => navigation.goBack()}
             >
-              <Text style={{ fontSize: 20, color: theme.colors.text }}>←</Text>
+              <Text style={{ fontSize: 20, color: '#000000' }}>←</Text>
             </TouchableOpacity>
           ) : null;
         },
@@ -121,7 +121,7 @@ export const AppNavigator = () => {
         screenOptions={{
           headerShown: false,
           drawerStyle: {
-            backgroundColor: theme.colors.background,
+            backgroundColor: '#FFFFFF',
             width: 280,
           },
           gestureEnabled: true,
@@ -138,8 +138,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Task Details',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -148,8 +148,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'New Task',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -158,8 +158,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Project Details',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -168,8 +168,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Project Settings',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -178,8 +178,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Profile',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -188,8 +188,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Settings',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -198,8 +198,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Notifications',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -208,8 +208,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Themes',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -218,8 +218,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Backup & Export',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -228,8 +228,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'Help & Feedback',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
         <Drawer.Screen 
@@ -238,8 +238,8 @@ export const AppNavigator = () => {
           options={{ 
             title: 'About',
             headerShown: true,
-            headerStyle: { backgroundColor: theme.colors.surface },
-            headerTintColor: theme.colors.text
+            headerStyle: { backgroundColor: '#FFFFFF' },
+            headerTintColor: theme.text
           }}
         />
       </Drawer.Navigator>

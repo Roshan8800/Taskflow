@@ -41,3 +41,5 @@ export const OverdueWidget: React.FC<OverdueWidgetProps> = ({ onPress }) => {
     </TouchableOpacity>
   );
 };
+
+export default OverdueWidget;

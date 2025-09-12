@@ -22,26 +22,22 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
           { id: 'add', icon: '+', label: 'Add Task' },
           { id: 'search', icon: '🔍', label: 'Search' },
           { id: 'filter', icon: '🔽', label: 'Filter' },
-          { id: 'multiselect', icon: '☑️', label: 'Multi-Select' },
-        ];
+          { id: 'multiselect', icon: '☑️', label: 'Multi-Select' }];
       case 'Projects':
         return [
           { id: 'add', icon: '+', label: 'New Project' },
           { id: 'search', icon: '🔍', label: 'Search' },
-          { id: 'archive', icon: '📦', label: 'Archive' },
-        ];
+          { id: 'archive', icon: '📦', label: 'Archive' }];
       case 'Analytics':
         return [
           { id: 'reports', icon: '📊', label: 'Reports' },
           { id: 'statistics', icon: '📈', label: 'Statistics' },
-          { id: 'export', icon: '📤', label: 'Export' },
-        ];
+          { id: 'export', icon: '📤', label: 'Export' }];
       case 'Home':
         return [
           { id: 'focus', icon: '🍅', label: 'Focus Mode' },
           { id: 'checklist', icon: '☑️', label: 'Checklist' },
-          { id: 'notes', icon: '📝', label: 'Notes' },
-        ];
+          { id: 'notes', icon: '📝', label: 'Notes' }];
       default:
         return [];
     }
@@ -81,15 +77,15 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.surface }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       {actions.map((action) => (
         <TouchableOpacity
           key={action.id}
-          style={[styles.actionButton, { backgroundColor: theme.background }]}
+          style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
           onPress={() => handleActionPress(action.id)}
         >
           <Text style={styles.actionIcon}>{action.icon}</Text>
-          <Text style={[styles.actionLabel, { color: theme.text }]}>
+          <Text style={[styles.actionLabel, { color: '#000000' }]}>
             {action.label}
           </Text>
         </TouchableOpacity>
@@ -122,3 +118,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+export default QuickActions;

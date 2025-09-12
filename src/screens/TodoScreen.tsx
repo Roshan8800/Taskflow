@@ -46,8 +46,7 @@ export const TodoScreen: React.FC = () => {
         { text: 'To-Do', onPress: () => updateTodoStatus(id, 'todo') },
         { text: 'In Progress', onPress: () => updateTodoStatus(id, 'inprogress') },
         { text: 'Done', onPress: () => updateTodoStatus(id, 'done') },
-        { text: 'Cancel', style: 'cancel' },
-      ]
+        { text: 'Cancel', style: 'cancel' }]
     );
   };
 
@@ -76,19 +75,19 @@ export const TodoScreen: React.FC = () => {
   const totalCount = filteredTodos.length;
 
   return (
-    <SafeAreaView style={styles.container(theme)}>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} backgroundColor={theme.colors.background} />
+    <SafeAreaView style={[styles.container]}>
+      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} backgroundColor={theme.background} />
       
-      <Animated.View style={[styles.header(theme), { opacity: fadeAnim }]}>
+      <Animated.View style={[styles.header, { opacity: fadeAnim }]}>
         <View style={styles.headerContent}>
           <View style={styles.titleRow}>
             <View>
-              <Text style={styles.title(theme)}>Tasks</Text>
-              <Text style={styles.subtitle(theme)}>{totalCount} tasks</Text>
+              <Text style={[styles.title]}>Tasks</Text>
+              <Text style={[styles.subtitle]}>{totalCount} tasks</Text>
             </View>
             <View style={styles.headerButtons}>
               <TouchableOpacity
-                style={styles.toggleButton(theme)}
+                style={[styles.toggleButton]}
                 onPress={() => setIsKanban(!isKanban)}
               >
                 <Text style={styles.toggleIcon}>{isKanban ? '📋' : '📊'}</Text>
@@ -99,23 +98,17 @@ export const TodoScreen: React.FC = () => {
           
           <View style={styles.searchContainer}>
             <TextInput
-              style={styles.searchInput(theme)}
-              placeholder="Search tasks..."
-              placeholderTextColor={theme.colors.textMuted}
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-            />
-            <View style={styles.filterButtons}>
-              {['all', 'high', 'medium', 'low'].map(priority => (
+              style={[styles.searchInput]}
+              placeholder="Search tasksall', 'high', 'medium', 'low'].map(priority => (
                 <TouchableOpacity
                   key={priority}
                   style={[
-                    styles.filterButton(theme),
-                    filterPriority === priority && styles.activeFilter(theme)
+                    styles.filterButton,
+                    filterPriority === priority && styles.activeFilter
                   ]}
                   onPress={() => setFilterPriority(priority)}
                 >
-                  <Text style={styles.filterText(theme)}>
+                  <Text style={[styles.filterText]}>
                     {priority === 'all' ? 'All' : priority.charAt(0).toUpperCase() + priority.slice(1)}
                   </Text>
                 </TouchableOpacity>
@@ -125,9 +118,9 @@ export const TodoScreen: React.FC = () => {
         </View>
         
         {totalCount > 0 && (
-          <View style={styles.statsContainer(theme)}>
+          <View style={[styles.statsContainer]}>
             <View style={styles.progressSection}>
-              <Text style={styles.progressText(theme)}>
+              <Text style={[styles.progressText]}>
                 {completedCount} of {totalCount} completed
               </Text>
               <ProgressBar progress={completedCount / totalCount} />
@@ -135,13 +128,13 @@ export const TodoScreen: React.FC = () => {
             
             <View style={styles.statsRow}>
               <View style={styles.statItem}>
-                <Text style={styles.statNumber(theme)}>{totalCount - completedCount}</Text>
-                <Text style={styles.statLabel(theme)}>Active</Text>
+                <Text style={[styles.statNumber]}>{totalCount - completedCount}</Text>
+                <Text style={[styles.statLabel]}>Active</Text>
               </View>
-              <View style={styles.statDivider(theme)} />
+              <View style={[styles.statDivider]} />
               <View style={styles.statItem}>
-                <Text style={styles.statNumber(theme)}>{completedCount}</Text>
-                <Text style={styles.statLabel(theme)}>Done</Text>
+                <Text style={[styles.statNumber]}>{completedCount}</Text>
+                <Text style={[styles.statLabel]}>Done</Text>
               </View>
             </View>
           </View>
@@ -168,8 +161,8 @@ export const TodoScreen: React.FC = () => {
           ListEmptyComponent={
             <Animated.View style={[styles.emptyContainer, { opacity: fadeAnim }]}>
               <Text style={styles.emptyIcon}>🎯</Text>
-              <Text style={styles.emptyTitle(theme)}>No tasks found</Text>
-              <Text style={styles.emptyText(theme)}>Try adjusting your search or filters</Text>
+              <Text style={[styles.emptyTitle]}>No tasks found</Text>
+              <Text style={[styles.emptyText]}>Try adjusting your search or filters</Text>
             </Animated.View>
           }
         />
@@ -179,18 +172,18 @@ export const TodoScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
-  }),
-  header: (theme: any) => ({
+    backgroundColor: '#000000',
+  },
+  header: {
     paddingHorizontal: 20,
     paddingVertical: 24,
-    backgroundColor: theme.colors.surface,
+    backgroundColor: '#000000',
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
-    ...theme.shadows.md,
-  }),
+    ,
+  },
   headerContent: {
     marginBottom: 16,
   },
@@ -205,72 +198,72 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 12,
   },
-  toggleButton: (theme: any) => ({
+  toggleButton: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: theme.colors.surfaceSecondary,
+    backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center',
-  }),
+  },
   toggleIcon: {
     fontSize: 20,
   },
   searchContainer: {
     gap: 12,
   },
-  searchInput: (theme: any) => ({
-    backgroundColor: theme.colors.surfaceSecondary,
+  searchInput: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 12,
     fontSize: 16,
-    color: theme.colors.text,
-  }),
+    color: '#000000',
+  },
   filterButtons: {
     flexDirection: 'row',
     gap: 8,
   },
-  filterButton: (theme: any) => ({
+  filterButton: {
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
-    backgroundColor: theme.colors.surfaceSecondary,
-  }),
-  activeFilter: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
-  }),
-  filterText: (theme: any) => ({
+    backgroundColor: '#000000',
+  },
+  activeFilter: {
+    backgroundColor: '#000000',
+  },
+  filterText: {
     fontSize: 12,
-    color: theme.colors.text,
+    color: '#000000',
     fontWeight: '500',
-  }),
+  },
 
-  title: (theme: any) => ({
+  title: {
     fontSize: 32,
     fontWeight: '800',
-    color: theme.colors.text,
+    color: '#000000',
     letterSpacing: -0.5,
-  }),
-  subtitle: (theme: any) => ({
+  },
+  subtitle: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     fontWeight: '500',
     marginTop: 4,
-  }),
-  statsContainer: (theme: any) => ({
-    backgroundColor: theme.colors.surfaceSecondary,
-    borderRadius: theme.borderRadius.lg,
-    padding: theme.spacing.lg,
-  }),
-  progressSection: {
-    marginBottom: theme.spacing.md,
   },
-  progressText: (theme: any) => ({
-    ...theme.typography.caption,
-    color: theme.colors.textSecondary,
-    marginBottom: theme.spacing.sm,
+  statsContainer: {
+    backgroundColor: '#000000',
+    borderRadius: '#000000'.lg,
+    padding: '#000000'.lg,
+  },
+  progressSection: {
+    marginBottom: '',
+  },
+  progressText: {
+    .caption,
+    color: '#000000',
+    marginBottom: '',
     textAlign: 'center',
-  }),
+  },
   statsRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -280,25 +273,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
-  statNumber: (theme: any) => ({
+  statNumber: {
     fontSize: 24,
     fontWeight: '700',
-    color: theme.colors.primary,
-  }),
-  statLabel: (theme: any) => ({
+    color: '#000000',
+  },
+  statLabel: {
     fontSize: 12,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     fontWeight: '600',
     marginTop: 4,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
-  }),
-  statDivider: (theme: any) => ({
+  },
+  statDivider: {
     width: 1,
     height: 32,
-    backgroundColor: theme.colors.border,
+    backgroundColor: '#000000',
     marginHorizontal: 16,
-  }),
+  },
   list: {
     flex: 1,
     paddingTop: 8,
@@ -316,17 +309,19 @@ const styles = StyleSheet.create({
     fontSize: 64,
     marginBottom: 24,
   },
-  emptyTitle: (theme: any) => ({
+  emptyTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: theme.colors.text,
+    color: '#000000',
     textAlign: 'center',
     marginBottom: 8,
-  }),
-  emptyText: (theme: any) => ({
+  },
+  emptyText: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     textAlign: 'center',
     lineHeight: 24,
-  }),
+  },
 });
+
+export default TodoScreen;

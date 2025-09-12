@@ -37,19 +37,19 @@ export const AppLockScreen: React.FC = () => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       {isInCooldown ? (
         <View style={styles.cooldownContainer}>
-          <Text style={[styles.title, { color: theme.error }]}>Too Many Attempts</Text>
-          <Text style={[styles.cooldownText, { color: theme.text }]}>
+          <Text style={[styles.title, { color: '#000000' }]}>Too Many Attempts</Text>
+          <Text style={[styles.cooldownText, { color: '#000000' }]}>
             Try again in {remainingMinutes} minutes
           </Text>
         </View>
       ) : (
         <>
-          <Text style={[styles.title, { color: theme.text }]}>Enter PIN</Text>
+          <Text style={[styles.title, { color: '#000000' }]}>Enter PIN</Text>
           {pinAttempts > 0 && (
-            <Text style={[styles.attemptsText, { color: theme.error }]}>
+            <Text style={[styles.attemptsText, { color: '#000000' }]}>
               {5 - pinAttempts} attempts remaining
             </Text>
           )}
@@ -60,8 +60,8 @@ export const AppLockScreen: React.FC = () => {
             key={i}
             style={[
               styles.pinDot,
-              { borderColor: theme.border },
-              pin.length > i && { backgroundColor: theme.primary }
+              { borderColor: '#CCCCCC' },
+              pin.length > i && { backgroundColor: '#FFFFFF' }
             ]}
           />
         ))}
@@ -71,49 +71,49 @@ export const AppLockScreen: React.FC = () => {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
           <TouchableOpacity
             key={num}
-            style={[styles.key, { borderColor: theme.border }]}
+            style={[styles.key, { borderColor: '#CCCCCC' }]}
             onPress={() => handlePinPress(num.toString())}
           >
-            <Text style={[styles.keyText, { color: theme.text }]}>{num}</Text>
+            <Text style={[styles.keyText, { color: '#000000' }]}>{num}</Text>
           </TouchableOpacity>
         ))}
         
         {showBiometric && (
           <TouchableOpacity
-            style={[styles.key, { borderColor: theme.border }]}
+            style={[styles.key, { borderColor: '#CCCCCC' }]}
             onPress={handleBiometric}
           >
-            <Text style={[styles.keyText, { color: theme.text }]}>👆</Text>
+            <Text style={[styles.keyText, { color: '#000000' }]}>👆</Text>
           </TouchableOpacity>
         )}
         
         {!showBiometric && (
           <TouchableOpacity
-            style={[styles.key, { borderColor: theme.border }]}
+            style={[styles.key, { borderColor: '#CCCCCC' }]}
             onPress={() => setPin('')}
           >
-            <Text style={[styles.keyText, { color: theme.text }]}>⌫</Text>
+            <Text style={[styles.keyText, { color: '#000000' }]}>⌫</Text>
           </TouchableOpacity>
         )}
         
         <TouchableOpacity
-          style={[styles.key, { borderColor: theme.border }]}
+          style={[styles.key, { borderColor: '#CCCCCC' }]}
           onPress={() => handlePinPress('0')}
         >
-          <Text style={[styles.keyText, { color: theme.text }]}>0</Text>
+          <Text style={[styles.keyText, { color: '#000000' }]}>0</Text>
         </TouchableOpacity>
         
         <TouchableOpacity
-          style={[styles.key, { borderColor: theme.border }]}
+          style={[styles.key, { borderColor: '#CCCCCC' }]}
           onPress={() => setPin(pin.slice(0, -1))}
         >
-          <Text style={[styles.keyText, { color: theme.text }]}>⌫</Text>
+          <Text style={[styles.keyText, { color: '#000000' }]}>⌫</Text>
         </TouchableOpacity>
       </View>
 
           {pin.length === 4 && !isInCooldown && (
             <TouchableOpacity
-              style={[styles.submitButton, { backgroundColor: theme.primary }]}
+              style={[styles.submitButton, { backgroundColor: '#FFFFFF' }]}
               onPress={handlePinSubmit}
             >
               <Text style={styles.submitText}>Unlock</Text>
@@ -139,3 +139,5 @@ const styles = StyleSheet.create({
   cooldownText: { fontSize: 16, textAlign: 'center', marginTop: 8 },
   attemptsText: { fontSize: 14, textAlign: 'center', marginBottom: 20 }
 });
+
+export default AppLockScreen;

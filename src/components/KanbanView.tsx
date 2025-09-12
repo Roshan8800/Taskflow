@@ -12,8 +12,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({ tasks, onTaskToggle, onT
   const columns = [
     { key: 'todo', title: 'To Do', filter: (t: Todo) => !t.completed && !t.snoozeUntil },
     { key: 'snoozed', title: 'Snoozed', filter: (t: Todo) => !t.completed && !!t.snoozeUntil },
-    { key: 'completed', title: 'Completed', filter: (t: Todo) => t.completed },
-  ];
+    { key: 'completed', title: 'Completed', filter: (t: Todo) => t.completed }];
 
   const KanbanCard = ({ task }: { task: Todo }) => (
     <TouchableOpacity
@@ -108,3 +107,5 @@ export const KanbanView: React.FC<KanbanViewProps> = ({ tasks, onTaskToggle, onT
     </ScrollView>
   );
 };
+
+export default KanbanView;

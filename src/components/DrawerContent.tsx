@@ -9,76 +9,76 @@ export const DrawerContent: React.FC<any> = (props) => {
   const { user, signOut } = useAuth();
 
   return (
-    <DrawerContentScrollView {...props} style={styles.container(theme)}>
-      <View style={styles.header(theme)}>
-        <Text style={styles.title(theme)}>TaskFlow</Text>
-        <Text style={styles.subtitle(theme)}>{user?.username}</Text>
-        <Text style={styles.email(theme)}>{user?.email}</Text>
+    <DrawerContentScrollView {...props} style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <View style={[styles.header, { backgroundColor: '#FFFFFF', borderBottomColor: theme.border }]}>
+        <Text style={[styles.title, { color: '#000000' }]}>TaskFlow</Text>
+        <Text style={[styles.subtitle, { color: '#000000' }]}>{user?.name}</Text>
+        <Text style={[styles.email, { color: '#000000' }]}>{user?.email}</Text>
       </View>
 
       <View style={styles.menu}>
         <TouchableOpacity
-          style={styles.menuItem(theme)}
-          onPress={() => props.navigation.navigate('Profile')}
+          style={[styles.menuItem]}
+          onPress={() => props.navigation.navigate('Profile' as never)}
         >
           <Text style={styles.menuIcon}>👤</Text>
-          <Text style={styles.menuText(theme)}>Profile</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>Profile</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem(theme)}
-          onPress={() => props.navigation.navigate('Profile')}
+          style={[styles.menuItem]}
+          onPress={() => props.navigation.navigate('Profile' as never)}
         >
           <Text style={styles.menuIcon}>👤</Text>
-          <Text style={styles.menuText(theme)}>Profile & Settings</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>Profile & Settings</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem(theme)}
-          onPress={() => props.navigation.navigate('NotificationCenter')}
+          style={[styles.menuItem]}
+          onPress={() => props.navigation.navigate('NotificationCenter' as never)}
         >
           <Text style={styles.menuIcon}>🔔</Text>
-          <Text style={styles.menuText(theme)}>Notification Center</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>Notification Center</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem(theme)}
-          onPress={() => props.navigation.navigate('Themes')}
+          style={[styles.menuItem]}
+          onPress={() => props.navigation.navigate('Themes' as never)}
         >
           <Text style={styles.menuIcon}>🎨</Text>
-          <Text style={styles.menuText(theme)}>Themes & Customization</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>Themes & Customization</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem(theme)}
-          onPress={() => props.navigation.navigate('Backup')}
+          style={[styles.menuItem]}
+          onPress={() => props.navigation.navigate('Backup' as never)}
         >
           <Text style={styles.menuIcon}>💾</Text>
-          <Text style={styles.menuText(theme)}>Backup/Export</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>Backup/Export</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem(theme)}
-          onPress={() => props.navigation.navigate('Help')}
+          style={[styles.menuItem]}
+          onPress={() => props.navigation.navigate('Help' as never)}
         >
           <Text style={styles.menuIcon}>❓</Text>
-          <Text style={styles.menuText(theme)}>Help & Feedback</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>Help & Feedback</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem(theme)}
-          onPress={() => props.navigation.navigate('About')}
+          style={[styles.menuItem]}
+          onPress={() => props.navigation.navigate('About' as never)}
         >
           <Text style={styles.menuIcon}>ℹ️</Text>
-          <Text style={styles.menuText(theme)}>About App</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>About App</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem(theme)}
+          style={[styles.menuItem]}
           onPress={signOut}
         >
           <Text style={styles.menuIcon}>🚪</Text>
-          <Text style={styles.menuText(theme)}>Sign Out</Text>
+          <Text style={[styles.menuText, { color: '#000000' }]}>Sign Out</Text>
         </TouchableOpacity>
       </View>
     </DrawerContentScrollView>
@@ -86,46 +86,41 @@ export const DrawerContent: React.FC<any> = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
-  }),
-  header: (theme: any) => ({
+  },
+  header: {
     padding: 20,
-    backgroundColor: theme.colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
-  }),
-  title: (theme: any) => ({
+  },
+  title: {
     fontSize: 24,
     fontWeight: '700',
-    color: theme.colors.text,
-  }),
-  subtitle: (theme: any) => ({
+  },
+  subtitle: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
     marginTop: 4,
-  }),
-  email: (theme: any) => ({
+  },
+  email: {
     fontSize: 14,
-    color: theme.colors.textMuted,
     marginTop: 2,
-  }),
+  },
   menu: {
     paddingTop: 20,
   },
-  menuItem: (theme: any) => ({
+  menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 16,
-  }),
+  },
   menuIcon: {
     fontSize: 20,
     marginRight: 16,
   },
-  menuText: (theme: any) => ({
+  menuText: {
     fontSize: 16,
-    color: theme.colors.text,
-  }),
+  },
 });
+
+export default DrawerContent;

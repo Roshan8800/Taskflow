@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch, Slider } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch } from 'react-native';
+import Slider from '@react-native-community/slider';
 import { useTheme } from '../hooks/useTheme';
 
 export const AccessibilitySettingsScreen: React.FC = () => {
@@ -14,25 +15,23 @@ export const AccessibilitySettingsScreen: React.FC = () => {
     { label: 'Small', value: 12 },
     { label: 'Normal', value: 16 },
     { label: 'Large', value: 20 },
-    { label: 'Extra Large', value: 24 },
-  ];
+    { label: 'Extra Large', value: 24 }];
 
   const contrastLevels = [
     { label: 'Normal', value: 'normal' },
     { label: 'High', value: 'high' },
-    { label: 'Maximum', value: 'maximum' },
-  ];
+    { label: 'Maximum', value: 'maximum' }];
 
   const SettingRow = ({ title, description, children }: {
     title: string;
     description?: string;
     children: React.ReactNode;
   }) => (
-    <View style={[styles.settingRow, { backgroundColor: theme.surface }]}>
+    <View style={[styles.settingRow, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.settingInfo}>
-        <Text style={[styles.settingTitle, { color: theme.text }]}>{title}</Text>
+        <Text style={[styles.settingTitle, { color: '#000000' }]}>{title}</Text>
         {description && (
-          <Text style={[styles.settingDesc, { color: theme.textSecondary }]}>
+          <Text style={[styles.settingDesc, { color: '#000000' }]}>
             {description}
           </Text>
         )}
@@ -42,31 +41,32 @@ export const AccessibilitySettingsScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Accessibility Settings</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Accessibility Settings</Text>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Visual</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Visual</Text>
         
         <SettingRow
           title="Font Size"
           description="Adjust text size for better readability"
         >
           <View style={styles.fontSizeControl}>
-            <Text style={[styles.fontSizeLabel, { color: theme.textSecondary }]}>
+            <Text style={[styles.fontSizeLabel, { color: '#000000' }]}>
               {fontSize}px
             </Text>
-            <Slider
-              style={styles.slider}
-              minimumValue={12}
-              maximumValue={24}
-              value={fontSize}
-              onValueChange={setFontSize}
-              step={2}
-              minimumTrackTintColor={theme.primary}
-              maximumTrackTintColor={theme.border}
-              thumbTintColor={theme.primary}
-            />
+            <View style={styles.sliderContainer}>
+              <Text style={[styles.sliderValue, { color: '#000000' }]}>{Math.round(fontSize)}</Text>
+              <View style={styles.sliderTrack}>
+                {[12, 16, 20, 24].map(size => (
+                  <TouchableOpacity
+                    key={size}
+                    style={[styles.sliderDot, { backgroundColor: fontSize === size ? theme.primary : theme.border }]}
+                    onPress={() => setFontSize(size)}
+                  />
+                ))}
+              </View>
+            </View>
           </View>
         </SettingRow>
 
@@ -105,7 +105,7 @@ export const AccessibilitySettingsScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Screen Reader</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Screen Reader</Text>
         
         <SettingRow
           title="Screen Reader Support"
@@ -130,17 +130,17 @@ export const AccessibilitySettingsScreen: React.FC = () => {
         </SettingRow>
       </View>
 
-      <View style={[styles.previewSection, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.previewTitle, { color: theme.text }]}>Preview</Text>
+      <View style={[styles.previewSection, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.previewTitle, { color: '#000000' }]}>Preview</Text>
         <View style={[
           styles.previewCard,
-          { backgroundColor: theme.background },
-          highContrast && { borderWidth: 2, borderColor: theme.text }
+          { backgroundColor: '#FFFFFF' },
+          highContrast && { borderWidth: 2, borderColor: '#CCCCCC' }
         ]}>
           <Text style={[
             styles.previewText,
             { 
-              color: theme.text,
+              color: '#000000',
               fontSize: fontSize,
               fontWeight: highContrast ? 'bold' : 'normal'
             }
@@ -150,7 +150,7 @@ export const AccessibilitySettingsScreen: React.FC = () => {
           <TouchableOpacity style={[
             styles.previewButton,
             { 
-              backgroundColor: theme.primary,
+              backgroundColor: '#FFFFFF',
               minHeight: largeButtons ? 48 : 36,
               paddingHorizontal: largeButtons ? 24 : 16
             }
@@ -158,7 +158,7 @@ export const AccessibilitySettingsScreen: React.FC = () => {
             <Text style={[
               styles.previewButtonText,
               { 
-                color: theme.background,
+                color: '#000000',
                 fontSize: largeButtons ? fontSize + 2 : fontSize
               }
             ]}>
@@ -168,26 +168,26 @@ export const AccessibilitySettingsScreen: React.FC = () => {
         </View>
       </View>
 
-      <View style={[styles.tipsSection, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.tipsTitle, { color: theme.text }]}>💡 Accessibility Tips</Text>
+      <View style={[styles.tipsSection, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.tipsTitle, { color: '#000000' }]}>💡 Accessibility Tips</Text>
         <View style={styles.tipsList}>
-          <Text style={[styles.tip, { color: theme.textSecondary }]}>
+          <Text style={[styles.tip, { color: '#000000' }]}>
             • Use voice commands: "Add task" or "Mark complete"
           </Text>
-          <Text style={[styles.tip, { color: theme.textSecondary }]}>
+          <Text style={[styles.tip, { color: '#000000' }]}>
             • Swipe gestures work with VoiceOver enabled
           </Text>
-          <Text style={[styles.tip, { color: theme.textSecondary }]}>
+          <Text style={[styles.tip, { color: '#000000' }]}>
             • Double-tap to activate buttons and controls
           </Text>
-          <Text style={[styles.tip, { color: theme.textSecondary }]}>
+          <Text style={[styles.tip, { color: '#000000' }]}>
             • Use headphones for better audio feedback
           </Text>
         </View>
       </View>
 
       <TouchableOpacity
-        style={[styles.resetBtn, { backgroundColor: theme.border }]}
+        style={[styles.resetBtn, { backgroundColor: '#FFFFFF' }]}
         onPress={() => {
           setFontSize(16);
           setHighContrast(false);
@@ -197,7 +197,7 @@ export const AccessibilitySettingsScreen: React.FC = () => {
           setVoiceOver(false);
         }}
       >
-        <Text style={[styles.resetBtnText, { color: theme.text }]}>
+        <Text style={[styles.resetBtnText, { color: '#000000' }]}>
           Reset to Defaults
         </Text>
       </TouchableOpacity>
@@ -216,7 +216,10 @@ const styles = StyleSheet.create({
   settingDesc: { fontSize: 14, lineHeight: 18 },
   fontSizeControl: { alignItems: 'center', minWidth: 120 },
   fontSizeLabel: { fontSize: 14, marginBottom: 8 },
-  slider: { width: 100, height: 40 },
+  sliderContainer: { alignItems: 'center' },
+  sliderValue: { fontSize: 14, marginBottom: 8 },
+  sliderTrack: { flexDirection: 'row', gap: 8 },
+  sliderDot: { width: 12, height: 12, borderRadius: 6 },
   previewSection: { padding: 16, borderRadius: 8, marginBottom: 16 },
   previewTitle: { fontSize: 16, fontWeight: '600', marginBottom: 12 },
   previewCard: { padding: 16, borderRadius: 8 },
@@ -230,3 +233,5 @@ const styles = StyleSheet.create({
   resetBtn: { padding: 16, borderRadius: 8, alignItems: 'center', marginBottom: 20 },
   resetBtnText: { fontSize: 16, fontWeight: '500' },
 });
+
+export default AccessibilitySettingsScreen;

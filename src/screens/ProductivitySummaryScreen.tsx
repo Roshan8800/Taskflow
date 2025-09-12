@@ -42,17 +42,17 @@ export const ProductivitySummaryScreen: React.FC = () => {
     subtitle?: string;
     color?: string;
   }) => (
-    <View style={[styles.statCard, { backgroundColor: theme.surface }]}>
-      <Text style={[styles.statTitle, { color: theme.textSecondary }]}>{title}</Text>
+    <View style={[styles.statCard, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.statTitle, { color: '#000000' }]}>{title}</Text>
       <Text style={[styles.statValue, { color: color || theme.text }]}>{value}</Text>
       {subtitle && (
-        <Text style={[styles.statSubtitle, { color: theme.textSecondary }]}>{subtitle}</Text>
+        <Text style={[styles.statSubtitle, { color: '#000000' }]}>{subtitle}</Text>
       )}
     </View>
   );
 
   const ProgressBar = ({ percentage, color }: { percentage: number; color: string }) => (
-    <View style={[styles.progressContainer, { backgroundColor: theme.border }]}>
+    <View style={[styles.progressContainer, { backgroundColor: '#FFFFFF' }]}>
       <View 
         style={[styles.progressBar, { width: `${percentage}%`, backgroundColor: color }]} 
       />
@@ -60,9 +60,9 @@ export const ProductivitySummaryScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.text }]}>Productivity Summary</Text>
+        <Text style={[styles.title, { color: '#000000' }]}>Productivity Summary</Text>
         
         <View style={styles.periodSelector}>
           <TouchableOpacity
@@ -121,50 +121,50 @@ export const ProductivitySummaryScreen: React.FC = () => {
         />
       </View>
 
-      <View style={[styles.section, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Completion Rate</Text>
+      <View style={[styles.section, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Completion Rate</Text>
         <View style={styles.progressSection}>
-          <Text style={[styles.progressLabel, { color: theme.text }]}>
+          <Text style={[styles.progressLabel, { color: '#000000' }]}>
             {currentData.completionRate}% Complete
           </Text>
           <ProgressBar percentage={currentData.completionRate} color="#6BCF7F" />
         </View>
       </View>
 
-      <View style={[styles.section, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Top Categories</Text>
+      <View style={[styles.section, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Top Categories</Text>
         <View style={styles.categoryList}>
           <View style={styles.categoryItem}>
             <View style={[styles.categoryColor, { backgroundColor: '#FF6B6B' }]} />
-            <Text style={[styles.categoryName, { color: theme.text }]}>Work</Text>
-            <Text style={[styles.categoryCount, { color: theme.textSecondary }]}>15 tasks</Text>
+            <Text style={[styles.categoryName, { color: '#000000' }]}>Work</Text>
+            <Text style={[styles.categoryCount, { color: '#000000' }]}>15 tasks</Text>
           </View>
           <View style={styles.categoryItem}>
             <View style={[styles.categoryColor, { backgroundColor: '#4ECDC4' }]} />
-            <Text style={[styles.categoryName, { color: theme.text }]}>Personal</Text>
-            <Text style={[styles.categoryCount, { color: theme.textSecondary }]}>8 tasks</Text>
+            <Text style={[styles.categoryName, { color: '#000000' }]}>Personal</Text>
+            <Text style={[styles.categoryCount, { color: '#000000' }]}>8 tasks</Text>
           </View>
           <View style={styles.categoryItem}>
             <View style={[styles.categoryColor, { backgroundColor: '#FFD93D' }]} />
-            <Text style={[styles.categoryName, { color: theme.text }]}>Learning</Text>
-            <Text style={[styles.categoryCount, { color: theme.textSecondary }]}>5 tasks</Text>
+            <Text style={[styles.categoryName, { color: '#000000' }]}>Learning</Text>
+            <Text style={[styles.categoryCount, { color: '#000000' }]}>5 tasks</Text>
           </View>
         </View>
       </View>
 
-      <View style={[styles.section, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Insights</Text>
+      <View style={[styles.section, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Insights</Text>
         <View style={styles.insightsList}>
-          <Text style={[styles.insight, { color: theme.text }]}>
+          <Text style={[styles.insight, { color: '#000000' }]}>
             🎯 You're most productive in the morning hours
           </Text>
-          <Text style={[styles.insight, { color: theme.text }]}>
+          <Text style={[styles.insight, { color: '#000000' }]}>
             📈 Your completion rate improved by 12% this week
           </Text>
-          <Text style={[styles.insight, { color: theme.text }]}>
+          <Text style={[styles.insight, { color: '#000000' }]}>
             🔥 You're on a 5-day completion streak!
           </Text>
-          <Text style={[styles.insight, { color: theme.text }]}>
+          <Text style={[styles.insight, { color: '#000000' }]}>
             💡 Consider breaking down large tasks for better completion
           </Text>
         </View>
@@ -281,3 +281,5 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
 });
+
+export default ProductivitySummaryScreen;

@@ -34,20 +34,20 @@ export const ReportsScreen: React.FC = () => {
     subtitle: string;
     color: string;
   }) => (
-    <View style={[styles.reportCard, { backgroundColor: theme.surface }]}>
-      <Text style={[styles.cardTitle, { color: theme.textSecondary }]}>{title}</Text>
+    <View style={[styles.reportCard, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.cardTitle, { color: '#000000' }]}>{title}</Text>
       <Text style={[styles.cardValue, { color }]}>{value}</Text>
-      <Text style={[styles.cardSubtitle, { color: theme.textSecondary }]}>{subtitle}</Text>
+      <Text style={[styles.cardSubtitle, { color: '#000000' }]}>{subtitle}</Text>
     </View>
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Reports</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Reports</Text>
 
       <View style={styles.filters}>
         <View style={styles.filterGroup}>
-          <Text style={[styles.filterLabel, { color: theme.text }]}>Period</Text>
+          <Text style={[styles.filterLabel, { color: '#000000' }]}>Period</Text>
           <View style={styles.filterButtons}>
             {['week', 'month', 'quarter'].map((period) => (
               <TouchableOpacity
@@ -70,7 +70,7 @@ export const ReportsScreen: React.FC = () => {
         </View>
 
         <View style={styles.filterGroup}>
-          <Text style={[styles.filterLabel, { color: theme.text }]}>Report Type</Text>
+          <Text style={[styles.filterLabel, { color: '#000000' }]}>Report Type</Text>
           <View style={styles.filterButtons}>
             {['productivity', 'tasks', 'projects'].map((type) => (
               <TouchableOpacity
@@ -156,25 +156,25 @@ export const ReportsScreen: React.FC = () => {
           <>
             <ReportCard
               title="Active Projects"
-              value={reportData.projects.active}
+              value={reportData.projectIds.active}
               subtitle="In progress"
               color="#4ECDC4"
             />
             <ReportCard
               title="Completed"
-              value={reportData.projects.completed}
+              value={reportData.projectIds.completed}
               subtitle="Finished projects"
               color="#6BCF7F"
             />
             <ReportCard
               title="On Track"
-              value={reportData.projects.onTrack}
+              value={reportData.projectIds.onTrack}
               subtitle="Meeting deadlines"
               color="#45B7D1"
             />
             <ReportCard
               title="Delayed"
-              value={reportData.projects.delayed}
+              value={reportData.projectIds.delayed}
               subtitle="Behind schedule"
               color="#FF6B6B"
             />
@@ -182,8 +182,8 @@ export const ReportsScreen: React.FC = () => {
         )}
       </View>
 
-      <TouchableOpacity style={[styles.exportBtn, { backgroundColor: theme.primary }]}>
-        <Text style={[styles.exportBtnText, { color: theme.background }]}>
+      <TouchableOpacity style={[styles.exportBtn, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.exportBtnText, { color: '#000000' }]}>
           📊 Export Report
         </Text>
       </TouchableOpacity>
@@ -208,3 +208,5 @@ const styles = StyleSheet.create({
   exportBtn: { padding: 16, borderRadius: 8, alignItems: 'center', marginBottom: 20 },
   exportBtnText: { fontSize: 16, fontWeight: '600' },
 });
+
+export default ReportsScreen;

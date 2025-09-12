@@ -32,9 +32,9 @@ export const ProfileScreen: React.FC<{ navigation: any }> = ({ navigation }) => 
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.background }}>
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={{
-        backgroundColor: theme.surface,
+        backgroundColor: '#FFFFFF',
         paddingTop: 50,
         paddingHorizontal: 16,
         paddingBottom: 16,
@@ -43,17 +43,17 @@ export const ProfileScreen: React.FC<{ navigation: any }> = ({ navigation }) => 
       }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{ fontSize: 18, color: theme.text }}>←</Text>
+            <Text style={{ fontSize: 18, color: '#000000' }}>←</Text>
           </TouchableOpacity>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: theme.text }}>Profile</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>Profile</Text>
           <TouchableOpacity onPress={handleSave}>
-            <Text style={{ fontSize: 16, color: theme.primary, fontWeight: '600' }}>Save</Text>
+            <Text style={{ fontSize: 16, color: '#000000', fontWeight: '600' }}>Save</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <ScrollView style={{ flex: 1, padding: 16 }}>
-        {/* Avatar */}
+        {}
         <View style={{ alignItems: 'center', marginBottom: 32 }}>
           <TouchableOpacity
             onPress={selectAvatar}
@@ -61,7 +61,7 @@ export const ProfileScreen: React.FC<{ navigation: any }> = ({ navigation }) => 
               width: 100,
               height: 100,
               borderRadius: 50,
-              backgroundColor: theme.primary + '20',
+              backgroundColor: '#FFFFFF' + '20',
               justifyContent: 'center',
               alignItems: 'center',
               marginBottom: 12,
@@ -70,15 +70,15 @@ export const ProfileScreen: React.FC<{ navigation: any }> = ({ navigation }) => 
             <Text style={{ fontSize: 48 }}>{avatar || '👤'}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={selectAvatar}>
-            <Text style={{ color: theme.primary, fontSize: 16, fontWeight: '600' }}>
+            <Text style={{ color: '#000000', fontSize: 16, fontWeight: '600' }}>
               Change Avatar
             </Text>
           </TouchableOpacity>
         </View>
 
-        {/* Name */}
+        {}
         <View style={{ marginBottom: 20 }}>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text, marginBottom: 8 }}>
+          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000', marginBottom: 8 }}>
             Name
           </Text>
           <TextInput
@@ -87,20 +87,20 @@ export const ProfileScreen: React.FC<{ navigation: any }> = ({ navigation }) => 
             placeholder="Enter your name"
             placeholderTextColor={theme.textSecondary}
             style={{
-              backgroundColor: theme.surface,
+              backgroundColor: '#FFFFFF',
               borderRadius: 8,
               padding: 12,
               fontSize: 16,
-              color: theme.text,
+              color: '#000000',
               borderWidth: 1,
-              borderColor: theme.border,
+              borderColor: '#CCCCCC',
             }}
           />
         </View>
 
-        {/* Email */}
+        {}
         <View style={{ marginBottom: 20 }}>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text, marginBottom: 8 }}>
+          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000', marginBottom: 8 }}>
             Email
           </Text>
           <TextInput
@@ -110,41 +110,43 @@ export const ProfileScreen: React.FC<{ navigation: any }> = ({ navigation }) => 
             placeholderTextColor={theme.textSecondary}
             keyboardType="email-address"
             style={{
-              backgroundColor: theme.surface,
+              backgroundColor: '#FFFFFF',
               borderRadius: 8,
               padding: 12,
               fontSize: 16,
-              color: theme.text,
+              color: '#000000',
               borderWidth: 1,
-              borderColor: theme.border,
+              borderColor: '#CCCCCC',
             }}
           />
         </View>
 
-        {/* App Info */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginTop: 20,
         }}>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000', marginBottom: 12 }}>
             App Information
           </Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
-            <Text style={{ color: theme.textSecondary }}>Version</Text>
-            <Text style={{ color: theme.text }}>1.0.0</Text>
+            <Text style={{ color: '#000000' }}>Version</Text>
+            <Text style={{ color: '#000000' }}>1.0.0</Text>
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
-            <Text style={{ color: theme.textSecondary }}>Developer</Text>
-            <Text style={{ color: theme.text }}>Roshan</Text>
+            <Text style={{ color: '#000000' }}>Developer</Text>
+            <Text style={{ color: '#000000' }}>Roshan</Text>
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ color: theme.textSecondary }}>Email</Text>
-            <Text style={{ color: theme.text }}>roshan8800jp@gmail.com</Text>
+            <Text style={{ color: '#000000' }}>Email</Text>
+            <Text style={{ color: '#000000' }}>roshan8800jp@gmail.com</Text>
           </View>
         </View>
       </ScrollView>
     </View>
   );
 };
+
+export default ProfileScreen;

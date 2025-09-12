@@ -14,8 +14,7 @@ export const FeedbackScreen: React.FC = () => {
   const feedbackTypes = [
     { id: 'bug', label: 'Bug Report', icon: '🐛' },
     { id: 'feature', label: 'Feature Request', icon: '💡' },
-    { id: 'general', label: 'General Feedback', icon: '💬' },
-  ];
+    { id: 'general', label: 'General Feedback', icon: '💬' }];
 
   const submitFeedback = async () => {
     if (!subject.trim() || !message.trim()) {
@@ -97,22 +96,22 @@ Sent from TaskFlow Mobile App
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Send Feedback</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Send Feedback</Text>
       
-      <Text style={[styles.description, { color: theme.textSecondary }]}>
+      <Text style={[styles.description, { color: '#000000' }]}>
         Help us improve TaskFlow by sharing your thoughts, reporting bugs, or suggesting new features.
       </Text>
 
       <View style={styles.section}>
-        <Text style={[styles.label, { color: theme.text }]}>Feedback Type</Text>
+        <Text style={[styles.label, { color: '#000000' }]}>Feedback Type</Text>
         <TypeSelector />
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.label, { color: theme.text }]}>Subject *</Text>
+        <Text style={[styles.label, { color: '#000000' }]}>Subject *</Text>
         <TextInput
-          style={[styles.input, { backgroundColor: theme.surface, color: theme.text }]}
+          style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
           placeholder="Brief description of your feedback"
           placeholderTextColor={theme.textSecondary}
           value={subject}
@@ -121,23 +120,17 @@ Sent from TaskFlow Mobile App
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.label, { color: theme.text }]}>Message *</Text>
+        <Text style={[styles.label, { color: '#000000' }]}>Message *</Text>
         <TextInput
-          style={[styles.textArea, { backgroundColor: theme.surface, color: theme.text }]}
-          placeholder="Please provide detailed information about your feedback..."
-          placeholderTextColor={theme.textSecondary}
-          value={message}
-          onChangeText={setMessage}
-          multiline
-          numberOfLines={6}
-          textAlignVertical="top"
+          style={[styles.textArea, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+          placeholder="Please provide detailed information about your feedbacktop"
         />
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.label, { color: theme.text }]}>Your Email (optional)</Text>
+        <Text style={[styles.label, { color: '#000000' }]}>Your Email (optional)</Text>
         <TextInput
-          style={[styles.input, { backgroundColor: theme.surface, color: theme.text }]}
+          style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
           placeholder="your.email@example.com"
           placeholderTextColor={theme.textSecondary}
           value={email}
@@ -145,7 +138,7 @@ Sent from TaskFlow Mobile App
           keyboardType="email-address"
           autoCapitalize="none"
         />
-        <Text style={[styles.hint, { color: theme.textSecondary }]}>
+        <Text style={[styles.hint, { color: '#000000' }]}>
           Provide your email if you'd like a response
         </Text>
       </View>
@@ -153,24 +146,24 @@ Sent from TaskFlow Mobile App
       <TouchableOpacity
         style={[
           styles.submitButton,
-          { backgroundColor: theme.primary },
+          { backgroundColor: '#FFFFFF' },
           submitting && { opacity: 0.6 }
         ]}
         onPress={submitFeedback}
         disabled={submitting}
       >
-        <Text style={[styles.submitButtonText, { color: theme.background }]}>
-          {submitting ? 'Submitting...' : 'Send Feedback'}
+        <Text style={[styles.submitButtonText, { color: '#000000' }]}>
+          {submitting ? 'SubmittingSend Feedback'}
         </Text>
       </TouchableOpacity>
 
-      <View style={[styles.contactInfo, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.contactTitle, { color: theme.text }]}>Direct Contact</Text>
-        <Text style={[styles.contactText, { color: theme.textSecondary }]}>
+      <View style={[styles.contactInfo, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.contactTitle, { color: '#000000' }]}>Direct Contact</Text>
+        <Text style={[styles.contactText, { color: '#000000' }]}>
           For urgent issues or direct support:
         </Text>
         <TouchableOpacity onPress={() => Linking.openURL('mailto:roshan8800jp@gmail.com')}>
-          <Text style={[styles.contactEmail, { color: theme.primary }]}>
+          <Text style={[styles.contactEmail, { color: '#000000' }]}>
             roshan8800jp@gmail.com
           </Text>
         </TouchableOpacity>
@@ -284,3 +277,5 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 });
+
+export default FeedbackScreen;

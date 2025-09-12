@@ -5,3 +5,5 @@ declare module 'react-native-fs' {
   export const exists: (path: string) => Promise<boolean>;
   export const unlink: (path: string) => Promise<void>;
 }
+
+export default DocumentDirectoryPath;

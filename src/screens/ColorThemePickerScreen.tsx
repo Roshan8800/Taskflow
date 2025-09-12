@@ -70,8 +70,7 @@ export const ColorThemePickerScreen: React.FC = () => {
       surface: isDark ? '#4A1729' : '#F8BBD9',
       text: isDark ? '#FFFFFF' : '#880E4F',
       textSecondary: isDark ? '#F48FB1' : '#AD1457',
-    },
-  ];
+    }];
 
   const screenWidth = Dimensions.get('window').width;
   const previewWidth = screenWidth - 32;
@@ -114,10 +113,10 @@ export const ColorThemePickerScreen: React.FC = () => {
   );
 
   const CustomColorPicker = () => (
-    <View style={[styles.customSection, { backgroundColor: theme.surface }]}>
-      <Text style={[styles.customTitle, { color: theme.text }]}>Custom Colors</Text>
+    <View style={[styles.customSection, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.customTitle, { color: '#000000' }]}>Custom Colors</Text>
       <View style={styles.colorRow}>
-        <Text style={[styles.colorLabel, { color: theme.text }]}>Primary Color</Text>
+        <Text style={[styles.colorLabel, { color: '#000000' }]}>Primary Color</Text>
         <View style={styles.colorOptions}>
           {['#4A90E2', '#FF6B6B', '#4ECDC4', '#FFD93D', '#96CEB4', '#DDA0DD'].map((color) => (
             <TouchableOpacity
@@ -131,10 +130,10 @@ export const ColorThemePickerScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Color & Theme Picker</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Color & Theme Picker</Text>
       
-      <Text style={[styles.subtitle, { color: theme.textSecondary }]}>
+      <Text style={[styles.subtitle, { color: '#000000' }]}>
         Choose a theme that matches your style
       </Text>
 
@@ -147,16 +146,16 @@ export const ColorThemePickerScreen: React.FC = () => {
       <CustomColorPicker />
 
       <TouchableOpacity
-        style={[styles.applyBtn, { backgroundColor: theme.primary }]}
+        style={[styles.applyBtn, { backgroundColor: '#FFFFFF' }]}
         onPress={() => console.log('Apply theme:', selectedTheme)}
       >
-        <Text style={[styles.applyBtnText, { color: theme.background }]}>
+        <Text style={[styles.applyBtnText, { color: '#000000' }]}>
           Apply Theme
         </Text>
       </TouchableOpacity>
 
-      <View style={[styles.info, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.infoText, { color: theme.textSecondary }]}>
+      <View style={[styles.info, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.infoText, { color: '#000000' }]}>
           💡 Themes are applied instantly. You can always change them later in settings.
         </Text>
       </View>
@@ -191,3 +190,5 @@ const styles = StyleSheet.create({
   info: { padding: 16, borderRadius: 8, marginBottom: 20 },
   infoText: { fontSize: 14, lineHeight: 20, textAlign: 'center' },
 });
+
+export default ColorThemePickerScreen;

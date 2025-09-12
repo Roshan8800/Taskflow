@@ -21,8 +21,7 @@ export const CustomDashboard: React.FC<{ navigation: any }> = ({ navigation }) =
     { id: 'stats', type: 'stats', title: 'Task Statistics', enabled: true, position: 0 },
     { id: 'overdue', type: 'overdue', title: 'Overdue Tasks', enabled: true, position: 1 },
     { id: 'streak', type: 'streak', title: 'Current Streak', enabled: true, position: 2 },
-    { id: 'recent', type: 'recent', title: 'Recent Tasks', enabled: false, position: 3 },
-  ]);
+    { id: 'recent', type: 'recent', title: 'Recent Tasks', enabled: false, position: 3 }]);
 
   const recentTasks = getTasks().slice(0, 3);
 
@@ -43,7 +42,7 @@ export const CustomDashboard: React.FC<{ navigation: any }> = ({ navigation }) =
         );
       
       case 'overdue':
-        return <OverdueWidget key={widget.id} onPress={() => navigation.navigate('Tasks', { filter: 'overdue' })} />;
+        return <OverdueWidget key={widget.id} onPress={() => navigation.navigate('Tasks' as never, { filter: 'overdue' })} />;
       
       case 'streak':
         return (
@@ -94,7 +93,7 @@ export const CustomDashboard: React.FC<{ navigation: any }> = ({ navigation }) =
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16 }}>
         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Dashboard</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('DashboardSettings', { widgets, toggleWidget })}
+          onPress={() => navigation.navigate('DashboardSettings' as never, { widgets, toggleWidget })}
           style={{ padding: 8 }}
         >
           <Text style={{ fontSize: 16 }}>⚙️</Text>
@@ -110,3 +109,5 @@ export const CustomDashboard: React.FC<{ navigation: any }> = ({ navigation }) =
     </View>
   );
 };
+
+export default CustomDashboard;

@@ -11,7 +11,7 @@ export const deleteProjectWithGuards = async (
   try {
     const realm = await getRealm();
     
-    // Check if project has tasks
+    // Check if projectId has tasks
     const tasksInProject = realm.objects<Todo>('Todo')
       .filtered('projectId == $0 AND deletedAt == null', new Realm.BSON.ObjectId(projectId));
     
@@ -26,7 +26,7 @@ export const deleteProjectWithGuards = async (
     // Show confirmation dialog
     Alert.alert(
       'Delete Project',
-      `This project contains ${taskCount} task(s). What would you like to do?`,
+      `This projectId contains ${taskCount} task(s). What would you like to do?`,
       [
         { text: 'Cancel', style: 'cancel' },
         { 
@@ -41,7 +41,7 @@ export const deleteProjectWithGuards = async (
       ]
     );
   } catch (error) {
-    console.error('Error checking project tasks:', error);
+    console.error('Error checking projectId tasks:', error);
   }
 };
 
@@ -54,7 +54,7 @@ const moveTasksToUnassigned = async (projectId: string, onConfirm: () => void) =
         .filtered('projectId == $0 AND deletedAt == null', new Realm.BSON.ObjectId(projectId));
       
       tasks.forEach(task => {
-        task.projectId = undefined; // Move to unassigned
+        task.project = undefined; // Move to unassigned
         task.updatedAt = new Date();
       });
     });
@@ -81,7 +81,7 @@ const bulkDeleteProjectTasks = async (projectId: string, onConfirm: () => void) 
     
     onConfirm();
   } catch (error) {
-    console.error('Error bulk deleting project tasks:', error);
+    console.error('Error bulk deleting projectId tasks:', error);
   }
 };
 

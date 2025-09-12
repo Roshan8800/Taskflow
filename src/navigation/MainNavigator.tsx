@@ -60,8 +60,7 @@ export const MainNavigator: React.FC = () => {
     { id: 'Tasks', label: 'Tasks', icon: '✓' },
     { id: 'Calendar', label: 'Calendar', icon: '📅' },
     { id: 'Projects', label: 'Projects', icon: '📁' },
-    { id: 'Analytics', label: 'Analytics', icon: '📊' },
-  ];
+    { id: 'Analytics', label: 'Analytics', icon: '📊' }];
 
   const drawerItems = [
     { id: 'Profile', label: 'Profile', icon: '👤' },
@@ -88,8 +87,7 @@ export const MainNavigator: React.FC = () => {
     { id: 'AppLock', label: 'App Lock', icon: '🔒' },
     { id: 'Help', label: 'Help Center', icon: '❓' },
     { id: 'Feedback', label: 'Feedback', icon: '💬' },
-    { id: 'About', label: 'About App', icon: 'ℹ️' },
-  ];
+    { id: 'About', label: 'About App', icon: 'ℹ️' }];
 
   const renderScreen = () => {
     const screenProps = {
@@ -139,41 +137,41 @@ export const MainNavigator: React.FC = () => {
   const isMainTab = bottomTabs.some(tab => tab.id === currentScreen);
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      {/* Header */}
-      <View style={[styles.header, { backgroundColor: theme.surface }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      {}
+      <View style={[styles.header, { backgroundColor: '#FFFFFF' }]}>
         <TouchableOpacity onPress={() => setDrawerOpen(true)}>
-          <Text style={[styles.menuIcon, { color: theme.text }]}>☰</Text>
+          <Text style={[styles.menuIcon, { color: '#000000' }]}>☰</Text>
         </TouchableOpacity>
         
         <AppLogo size={32} variant="text" />
         
         <View style={styles.headerActions}>
           <TouchableOpacity onPress={() => setCurrentScreen('Search')}>
-            <Text style={[styles.headerIcon, { color: theme.text }]}>🔍</Text>
+            <Text style={[styles.headerIcon, { color: '#000000' }]}>🔍</Text>
           </TouchableOpacity>
           {currentScreen === 'Tasks' && (
             <TouchableOpacity onPress={() => setMultiSelectVisible(true)}>
-              <Text style={[styles.headerIcon, { color: theme.text }]}>☑️</Text>
+              <Text style={[styles.headerIcon, { color: '#000000' }]}>☑️</Text>
             </TouchableOpacity>
           )}
         </View>
       </View>
 
-      {/* Screen Content */}
+      {}
       <View style={styles.content}>
         {renderScreen()}
       </View>
 
-      {/* Bottom Navigation */}
+      {}
       {isMainTab && (
-        <View style={[styles.bottomNav, { backgroundColor: theme.surface }]}>
+        <View style={[styles.bottomNav, { backgroundColor: '#FFFFFF' }]}>
           {bottomTabs.map((tab) => (
             <TouchableOpacity
               key={tab.id}
               style={[
                 styles.tabItem,
-                currentScreen === tab.id && { backgroundColor: theme.primary + '20' }
+                currentScreen === tab.id && { backgroundColor: '#FFFFFF' + '20' }
               ]}
               onPress={() => setCurrentScreen(tab.id as Screen)}
             >
@@ -189,14 +187,14 @@ export const MainNavigator: React.FC = () => {
         </View>
       )}
 
-      {/* Side Drawer */}
+      {}
       {drawerOpen && (
         <View style={styles.drawerOverlay}>
           <TouchableOpacity 
             style={styles.drawerBackdrop} 
             onPress={() => setDrawerOpen(false)} 
           />
-          <View style={[styles.drawer, { backgroundColor: theme.surface }]}>
+          <View style={[styles.drawer, { backgroundColor: '#FFFFFF' }]}>
             <View style={styles.drawerHeader}>
               <AppLogo size={60} variant="full" />
             </View>
@@ -212,7 +210,7 @@ export const MainNavigator: React.FC = () => {
                   }}
                 >
                   <Text style={styles.drawerIcon}>{item.icon}</Text>
-                  <Text style={[styles.drawerLabel, { color: theme.text }]}>
+                  <Text style={[styles.drawerLabel, { color: '#000000' }]}>
                     {item.label}
                   </Text>
                 </TouchableOpacity>
@@ -227,7 +225,7 @@ export const MainNavigator: React.FC = () => {
         </View>
       )}
 
-      {/* Multi-Select Overlay */}
+      {}
       <MultiSelectScreen
         visible={multiSelectVisible}
         onClose={() => setMultiSelectVisible(false)}
@@ -330,3 +328,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
+
+export default MainNavigator;

@@ -6,7 +6,7 @@ import { useProjects } from '../hooks/useProjects';
 
 interface SearchResult {
   id: string;
-  type: 'task' | 'project' | 'label';
+  type: 'task' | 'projectId' | 'label';
   title: string;
   subtitle?: string;
   color?: string;
@@ -38,7 +38,7 @@ export const GlobalSearchScreen: React.FC = () => {
             id: todo._id.toString(),
             type: 'task',
             title: todo.title,
-            subtitle: todo.project || 'No project',
+            subtitle: todo.projectId || 'No projectId',
           });
         }
       });
@@ -46,15 +46,15 @@ export const GlobalSearchScreen: React.FC = () => {
 
     // Search projects
     if (filter === 'all' || filter === 'projects') {
-      projects.forEach(project => {
-        if (project.name.toLowerCase().includes(lowerQuery) || 
-            project.description?.toLowerCase().includes(lowerQuery)) {
+      projects.forEach(projectId => {
+        if (projectId.name.toLowerCase().includes(lowerQuery) || 
+            projectId.description?.toLowerCase().includes(lowerQuery)) {
           searchResults.push({
-            id: project._id.toString(),
-            type: 'project',
-            title: project.name,
-            subtitle: project.description,
-            color: project.color,
+            id: projectId._id.toString(),
+            type: 'projectId',
+            title: projectId.name,
+            subtitle: projectId.description,
+            color: projectId.color,
           });
         }
       });
@@ -81,27 +81,27 @@ export const GlobalSearchScreen: React.FC = () => {
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'task': return '✓';
-      case 'project': return '📁';
+      case 'projectId': return '📁';
       case 'label': return '🏷️';
       default: return '•';
     }
   };
 
   const renderResult = ({ item }: { item: SearchResult }) => (
-    <TouchableOpacity style={[styles.resultItem, { backgroundColor: theme.surface }]}>
+    <TouchableOpacity style={[styles.resultItem, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.resultIcon}>
         <Text style={styles.iconText}>{getTypeIcon(item.type)}</Text>
       </View>
       <View style={styles.resultContent}>
-        <Text style={[styles.resultTitle, { color: theme.text }]}>{item.title}</Text>
+        <Text style={[styles.resultTitle, { color: '#000000' }]}>{item.title}</Text>
         {item.subtitle && (
-          <Text style={[styles.resultSubtitle, { color: theme.textSecondary }]}>
+          <Text style={[styles.resultSubtitle, { color: '#000000' }]}>
             {item.subtitle}
           </Text>
         )}
       </View>
-      <View style={[styles.typeBadge, { backgroundColor: theme.primary + '20' }]}>
-        <Text style={[styles.typeText, { color: theme.primary }]}>
+      <View style={[styles.typeBadge, { backgroundColor: '#FFFFFF' + '20' }]}>
+        <Text style={[styles.typeText, { color: '#000000' }]}>
           {item.type.toUpperCase()}
         </Text>
       </View>
@@ -109,18 +109,10 @@ export const GlobalSearchScreen: React.FC = () => {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <TextInput
-        style={[styles.searchInput, { backgroundColor: theme.surface, color: theme.text }]}
-        placeholder="Search tasks, projects, labels..."
-        placeholderTextColor={theme.textSecondary}
-        value={query}
-        onChangeText={setQuery}
-        autoFocus
-      />
-
-      <View style={styles.filters}>
-        {['all', 'tasks', 'projects', 'labels'].map((f) => (
+        style={[styles.searchInput, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+        placeholder="Search tasks, projects, labelsall', 'tasks', 'projects', 'labels'].map((f) => (
           <TouchableOpacity
             key={f}
             style={[
@@ -149,7 +141,7 @@ export const GlobalSearchScreen: React.FC = () => {
 
       {query.length >= 2 && results.length === 0 && (
         <View style={styles.noResults}>
-          <Text style={[styles.noResultsText, { color: theme.textSecondary }]}>
+          <Text style={[styles.noResultsText, { color: '#000000' }]}>
             No results found for "{query}"
           </Text>
         </View>
@@ -234,3 +226,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+export default GlobalSearchScreen;

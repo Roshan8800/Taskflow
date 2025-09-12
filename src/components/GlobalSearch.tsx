@@ -29,7 +29,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
     const searchTasks = () => {
       const tasks = Array.from(getTasks()).filter(task => 
-        !task.isDeleted && (
+        !task.deletedAt !== null && (
           task.title.toLowerCase().includes(query.toLowerCase()) ||
           task.description?.toLowerCase().includes(query.toLowerCase()) ||
           task.labels.some(label => label.toLowerCase().includes(query.toLowerCase())) ||
@@ -37,9 +37,9 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
         )
       );
 
-      const projects = Array.from(getProjects()).filter(project =>
-        project.name.toLowerCase().includes(query.toLowerCase()) ||
-        project.description?.toLowerCase().includes(query.toLowerCase())
+      const projects = Array.from(getProjects()).filter(projectId =>
+        projectId.name.toLowerCase().includes(query.toLowerCase()) ||
+        projectId.description?.toLowerCase().includes(query.toLowerCase())
       );
 
       const taskResults = tasks.map(task => ({
@@ -53,13 +53,13 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
         completed: task.completed,
       }));
 
-      const projectResults = projects.map(project => ({
-        type: 'project',
-        id: project._id,
-        title: project.name,
-        subtitle: project.description || 'No description',
-        color: project.color,
-        icon: project.icon,
+      const projectResults = projects.map(projectId => ({
+        type: 'projectId',
+        id: projectId._id,
+        title: projectId.name,
+        subtitle: projectId.description || 'No description',
+        color: projectId.color,
+        icon: projectId.icon,
       }));
 
       // Find matching labels
@@ -77,7 +77,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
           icon: '🏷️',
         }));
 
-      setResults([...taskResults, ...projectResults, ...labelResults]);
+      setResults([...taskResults, ...projectIdResults, ...labelResults]);
     };
 
     const debounceTimer = setTimeout(searchTasks, 300);
@@ -87,7 +87,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
   const handleResultPress = (result: any) => {
     if (result.type === 'task') {
       onTaskSelect(result.id);
-    } else if (result.type === 'project') {
+    } else if (result.type === 'projectId') {
       onProjectSelect(result.id);
     } else if (result.type === 'label') {
       // Handle label search - could navigate to filtered view
@@ -178,7 +178,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
   return (
     <Modal visible={visible} animationType="slide" presentationStyle="pageSheet">
       <View style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
-        {/* Search Header */}
+        {}
         <View style={{
           backgroundColor: 'white',
           paddingTop: 50,
@@ -191,12 +191,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
             <TextInput
               value={query}
               onChangeText={setQuery}
-              placeholder="Search tasks, projects, labels..."
-              style={{
-                flex: 1,
-                fontSize: 18,
-                padding: 12,
-                backgroundColor: '#f8f9fa',
+              placeholder="Search tasks, projects, labels#f8f9fa',
                 borderRadius: 8,
                 marginRight: 12,
               }}
@@ -208,7 +203,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
           </View>
         </View>
 
-        {/* Search Results */}
+        {}
         {query.length >= 2 ? (
           <FlatList
             data={results}
@@ -238,3 +233,5 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({
     </Modal>
   );
 };
+
+export default GlobalSearch;

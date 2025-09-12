@@ -60,8 +60,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
       { label: '1 hour', hours: 1 },
       { label: '3 hours', hours: 3 },
       { label: 'Tomorrow', hours: 24 },
-      { label: '1 week', hours: 168 },
-    ];
+      { label: '1 week', hours: 168 }];
 
     Alert.alert(
       'Snooze Task',
@@ -91,14 +90,14 @@ export const TaskItem: React.FC<TaskItemProps> = ({
     );
   };
 
-  const isOverdue = task.dueDate && task.dueDate < new Date() && !task.completed;
+  const isOverdue = task.dueAt && task.dueAt < new Date() && !task.completed;
   const isSnoozed = task.snoozeUntil && task.snoozeUntil > new Date();
 
   return (
     <View style={[
       styles.container,
-      { backgroundColor: theme.surface },
-      selected && { borderColor: theme.primary, borderWidth: 2 },
+      { backgroundColor: '#FFFFFF' },
+      selected && { borderColor: '#CCCCCC', borderWidth: 2 },
       task.completed && { opacity: 0.7 }
     ]}>
       <View style={styles.mainContent}>
@@ -106,12 +105,12 @@ export const TaskItem: React.FC<TaskItemProps> = ({
           <TouchableOpacity
             style={[
               styles.checkbox,
-              { borderColor: theme.border },
-              selected && { backgroundColor: theme.primary, borderColor: theme.primary }
+              { borderColor: '#CCCCCC' },
+              selected && { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' }
             ]}
             onPress={() => onSelect?.(task._id.toString())}
           >
-            {selected && <Text style={[styles.checkmark, { color: theme.background }]}>✓</Text>}
+            {selected && <Text style={[styles.checkmark, { color: '#000000' }]}>✓</Text>}
           </TouchableOpacity>
         )}
 
@@ -130,8 +129,8 @@ export const TaskItem: React.FC<TaskItemProps> = ({
           <View style={styles.taskHeader}>
             <Text style={[
               styles.taskTitle,
-              { color: theme.text },
-              task.completed && { textDecorationLine: 'line-through', color: theme.textSecondary }
+              { color: '#000000' },
+              task.completed && { textDecorationLine: 'line-through', color: '#000000' }
             ]}>
               {task.title}
             </Text>
@@ -145,13 +144,13 @@ export const TaskItem: React.FC<TaskItemProps> = ({
           </View>
 
           {task.description && !compact && (
-            <Text style={[styles.taskDescription, { color: theme.textSecondary }]} numberOfLines={2}>
+            <Text style={[styles.taskDescription, { color: '#000000' }]} numberOfLines={2}>
               {task.description}
             </Text>
           )}
 
           {task.project && showProject && (
-            <Text style={[styles.taskProject, { color: theme.primary }]}>
+            <Text style={[styles.taskProject, { color: '#000000' }]}>
               📁 {task.project}
             </Text>
           )}
@@ -164,24 +163,24 @@ export const TaskItem: React.FC<TaskItemProps> = ({
                 </View>
               ))}
               {task.labels.length > 3 && (
-                <Text style={[styles.moreLabels, { color: theme.textSecondary }]}>
+                <Text style={[styles.moreLabels, { color: '#000000' }]}>
                   +{task.labels.length - 3}
                 </Text>
               )}
             </View>
           )}
 
-          {task.dueDate && (
+          {task.dueAt && (
             <Text style={[
-              styles.dueDate,
+              styles.dueAt,
               { color: isOverdue ? '#FF6B6B' : theme.textSecondary }
             ]}>
-              📅 {formatDate(task.dueDate)}
+              📅 {formatDate(task.dueAt)}
             </Text>
           )}
 
           {task.notes && !compact && (
-            <Text style={[styles.notes, { color: theme.textSecondary }]} numberOfLines={1}>
+            <Text style={[styles.notes, { color: '#000000' }]} numberOfLines={1}>
               📝 {task.notes}
             </Text>
           )}
@@ -191,20 +190,20 @@ export const TaskItem: React.FC<TaskItemProps> = ({
           style={styles.moreButton}
           onPress={() => setShowActions(!showActions)}
         >
-          <Text style={[styles.moreIcon, { color: theme.textSecondary }]}>⋮</Text>
+          <Text style={[styles.moreIcon, { color: '#000000' }]}>⋮</Text>
         </TouchableOpacity>
       </View>
 
       {showActions && (
-        <View style={[styles.actionsContainer, { backgroundColor: theme.background }]}>
+        <View style={[styles.actionsContainer, { backgroundColor: '#FFFFFF' }]}>
           <TouchableOpacity style={styles.actionBtn} onPress={() => onEdit(task)}>
-            <Text style={[styles.actionText, { color: theme.primary }]}>Edit</Text>
+            <Text style={[styles.actionText, { color: '#000000' }]}>Edit</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.actionBtn} onPress={handleSnooze}>
-            <Text style={[styles.actionText, { color: theme.primary }]}>Snooze</Text>
+            <Text style={[styles.actionText, { color: '#000000' }]}>Snooze</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.actionBtn} onPress={() => onArchive(task._id.toString())}>
-            <Text style={[styles.actionText, { color: theme.primary }]}>Archive</Text>
+            <Text style={[styles.actionText, { color: '#000000' }]}>Archive</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.actionBtn} onPress={handleDelete}>
             <Text style={[styles.actionText, { color: '#FF6B6B' }]}>Delete</Text>
@@ -236,7 +235,7 @@ const styles = StyleSheet.create({
   labelChip: { paddingHorizontal: 6, paddingVertical: 2, borderRadius: 8 },
   labelText: { fontSize: 12, fontWeight: '500' },
   moreLabels: { fontSize: 12 },
-  dueDate: { fontSize: 14, marginBottom: 2 },
+  dueAt: { fontSize: 14, marginBottom: 2 },
   notes: { fontSize: 14 },
   moreButton: { padding: 4 },
   moreIcon: { fontSize: 16, fontWeight: 'bold' },
@@ -244,3 +243,5 @@ const styles = StyleSheet.create({
   actionBtn: { paddingVertical: 4 },
   actionText: { fontSize: 14, fontWeight: '500' },
 });
+
+export default TaskItem;

@@ -29,8 +29,8 @@ export const SettingsScreen: React.FC = () => {
   };
 
   const SettingRow = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <View style={[styles.row, { backgroundColor: theme.surface }]}>
-      <Text style={[styles.rowTitle, { color: theme.text }]}>{title}</Text>
+    <View style={[styles.row, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.rowTitle, { color: '#000000' }]}>{title}</Text>
       {children}
     </View>
   );
@@ -47,8 +47,8 @@ export const SettingsScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>Display Preferences</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.sectionTitle, { color: '#000000' }]}>Display Preferences</Text>
       
       <SettingRow title="Default View">
         <View style={styles.options}>
@@ -85,7 +85,7 @@ export const SettingsScreen: React.FC = () => {
         </View>
       </SettingRow>
 
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>Language & Region</Text>
+      <Text style={[styles.sectionTitle, { color: '#000000' }]}>Language & Region</Text>
       
       <SettingRow title="Language">
         <View style={styles.options}>
@@ -107,7 +107,7 @@ export const SettingsScreen: React.FC = () => {
         </View>
       </SettingRow>
 
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>Notifications</Text>
+      <Text style={[styles.sectionTitle, { color: '#000000' }]}>Notifications</Text>
       
       <SettingRow title="Push Notifications">
         <Switch
@@ -125,7 +125,7 @@ export const SettingsScreen: React.FC = () => {
         />
       </SettingRow>
 
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>Data & Sync</Text>
+      <Text style={[styles.sectionTitle, { color: '#000000' }]}>Data & Sync</Text>
       
       <SettingRow title="Auto Sync">
         <Switch
@@ -136,10 +136,10 @@ export const SettingsScreen: React.FC = () => {
       </SettingRow>
 
       <TouchableOpacity
-        style={[styles.saveButton, { backgroundColor: theme.primary }]}
+        style={[styles.saveButton, { backgroundColor: '#FFFFFF' }]}
         onPress={saveSettings}
       >
-        <Text style={[styles.saveButtonText, { color: theme.background }]}>Save Settings</Text>
+        <Text style={[styles.saveButtonText, { color: '#000000' }]}>Save Settings</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -193,3 +193,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export default SettingsScreen;

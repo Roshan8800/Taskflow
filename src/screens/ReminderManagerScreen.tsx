@@ -15,8 +15,7 @@ export const ReminderManagerScreen: React.FC = () => {
   const [reminders, setReminders] = useState<Reminder[]>([
     { id: '1', title: 'Daily Review', time: '6:00 PM', enabled: true, type: 'daily' },
     { id: '2', title: 'Project Meeting', time: '2:00 PM', enabled: true, type: 'task' },
-    { id: '3', title: 'Exercise', time: '7:00 AM', enabled: false, type: 'custom' },
-  ]);
+    { id: '3', title: 'Exercise', time: '7:00 AM', enabled: false, type: 'custom' }]);
 
   const toggleReminder = (id: string) => {
     setReminders(prev => prev.map(r => 
@@ -34,12 +33,12 @@ export const ReminderManagerScreen: React.FC = () => {
   };
 
   const renderReminder = ({ item }: { item: Reminder }) => (
-    <View style={[styles.reminderCard, { backgroundColor: theme.surface }]}>
+    <View style={[styles.reminderCard, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.reminderInfo}>
         <Text style={styles.typeIcon}>{getTypeIcon(item.type)}</Text>
         <View style={styles.reminderDetails}>
-          <Text style={[styles.reminderTitle, { color: theme.text }]}>{item.title}</Text>
-          <Text style={[styles.reminderTime, { color: theme.textSecondary }]}>{item.time}</Text>
+          <Text style={[styles.reminderTitle, { color: '#000000' }]}>{item.title}</Text>
+          <Text style={[styles.reminderTime, { color: '#000000' }]}>{item.time}</Text>
         </View>
       </View>
       <Switch
@@ -51,21 +50,21 @@ export const ReminderManagerScreen: React.FC = () => {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Reminder Manager</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Reminder Manager</Text>
       
       <View style={styles.stats}>
-        <View style={[styles.statCard, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.statNumber, { color: theme.primary }]}>
+        <View style={[styles.statCard, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.statNumber, { color: '#000000' }]}>
             {reminders.filter(r => r.enabled).length}
           </Text>
-          <Text style={[styles.statLabel, { color: theme.textSecondary }]}>Active</Text>
+          <Text style={[styles.statLabel, { color: '#000000' }]}>Active</Text>
         </View>
-        <View style={[styles.statCard, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.statNumber, { color: theme.text }]}>
+        <View style={[styles.statCard, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.statNumber, { color: '#000000' }]}>
             {reminders.length}
           </Text>
-          <Text style={[styles.statLabel, { color: theme.textSecondary }]}>Total</Text>
+          <Text style={[styles.statLabel, { color: '#000000' }]}>Total</Text>
         </View>
       </View>
 
@@ -76,8 +75,8 @@ export const ReminderManagerScreen: React.FC = () => {
         contentContainerStyle={styles.list}
       />
 
-      <TouchableOpacity style={[styles.addBtn, { backgroundColor: theme.primary }]}>
-        <Text style={[styles.addBtnText, { color: theme.background }]}>+ Add Reminder</Text>
+      <TouchableOpacity style={[styles.addBtn, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.addBtnText, { color: '#000000' }]}>+ Add Reminder</Text>
       </TouchableOpacity>
     </View>
   );
@@ -100,3 +99,5 @@ const styles = StyleSheet.create({
   addBtn: { position: 'absolute', bottom: 20, left: 16, right: 16, padding: 16, borderRadius: 8, alignItems: 'center' },
   addBtnText: { fontSize: 16, fontWeight: '600' },
 });
+
+export default ReminderManagerScreen;

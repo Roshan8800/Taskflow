@@ -8,9 +8,9 @@ export const AccessibilityScreen: React.FC<{ navigation: any }> = ({ navigation 
   const { accessibility, appSettings, updateAccessibility, updateAppSettings } = useSettings();
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.background }}>
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={{
-        backgroundColor: theme.surface,
+        backgroundColor: '#FFFFFF',
         paddingTop: 50,
         paddingHorizontal: 16,
         paddingBottom: 16,
@@ -19,28 +19,28 @@ export const AccessibilityScreen: React.FC<{ navigation: any }> = ({ navigation 
       }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginRight: 16 }}>
-            <Text style={{ fontSize: 18, color: theme.text }}>←</Text>
+            <Text style={{ fontSize: 18, color: '#000000' }}>←</Text>
           </TouchableOpacity>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: theme.text }}>Accessibility</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>Accessibility</Text>
         </View>
       </View>
 
       <ScrollView style={{ flex: 1, padding: 16 }}>
-        {/* Visual Accessibility */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 16 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 16 }}>
             Visual Accessibility
           </Text>
           
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>High Contrast</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>High Contrast</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Increase contrast for better visibility
               </Text>
             </View>
@@ -53,8 +53,8 @@ export const AccessibilityScreen: React.FC<{ navigation: any }> = ({ navigation 
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>Large Text</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>Large Text</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Use larger text throughout the app
               </Text>
             </View>
@@ -66,21 +66,21 @@ export const AccessibilityScreen: React.FC<{ navigation: any }> = ({ navigation 
           </View>
         </View>
 
-        {/* Screen Reader Support */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 16 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 16 }}>
             Screen Reader
           </Text>
           
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>Screen Reader Support</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>Screen Reader Support</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Optimize for screen readers and voice assistants
               </Text>
             </View>
@@ -92,21 +92,21 @@ export const AccessibilityScreen: React.FC<{ navigation: any }> = ({ navigation 
           </View>
         </View>
 
-        {/* Haptic Feedback */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: theme.text, marginBottom: 16 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', marginBottom: 16 }}>
             Haptic Feedback
           </Text>
           
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>Vibration Feedback</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>Vibration Feedback</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Feel vibrations for interactions and notifications
               </Text>
             </View>
@@ -118,25 +118,25 @@ export const AccessibilityScreen: React.FC<{ navigation: any }> = ({ navigation 
           </View>
         </View>
 
-        {/* Accessibility Tips */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
         }}>
-          <Text style={{ fontSize: 16, fontWeight: 'bold', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#000000', marginBottom: 12 }}>
             💡 Accessibility Tips
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • Use voice commands to create tasks quickly
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • Enable high contrast for better text visibility
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20, marginBottom: 8 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20, marginBottom: 8 }}>
             • Adjust font size in Theme Settings for comfortable reading
           </Text>
-          <Text style={{ fontSize: 14, color: theme.textSecondary, lineHeight: 20 }}>
+          <Text style={{ fontSize: 14, color: '#000000', lineHeight: 20 }}>
             • Use haptic feedback to feel app interactions
           </Text>
         </View>
@@ -144,3 +144,5 @@ export const AccessibilityScreen: React.FC<{ navigation: any }> = ({ navigation 
     </View>
   );
 };
+
+export default AccessibilityScreen;

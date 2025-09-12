@@ -67,37 +67,37 @@ export const ReviewWorkflow = () => {
     <TouchableOpacity
       style={[
         styles.taskItem,
-        { backgroundColor: theme.surface, borderColor: theme.border },
-        selectedTasks.includes(item._id.toString()) && { backgroundColor: theme.primary + '20' }
+        { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' },
+        selectedTasks.includes(item._id.toString()) && { backgroundColor: '#FFFFFF' + '20' }
       ]}
       onPress={() => toggleSelection(item._id.toString())}
     >
       <View style={styles.taskContent}>
-        <Text style={[styles.taskTitle, { color: theme.text }]}>{item.title}</Text>
-        <Text style={[styles.overdueText, { color: theme.error }]}>
+        <Text style={[styles.taskTitle, { color: '#000000' }]}>{item.title}</Text>
+        <Text style={[styles.overdueText, { color: '#000000' }]}>
           Overdue by {Math.ceil((Date.now() - item.dueAt.getTime()) / (1000 * 60 * 60 * 24))} days
         </Text>
       </View>
       
-      <View style={[styles.checkbox, { borderColor: theme.border }]}>
+      <View style={[styles.checkbox, { borderColor: '#CCCCCC' }]}>
         {selectedTasks.includes(item._id.toString()) && (
-          <Text style={[styles.checkmark, { color: theme.primary }]}>✓</Text>
+          <Text style={[styles.checkmark, { color: '#000000' }]}>✓</Text>
         )}
       </View>
     </TouchableOpacity>
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Review & Analytics</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Review & Analytics</Text>
 
-      {/* Period Selector */}
+      {}
       <View style={styles.periodSelector}>
         <TouchableOpacity
           style={[
             styles.periodButton,
-            { backgroundColor: theme.surface, borderColor: theme.border },
-            selectedPeriod === 'week' && { backgroundColor: theme.primary }
+            { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' },
+            selectedPeriod === 'week' && { backgroundColor: '#FFFFFF' }
           ]}
           onPress={() => setSelectedPeriod('week')}
         >
@@ -112,8 +112,8 @@ export const ReviewWorkflow = () => {
         <TouchableOpacity
           style={[
             styles.periodButton,
-            { backgroundColor: theme.surface, borderColor: theme.border },
-            selectedPeriod === 'month' && { backgroundColor: theme.primary }
+            { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' },
+            selectedPeriod === 'month' && { backgroundColor: '#FFFFFF' }
           ]}
           onPress={() => setSelectedPeriod('month')}
         >
@@ -126,46 +126,46 @@ export const ReviewWorkflow = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Summary Stats */}
-      <View style={[styles.statsContainer, { backgroundColor: theme.surface }]}>
+      {}
+      <View style={[styles.statsContainer, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.statItem}>
-          <Text style={[styles.statNumber, { color: theme.primary }]}>{stats.total}</Text>
-          <Text style={[styles.statLabel, { color: theme.textSecondary }]}>Total Tasks</Text>
+          <Text style={[styles.statNumber, { color: '#000000' }]}>{stats.total}</Text>
+          <Text style={[styles.statLabel, { color: '#000000' }]}>Total Tasks</Text>
         </View>
         
         <View style={styles.statItem}>
-          <Text style={[styles.statNumber, { color: theme.success }]}>{stats.completed}</Text>
-          <Text style={[styles.statLabel, { color: theme.textSecondary }]}>Completed</Text>
+          <Text style={[styles.statNumber, { color: '#000000' }]}>{stats.completed}</Text>
+          <Text style={[styles.statLabel, { color: '#000000' }]}>Completed</Text>
         </View>
         
         <View style={styles.statItem}>
-          <Text style={[styles.statNumber, { color: theme.error }]}>{stats.overdue}</Text>
-          <Text style={[styles.statLabel, { color: theme.textSecondary }]}>Overdue</Text>
+          <Text style={[styles.statNumber, { color: '#000000' }]}>{stats.overdue}</Text>
+          <Text style={[styles.statLabel, { color: '#000000' }]}>Overdue</Text>
         </View>
         
         <View style={styles.statItem}>
-          <Text style={[styles.statNumber, { color: theme.warning }]}>{stats.completionRate}%</Text>
-          <Text style={[styles.statLabel, { color: theme.textSecondary }]}>Completion</Text>
+          <Text style={[styles.statNumber, { color: '#000000' }]}>{stats.completionRate}%</Text>
+          <Text style={[styles.statLabel, { color: '#000000' }]}>Completion</Text>
         </View>
       </View>
 
-      {/* Overdue Tasks */}
+      {}
       <View style={styles.overdueSection}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>
           Overdue Tasks ({overdueTasks.length})
         </Text>
         
         {overdueTasks.length > 0 && (
           <View style={styles.rescheduleActions}>
             <TouchableOpacity
-              style={[styles.rescheduleButton, { backgroundColor: theme.primary }]}
+              style={[styles.rescheduleButton, { backgroundColor: '#FFFFFF' }]}
               onPress={() => bulkReschedule(1)}
             >
               <Text style={styles.rescheduleText}>Reschedule +1 Day</Text>
             </TouchableOpacity>
             
             <TouchableOpacity
-              style={[styles.rescheduleButton, { backgroundColor: theme.warning }]}
+              style={[styles.rescheduleButton, { backgroundColor: '#FFFFFF' }]}
               onPress={() => bulkReschedule(7)}
             >
               <Text style={styles.rescheduleText}>Reschedule +1 Week</Text>

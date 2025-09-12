@@ -21,7 +21,7 @@ export const HelpCenterScreen: React.FC = () => {
     {
       id: '2',
       question: 'How do I organize tasks into projects?',
-      answer: 'Go to Projects screen, create a new project, then when creating tasks, select the project from the dropdown.'
+      answer: 'Go to Projects screen, create a new projectId, then when creating tasks, select the projectId from the dropdown.'
     },
     {
       id: '3',
@@ -77,18 +77,18 @@ export const HelpCenterScreen: React.FC = () => {
   };
 
   const FAQItem = ({ item }: { item: FAQItem }) => (
-    <View style={[styles.faqItem, { backgroundColor: theme.surface }]}>
+    <View style={[styles.faqItem, { backgroundColor: '#FFFFFF' }]}>
       <TouchableOpacity
         style={styles.faqHeader}
         onPress={() => toggleFAQ(item.id)}
       >
-        <Text style={[styles.faqQuestion, { color: theme.text }]}>{item.question}</Text>
-        <Text style={[styles.faqToggle, { color: theme.primary }]}>
+        <Text style={[styles.faqQuestion, { color: '#000000' }]}>{item.question}</Text>
+        <Text style={[styles.faqToggle, { color: '#000000' }]}>
           {expandedFAQ === item.id ? '−' : '+'}
         </Text>
       </TouchableOpacity>
       {expandedFAQ === item.id && (
-        <Text style={[styles.faqAnswer, { color: theme.textSecondary }]}>
+        <Text style={[styles.faqAnswer, { color: '#000000' }]}>
           {item.answer}
         </Text>
       )}
@@ -96,21 +96,21 @@ export const HelpCenterScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Help Center</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Help Center</Text>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Quick Start Guides</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Quick Start Guides</Text>
         
         {guides.map((guide, index) => (
-          <View key={index} style={[styles.guideCard, { backgroundColor: theme.surface }]}>
-            <Text style={[styles.guideTitle, { color: theme.text }]}>{guide.title}</Text>
-            <Text style={[styles.guideDescription, { color: theme.textSecondary }]}>
+          <View key={index} style={[styles.guideCard, { backgroundColor: '#FFFFFF' }]}>
+            <Text style={[styles.guideTitle, { color: '#000000' }]}>{guide.title}</Text>
+            <Text style={[styles.guideDescription, { color: '#000000' }]}>
               {guide.description}
             </Text>
             <View style={styles.stepsList}>
               {guide.steps.map((step, stepIndex) => (
-                <Text key={stepIndex} style={[styles.step, { color: theme.textSecondary }]}>
+                <Text key={stepIndex} style={[styles.step, { color: '#000000' }]}>
                   {stepIndex + 1}. {step}
                 </Text>
               ))}
@@ -120,7 +120,7 @@ export const HelpCenterScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Frequently Asked Questions</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Frequently Asked Questions</Text>
         
         {faqs.map((faq) => (
           <FAQItem key={faq.id} item={faq} />
@@ -128,25 +128,25 @@ export const HelpCenterScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Need More Help?</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Need More Help?</Text>
         
         <TouchableOpacity
-          style={[styles.contactCard, { backgroundColor: theme.primary }]}
+          style={[styles.contactCard, { backgroundColor: '#FFFFFF' }]}
           onPress={contactSupport}
         >
-          <Text style={[styles.contactTitle, { color: theme.background }]}>Contact Support</Text>
-          <Text style={[styles.contactDescription, { color: theme.background }]}>
+          <Text style={[styles.contactTitle, { color: '#000000' }]}>Contact Support</Text>
+          <Text style={[styles.contactDescription, { color: '#000000' }]}>
             Get help from our support team
           </Text>
-          <Text style={[styles.contactEmail, { color: theme.background }]}>
+          <Text style={[styles.contactEmail, { color: '#000000' }]}>
             roshan8800jp@gmail.com
           </Text>
         </TouchableOpacity>
       </View>
 
-      <View style={[styles.tipCard, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.tipTitle, { color: theme.text }]}>💡 Pro Tip</Text>
-        <Text style={[styles.tipText, { color: theme.textSecondary }]}>
+      <View style={[styles.tipCard, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.tipTitle, { color: '#000000' }]}>💡 Pro Tip</Text>
+        <Text style={[styles.tipText, { color: '#000000' }]}>
           Use the Memory Bank feature to store important notes, meeting minutes, and ideas alongside your tasks!
         </Text>
       </View>
@@ -254,3 +254,5 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 });
+
+export default HelpCenterScreen;

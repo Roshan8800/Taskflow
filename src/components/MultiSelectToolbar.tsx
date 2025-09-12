@@ -34,15 +34,15 @@ export const MultiSelectToolbar: React.FC<Props> = ({
   if (selectedCount === 0) return null;
 
   return (
-    <View style={[styles.toolbar, { backgroundColor: theme.surface, borderColor: theme.border }]}>
-      <Text style={[styles.count, { color: theme.text }]}>
+    <View style={[styles.toolbar, { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' }]}>
+      <Text style={[styles.count, { color: '#000000' }]}>
         {selectedCount} selected
       </Text>
       
       <View style={styles.actions}>
         {actions.needsUnarchive && (
           <TouchableOpacity 
-            style={[styles.actionButton, { backgroundColor: theme.warning }]}
+            style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
             onPress={onUnarchive}
           >
             <Text style={styles.actionText}>Unarchive First</Text>
@@ -51,7 +51,7 @@ export const MultiSelectToolbar: React.FC<Props> = ({
         
         {actions.canComplete && !actions.needsUnarchive && (
           <TouchableOpacity 
-            style={[styles.actionButton, { backgroundColor: theme.success }]}
+            style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
             onPress={onComplete}
           >
             <Text style={styles.actionText}>Complete</Text>
@@ -60,7 +60,7 @@ export const MultiSelectToolbar: React.FC<Props> = ({
         
         {actions.canArchive && (
           <TouchableOpacity 
-            style={[styles.actionButton, { backgroundColor: theme.primary }]}
+            style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
             onPress={onArchive}
           >
             <Text style={styles.actionText}>Archive</Text>
@@ -69,7 +69,7 @@ export const MultiSelectToolbar: React.FC<Props> = ({
         
         {actions.canMove && (
           <TouchableOpacity 
-            style={[styles.actionButton, { backgroundColor: theme.primary }]}
+            style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
             onPress={onMove}
           >
             <Text style={styles.actionText}>Move</Text>
@@ -78,7 +78,7 @@ export const MultiSelectToolbar: React.FC<Props> = ({
         
         {actions.canDelete && (
           <TouchableOpacity 
-            style={[styles.actionButton, { backgroundColor: theme.error }]}
+            style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
             onPress={onDelete}
           >
             <Text style={styles.actionText}>Delete</Text>
@@ -86,7 +86,7 @@ export const MultiSelectToolbar: React.FC<Props> = ({
         )}
         
         <TouchableOpacity 
-          style={[styles.actionButton, { backgroundColor: theme.textSecondary }]}
+          style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
           onPress={onClear}
         >
           <Text style={styles.actionText}>Clear</Text>
@@ -123,3 +123,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export default MultiSelectToolbar;

@@ -37,3 +37,5 @@ export const StatsCard: React.FC<StatsCardProps> = ({ title, value, subtitle, co
     </View>
   );
 };
+
+export default StatsCard;

@@ -15,8 +15,7 @@ export const LabelManagementScreen: React.FC = () => {
     { id: '1', name: 'Work', color: '#FF6B6B', count: 12 },
     { id: '2', name: 'Personal', color: '#4ECDC4', count: 8 },
     { id: '3', name: 'Urgent', color: '#FFD93D', count: 5 },
-    { id: '4', name: 'Learning', color: '#96CEB4', count: 3 },
-  ]);
+    { id: '4', name: 'Learning', color: '#96CEB4', count: 3 }]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingLabel, setEditingLabel] = useState<Label | null>(null);
   const [labelName, setLabelName] = useState('');
@@ -67,8 +66,7 @@ export const LabelManagementScreen: React.FC = () => {
         `This label is used by ${label.count} tasks. Deleting it will remove the label from all tasks. Continue?`,
         [
           { text: 'Cancel', style: 'cancel' },
-          { text: 'Delete', style: 'destructive', onPress: () => deleteLabel(labelId) },
-        ]
+          { text: 'Delete', style: 'destructive', onPress: () => deleteLabel(labelId) }]
       );
     } else {
       deleteLabel(labelId);
@@ -87,22 +85,22 @@ export const LabelManagementScreen: React.FC = () => {
   };
 
   const renderLabelItem = ({ item }: { item: Label }) => (
-    <View style={[styles.labelCard, { backgroundColor: theme.surface }]}>
+    <View style={[styles.labelCard, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.labelInfo}>
         <View style={[styles.colorIndicator, { backgroundColor: item.color }]} />
         <View style={styles.labelDetails}>
-          <Text style={[styles.labelName, { color: theme.text }]}>{item.name}</Text>
-          <Text style={[styles.labelCount, { color: theme.textSecondary }]}>
+          <Text style={[styles.labelName, { color: '#000000' }]}>{item.name}</Text>
+          <Text style={[styles.labelCount, { color: '#000000' }]}>
             {item.count} tasks
           </Text>
         </View>
       </View>
       <View style={styles.labelActions}>
         <TouchableOpacity
-          style={[styles.actionBtn, { backgroundColor: theme.primary + '20' }]}
+          style={[styles.actionBtn, { backgroundColor: '#FFFFFF' + '20' }]}
           onPress={() => handleEditLabel(item)}
         >
-          <Text style={[styles.actionText, { color: theme.primary }]}>Edit</Text>
+          <Text style={[styles.actionText, { color: '#000000' }]}>Edit</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionBtn, { backgroundColor: '#FF6B6B20' }]}
@@ -115,32 +113,26 @@ export const LabelManagementScreen: React.FC = () => {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.text }]}>Manage Labels</Text>
+        <Text style={[styles.title, { color: '#000000' }]}>Manage Labels</Text>
         <TouchableOpacity
-          style={[styles.addBtn, { backgroundColor: theme.primary }]}
+          style={[styles.addBtn, { backgroundColor: '#FFFFFF' }]}
           onPress={() => setShowAddForm(true)}
         >
-          <Text style={[styles.addBtnText, { color: theme.background }]}>+ Add Label</Text>
+          <Text style={[styles.addBtnText, { color: '#000000' }]}>+ Add Label</Text>
         </TouchableOpacity>
       </View>
 
       {showAddForm && (
-        <View style={[styles.addForm, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.formTitle, { color: theme.text }]}>
+        <View style={[styles.addForm, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.formTitle, { color: '#000000' }]}>
             {editingLabel ? 'Edit Label' : 'Create New Label'}
           </Text>
           
           <TextInput
-            style={[styles.input, { backgroundColor: theme.background, color: theme.text }]}
-            placeholder="Label name..."
-            placeholderTextColor={theme.textSecondary}
-            value={labelName}
-            onChangeText={setLabelName}
-          />
-
-          <Text style={[styles.colorTitle, { color: theme.text }]}>Choose Color</Text>
+            style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+            placeholder="Label name#000000' }]}>Choose Color</Text>
           <View style={styles.colorGrid}>
             {colorOptions.map((color) => (
               <TouchableOpacity
@@ -157,18 +149,18 @@ export const LabelManagementScreen: React.FC = () => {
 
           <View style={styles.formActions}>
             <TouchableOpacity
-              style={[styles.saveBtn, { backgroundColor: theme.primary }]}
+              style={[styles.saveBtn, { backgroundColor: '#FFFFFF' }]}
               onPress={handleSaveLabel}
             >
-              <Text style={[styles.saveBtnText, { color: theme.background }]}>
+              <Text style={[styles.saveBtnText, { color: '#000000' }]}>
                 {editingLabel ? 'Update' : 'Create'}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.cancelBtn, { backgroundColor: theme.border }]}
+              style={[styles.cancelBtn, { backgroundColor: '#FFFFFF' }]}
               onPress={resetForm}
             >
-              <Text style={[styles.cancelBtnText, { color: theme.text }]}>Cancel</Text>
+              <Text style={[styles.cancelBtnText, { color: '#000000' }]}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -318,3 +310,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
+
+export default LabelManagementScreen;

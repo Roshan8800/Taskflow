@@ -33,13 +33,17 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
   };
 
   return (
-    <View style={styles.container(theme)}>
-      <View style={[styles.inputContainer(theme), isFocused && styles.inputFocused(theme)]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <View style={[
+        styles.inputContainer, 
+        { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' },
+        isFocused && { borderColor: '#CCCCCC' }
+      ]}>
         <Text style={styles.inputIcon}>✨</Text>
         <TextInput
-          style={styles.input(theme)}
+          style={[styles.input, { color: '#000000' }]}
           placeholder="What needs to be done?"
-          placeholderTextColor={theme.colors.textMuted}
+          placeholderTextColor={theme.textSecondary}
           value={title}
           onChangeText={setTitle}
           onSubmitEditing={handleSubmit}
@@ -52,7 +56,7 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
       
       <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
         <TouchableOpacity
-          style={styles.button(theme)}
+          style={[styles.button, { backgroundColor: '#FFFFFF' }]}
           onPress={handleQuickAdd}
           accessibilityRole="button"
           accessibilityLabel="Add new task"
@@ -65,54 +69,42 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flexDirection: 'row',
     padding: 20,
-    backgroundColor: theme.colors.background,
     alignItems: 'center',
-  }),
-  inputContainer: (theme: any) => ({
+  },
+  inputContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: theme.colors.surface,
     borderRadius: 16,
     paddingHorizontal: 16,
     marginRight: 12,
     borderWidth: 2,
-    borderColor: theme.colors.border,
-    ...theme.shadows.sm,
-  }),
-  inputFocused: (theme: any) => ({
-    borderColor: theme.colors.borderFocus,
-  }),
+  },
   inputIcon: {
     fontSize: 18,
     marginRight: 12,
   },
-  input: (theme: any) => ({
+  input: {
     flex: 1,
     height: 52,
     fontSize: 16,
-    color: theme.colors.text,
     fontWeight: '500',
-  }),
-  button: (theme: any) => ({
+  },
+  button: {
     width: 52,
     height: 52,
-    backgroundColor: theme.colors.primary,
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    ...theme.shadows.md,
-  }),
-  buttonDisabled: (theme: any) => ({
-    backgroundColor: theme.colors.textMuted,
-    shadowOpacity: 0,
-  }),
+  },
   buttonIcon: {
     color: '#FFFFFF',
     fontSize: 24,
     fontWeight: '600',
   },
 });
+
+export default AddTodoForm;

@@ -78,7 +78,7 @@ export const generateWeeklyChartData = (todos: Todo[], theme: any) => {
     weekData.push({
       label: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][date.getDay()],
       value: dayTasks.length,
-      color: theme.colors.primary
+      color: '#000000'
     });
   }
   

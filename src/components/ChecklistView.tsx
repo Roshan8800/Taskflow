@@ -9,8 +9,8 @@ interface ChecklistViewProps {
 }
 
 export const ChecklistView: React.FC<ChecklistViewProps> = ({ tasks, onTaskToggle, onTaskEdit }) => {
-  const pendingTasks = tasks.filter(t => !t.completed && !t.isDeleted);
-  const completedTasks = tasks.filter(t => t.completed && !t.isDeleted);
+  const pendingTasks = tasks.filter(t => !t.completed && !t.deletedAt !== null);
+  const completedTasks = tasks.filter(t => t.completed && !t.deletedAt !== null);
   const completionRate = tasks.length > 0 ? (completedTasks.length / tasks.length) * 100 : 0;
 
   const ChecklistItem = ({ task }: { task: Todo }) => (
@@ -77,7 +77,7 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({ tasks, onTaskToggl
 
   return (
     <View style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
-      {/* Progress Header */}
+      {}
       <View style={{ backgroundColor: 'white', padding: 20, marginBottom: 8 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
           <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Daily Checklist</Text>
@@ -100,7 +100,7 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({ tasks, onTaskToggl
         </Text>
       </View>
 
-      {/* Pending Tasks */}
+      {}
       {pendingTasks.length > 0 && (
         <View style={{ backgroundColor: 'white', marginBottom: 8 }}>
           <View style={{ padding: 16, borderBottomWidth: 1, borderBottomColor: '#f0f0f0' }}>
@@ -117,7 +117,7 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({ tasks, onTaskToggl
         </View>
       )}
 
-      {/* Completed Tasks */}
+      {}
       {completedTasks.length > 0 && (
         <View style={{ backgroundColor: 'white' }}>
           <View style={{ padding: 16, borderBottomWidth: 1, borderBottomColor: '#f0f0f0' }}>
@@ -143,3 +143,5 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({ tasks, onTaskToggl
     </View>
   );
 };
+
+export default ChecklistView;

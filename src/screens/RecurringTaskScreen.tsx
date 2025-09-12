@@ -18,11 +18,11 @@ export const RecurringTaskScreen: React.FC = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Recurring Task Settings</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Recurring Task Settings</Text>
 
-      <View style={[styles.section, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Frequency</Text>
+      <View style={[styles.section, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Frequency</Text>
         <View style={styles.frequencyButtons}>
           {['daily', 'weekly', 'monthly'].map((freq) => (
             <TouchableOpacity
@@ -45,8 +45,8 @@ export const RecurringTaskScreen: React.FC = () => {
       </View>
 
       {frequency === 'weekly' && (
-        <View style={[styles.section, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.sectionTitle, { color: theme.text }]}>Days of Week</Text>
+        <View style={[styles.section, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.sectionTitle, { color: '#000000' }]}>Days of Week</Text>
           <View style={styles.daysGrid}>
             {weekDays.map((day, index) => (
               <TouchableOpacity
@@ -55,7 +55,7 @@ export const RecurringTaskScreen: React.FC = () => {
                   styles.dayBtn,
                   { 
                     backgroundColor: selectedDays.includes(index) ? theme.primary : theme.border,
-                    borderColor: theme.border 
+                    borderColor: '#CCCCCC' 
                   }
                 ]}
                 onPress={() => toggleDay(index)}
@@ -72,9 +72,9 @@ export const RecurringTaskScreen: React.FC = () => {
         </View>
       )}
 
-      <View style={[styles.section, { backgroundColor: theme.surface }]}>
+      <View style={[styles.section, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.row}>
-          <Text style={[styles.sectionTitle, { color: theme.text }]}>Enable Recurring</Text>
+          <Text style={[styles.sectionTitle, { color: '#000000' }]}>Enable Recurring</Text>
           <Switch
             value={enabled}
             onValueChange={setEnabled}
@@ -83,8 +83,8 @@ export const RecurringTaskScreen: React.FC = () => {
         </View>
       </View>
 
-      <TouchableOpacity style={[styles.saveBtn, { backgroundColor: theme.primary }]}>
-        <Text style={[styles.saveBtnText, { color: theme.background }]}>Save Recurring Task</Text>
+      <TouchableOpacity style={[styles.saveBtn, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.saveBtnText, { color: '#000000' }]}>Save Recurring Task</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -105,3 +105,5 @@ const styles = StyleSheet.create({
   saveBtn: { padding: 16, borderRadius: 8, alignItems: 'center', marginTop: 20 },
   saveBtnText: { fontSize: 16, fontWeight: '600' },
 });
+
+export default RecurringTaskScreen;

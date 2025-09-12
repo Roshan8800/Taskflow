@@ -27,8 +27,7 @@ export const AchievementsDetailScreen: React.FC = () => {
     { id: '5', name: 'Speed Demon', description: 'Complete 20 tasks in one day', icon: '⚡', category: 'productivity', unlocked: false, progress: 8, target: 20, points: 75 },
     { id: '6', name: 'Project Master', description: 'Complete 10 projects', icon: '🎯', category: 'milestone', unlocked: false, progress: 3, target: 10, points: 150 },
     { id: '7', name: 'Night Owl', description: 'Complete tasks after 10 PM for 5 days', icon: '🦉', category: 'special', unlocked: false, progress: 2, target: 5, points: 30 },
-    { id: '8', name: 'Perfectionist', description: 'Complete all tasks for 3 consecutive days', icon: '✨', category: 'streak', unlocked: false, progress: 1, target: 3, points: 60 },
-  ];
+    { id: '8', name: 'Perfectionist', description: 'Complete all tasks for 3 consecutive days', icon: '✨', category: 'streak', unlocked: false, progress: 1, target: 3, points: 60 }];
 
   const filteredAchievements = achievements.filter(achievement => {
     if (filter === 'unlocked') return achievement.unlocked;
@@ -54,17 +53,17 @@ export const AchievementsDetailScreen: React.FC = () => {
       key={achievement.id} 
       style={[
         styles.achievementCard, 
-        { backgroundColor: theme.surface },
+        { backgroundColor: '#FFFFFF' },
         !achievement.unlocked && { opacity: 0.6 }
       ]}
     >
       <View style={styles.achievementHeader}>
         <Text style={styles.achievementIcon}>{achievement.icon}</Text>
         <View style={styles.achievementInfo}>
-          <Text style={[styles.achievementName, { color: theme.text }]}>
+          <Text style={[styles.achievementName, { color: '#000000' }]}>
             {achievement.name}
           </Text>
-          <Text style={[styles.achievementDesc, { color: theme.textSecondary }]}>
+          <Text style={[styles.achievementDesc, { color: '#000000' }]}>
             {achievement.description}
           </Text>
         </View>
@@ -74,7 +73,7 @@ export const AchievementsDetailScreen: React.FC = () => {
               {achievement.category.toUpperCase()}
             </Text>
           </View>
-          <Text style={[styles.points, { color: theme.primary }]}>
+          <Text style={[styles.points, { color: '#000000' }]}>
             {achievement.points} pts
           </Text>
         </View>
@@ -82,7 +81,7 @@ export const AchievementsDetailScreen: React.FC = () => {
 
       {!achievement.unlocked && achievement.progress && achievement.target && (
         <View style={styles.progressSection}>
-          <View style={[styles.progressBar, { backgroundColor: theme.border }]}>
+          <View style={[styles.progressBar, { backgroundColor: '#FFFFFF' }]}>
             <View 
               style={[
                 styles.progressFill,
@@ -93,14 +92,14 @@ export const AchievementsDetailScreen: React.FC = () => {
               ]} 
             />
           </View>
-          <Text style={[styles.progressText, { color: theme.textSecondary }]}>
+          <Text style={[styles.progressText, { color: '#000000' }]}>
             {achievement.progress} / {achievement.target}
           </Text>
         </View>
       )}
 
       {achievement.unlocked && achievement.unlockedAt && (
-        <Text style={[styles.unlockedDate, { color: theme.textSecondary }]}>
+        <Text style={[styles.unlockedDate, { color: '#000000' }]}>
           Unlocked {achievement.unlockedAt.toLocaleDateString()}
         </Text>
       )}
@@ -108,31 +107,31 @@ export const AchievementsDetailScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Achievements</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Achievements</Text>
 
-      <View style={[styles.summary, { backgroundColor: theme.surface }]}>
+      <View style={[styles.summary, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.summaryItem}>
-          <Text style={[styles.summaryNumber, { color: theme.primary }]}>
+          <Text style={[styles.summaryNumber, { color: '#000000' }]}>
             {unlockedCount}
           </Text>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>
+          <Text style={[styles.summaryLabel, { color: '#000000' }]}>
             Unlocked
           </Text>
         </View>
         <View style={styles.summaryItem}>
-          <Text style={[styles.summaryNumber, { color: theme.primary }]}>
+          <Text style={[styles.summaryNumber, { color: '#000000' }]}>
             {achievements.length}
           </Text>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>
+          <Text style={[styles.summaryLabel, { color: '#000000' }]}>
             Total
           </Text>
         </View>
         <View style={styles.summaryItem}>
-          <Text style={[styles.summaryNumber, { color: theme.primary }]}>
+          <Text style={[styles.summaryNumber, { color: '#000000' }]}>
             {totalPoints}
           </Text>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>
+          <Text style={[styles.summaryLabel, { color: '#000000' }]}>
             Points
           </Text>
         </View>
@@ -192,3 +191,5 @@ const styles = StyleSheet.create({
   progressText: { fontSize: 12, textAlign: 'right' },
   unlockedDate: { fontSize: 12, fontStyle: 'italic' },
 });
+
+export default AchievementsDetailScreen;

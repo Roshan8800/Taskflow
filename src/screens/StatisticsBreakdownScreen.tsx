@@ -20,8 +20,7 @@ export const StatisticsBreakdownScreen: React.FC = () => {
         { name: 'Work', value: 45, color: '#FF6B6B' },
         { name: 'Personal', value: 30, color: '#4ECDC4' },
         { name: 'Learning', value: 15, color: '#FFD93D' },
-        { name: 'Health', value: 10, color: '#96CEB4' },
-      ]
+        { name: 'Health', value: 10, color: '#96CEB4' }]
     },
     time: {
       hours: [2.5, 3.2, 1.8, 4.1, 3.5, 2.9, 3.8],
@@ -36,12 +35,12 @@ export const StatisticsBreakdownScreen: React.FC = () => {
           <View key={index} style={styles.barContainer}>
             <View style={[styles.bar, { 
               height: (value / Math.max(...data)) * 120,
-              backgroundColor: theme.primary 
+              backgroundColor: '#FFFFFF' 
             }]} />
-            <Text style={[styles.barLabel, { color: theme.textSecondary }]}>
+            <Text style={[styles.barLabel, { color: '#000000' }]}>
               {labels[index]}
             </Text>
-            <Text style={[styles.barValue, { color: theme.text }]}>
+            <Text style={[styles.barValue, { color: '#000000' }]}>
               {value}%
             </Text>
           </View>
@@ -61,7 +60,7 @@ export const StatisticsBreakdownScreen: React.FC = () => {
         {data.map((item, index) => (
           <View key={index} style={styles.legendItem}>
             <View style={[styles.legendColor, { backgroundColor: item.color }]} />
-            <Text style={[styles.legendText, { color: theme.text }]}>
+            <Text style={[styles.legendText, { color: '#000000' }]}>
               {item.name} ({item.value}%)
             </Text>
           </View>
@@ -71,8 +70,8 @@ export const StatisticsBreakdownScreen: React.FC = () => {
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Statistics Breakdown</Text>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Statistics Breakdown</Text>
 
       <View style={styles.metrics}>
         {['completion', 'productivity', 'time'].map((metric) => (
@@ -94,10 +93,10 @@ export const StatisticsBreakdownScreen: React.FC = () => {
         ))}
       </View>
 
-      <View style={[styles.chartContainer, { backgroundColor: theme.surface }]}>
+      <View style={[styles.chartContainer, { backgroundColor: '#FFFFFF' }]}>
         {selectedMetric === 'completion' && (
           <View>
-            <Text style={[styles.chartTitle, { color: theme.text }]}>
+            <Text style={[styles.chartTitle, { color: '#000000' }]}>
               Daily Completion Rate (%)
             </Text>
             <BarChart data={data.completion.daily} labels={data.completion.labels} />
@@ -106,7 +105,7 @@ export const StatisticsBreakdownScreen: React.FC = () => {
 
         {selectedMetric === 'productivity' && (
           <View>
-            <Text style={[styles.chartTitle, { color: theme.text }]}>
+            <Text style={[styles.chartTitle, { color: '#000000' }]}>
               Task Distribution by Category
             </Text>
             <PieChart data={data.productivity.categories} />
@@ -115,14 +114,14 @@ export const StatisticsBreakdownScreen: React.FC = () => {
 
         {selectedMetric === 'time' && (
           <View>
-            <Text style={[styles.chartTitle, { color: theme.text }]}>
+            <Text style={[styles.chartTitle, { color: '#000000' }]}>
               Daily Focus Time (Hours)
             </Text>
             <BarChart 
               data={data.time.hours} 
               labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']} 
             />
-            <Text style={[styles.average, { color: theme.textSecondary }]}>
+            <Text style={[styles.average, { color: '#000000' }]}>
               Average: {data.time.average}h per day
             </Text>
           </View>
@@ -130,19 +129,19 @@ export const StatisticsBreakdownScreen: React.FC = () => {
       </View>
 
       <View style={styles.insights}>
-        <Text style={[styles.insightsTitle, { color: theme.text }]}>Key Insights</Text>
-        <View style={[styles.insightCard, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.insightText, { color: theme.text }]}>
+        <Text style={[styles.insightsTitle, { color: '#000000' }]}>Key Insights</Text>
+        <View style={[styles.insightCard, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.insightText, { color: '#000000' }]}>
             📈 Your productivity peaks on Thursdays with 95% completion rate
           </Text>
         </View>
-        <View style={[styles.insightCard, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.insightText, { color: theme.text }]}>
+        <View style={[styles.insightCard, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.insightText, { color: '#000000' }]}>
             🎯 Work tasks make up 45% of your total activity
           </Text>
         </View>
-        <View style={[styles.insightCard, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.insightText, { color: theme.text }]}>
+        <View style={[styles.insightCard, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.insightText, { color: '#000000' }]}>
             ⏰ You maintain consistent focus time averaging 3.1 hours daily
           </Text>
         </View>
@@ -178,3 +177,5 @@ const styles = StyleSheet.create({
   insightCard: { padding: 16, borderRadius: 8, marginBottom: 8 },
   insightText: { fontSize: 14, lineHeight: 20 },
 });
+
+export default StatisticsBreakdownScreen;

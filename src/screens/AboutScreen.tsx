@@ -19,23 +19,23 @@ export const AboutScreen: React.FC = () => {
   };
 
   const InfoRow = ({ label, value }: { label: string; value: string }) => (
-    <View style={[styles.infoRow, { backgroundColor: theme.surface }]}>
-      <Text style={[styles.label, { color: theme.textSecondary }]}>{label}</Text>
-      <Text style={[styles.value, { color: theme.text }]}>{value}</Text>
+    <View style={[styles.infoRow, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.label, { color: '#000000' }]}>{label}</Text>
+      <Text style={[styles.value, { color: '#000000' }]}>{value}</Text>
     </View>
   );
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
         <AppLogo size={80} variant="full" />
-        <Text style={[styles.tagline, { color: theme.textSecondary }]}>
+        <Text style={[styles.tagline, { color: '#000000' }]}>
           Organize your life, one task at a time
         </Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>App Information</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>App Information</Text>
         
         <InfoRow label="Version" value="1.0.0" />
         <InfoRow label="Build" value="2024.01.15" />
@@ -45,7 +45,7 @@ export const AboutScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Developer</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Developer</Text>
         
         <InfoRow label="Created by" value="Roshan 💗" />
         <InfoRow label="Developer" value="Passionate about productivity" />
@@ -54,44 +54,44 @@ export const AboutScreen: React.FC = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Features</Text>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Features</Text>
         
-        <View style={[styles.featureList, { backgroundColor: theme.surface }]}>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Offline-first data storage</Text>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Real-time UI updates</Text>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Project organization</Text>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Task priorities & labels</Text>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Analytics & insights</Text>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Dark/Light themes</Text>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Memory bank system</Text>
-          <Text style={[styles.feature, { color: theme.text }]}>✅ Export/Import data</Text>
+        <View style={[styles.featureList, { backgroundColor: '#FFFFFF' }]}>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Offline-first data storage</Text>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Real-time UI updates</Text>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Project organization</Text>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Task priorities & labels</Text>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Analytics & insights</Text>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Dark/Light themes</Text>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Memory bank system</Text>
+          <Text style={[styles.feature, { color: '#000000' }]}>✅ Export/Import data</Text>
         </View>
       </View>
 
       <View style={styles.actions}>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: theme.primary }]}
+          style={[styles.button, { backgroundColor: '#FFFFFF' }]}
           onPress={openEmail}
         >
-          <Text style={[styles.buttonText, { color: theme.background }]}>Contact Developer</Text>
+          <Text style={[styles.buttonText, { color: '#000000' }]}>Contact Developer</Text>
         </TouchableOpacity>
         
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: theme.surface }]}
+          style={[styles.button, { backgroundColor: '#FFFFFF' }]}
           onPress={showPrivacyPolicy}
         >
-          <Text style={[styles.buttonText, { color: theme.text }]}>Privacy Policy</Text>
+          <Text style={[styles.buttonText, { color: '#000000' }]}>Privacy Policy</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.footer}>
-        <Text style={[styles.footerText, { color: theme.textSecondary }]}>
+        <Text style={[styles.footerText, { color: '#000000' }]}>
           Made with 💗 by Roshan for productivity enthusiasts
         </Text>
-        <Text style={[styles.copyright, { color: theme.textSecondary }]}>
+        <Text style={[styles.copyright, { color: '#000000' }]}>
           © 2024 Roshan. All rights reserved.
         </Text>
-        <Text style={[styles.dedication, { color: theme.primary }]}>
+        <Text style={[styles.dedication, { color: '#000000' }]}>
           🚀 Crafted with passion for better productivity 🚀
         </Text>
       </View>
@@ -185,3 +185,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export default AboutScreen;

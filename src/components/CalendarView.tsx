@@ -13,8 +13,8 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, onTaskEdit })
 
   const getTasksForDate = (date: Date) => {
     return tasks.filter(task => {
-      if (!task.dueDate) return false;
-      const taskDate = new Date(task.dueDate);
+      if (!task.dueAt) return false;
+      const taskDate = new Date(task.dueAt);
       return taskDate.toDateString() === date.toDateString();
     });
   };
@@ -263,3 +263,5 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, onTaskEdit })
     </View>
   );
 };
+
+export default CalendarView;

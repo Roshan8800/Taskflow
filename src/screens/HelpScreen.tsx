@@ -10,27 +10,27 @@ export const HelpScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container(theme)}>
-      <View style={styles.section(theme)}>
-        <Text style={styles.sectionTitle(theme)}>Help & Feedback</Text>
+    <View style={[styles.container]}>
+      <View style={[styles.section]}>
+        <Text style={[styles.sectionTitle]}>Help & Feedback</Text>
         
         <View style={styles.helpItem}>
-          <Text style={styles.helpTitle(theme)}>Getting Started</Text>
-          <Text style={styles.helpText(theme)}>
+          <Text style={[styles.helpTitle]}>Getting Started</Text>
+          <Text style={[styles.helpText]}>
             Create tasks, organize by projects, and track your progress.
           </Text>
         </View>
         
         <View style={styles.helpItem}>
-          <Text style={styles.helpTitle(theme)}>Managing Tasks</Text>
-          <Text style={styles.helpText(theme)}>
+          <Text style={[styles.helpTitle]}>Managing Tasks</Text>
+          <Text style={[styles.helpText]}>
             Tap to complete tasks, swipe to delete, or use the calendar view.
           </Text>
         </View>
         
-        <TouchableOpacity style={styles.feedbackButton(theme)} onPress={handleFeedback}>
+        <TouchableOpacity style={[styles.feedbackButton]} onPress={handleFeedback}>
           <Text style={styles.feedbackIcon}>💬</Text>
-          <Text style={styles.feedbackText(theme)}>Send Feedback</Text>
+          <Text style={[styles.feedbackText]}>Send Feedback</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -38,45 +38,45 @@ export const HelpScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     padding: 20,
-  }),
-  section: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  },
+  section: {
+    backgroundColor: '#000000',
     borderRadius: 16,
     padding: 20,
-    ...theme.shadows.md,
-  }),
-  sectionTitle: (theme: any) => ({
+    ,
+  },
+  sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 20,
-  }),
+  },
   helpItem: {
     marginBottom: 20,
   },
-  helpTitle: (theme: any) => ({
+  helpTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  helpText: (theme: any) => ({
+  },
+  helpText: {
     fontSize: 14,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     lineHeight: 20,
-  }),
-  feedbackButton: (theme: any) => ({
+  },
+  feedbackButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: theme.colors.primary,
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     marginTop: 8,
-  }),
+  },
   feedbackIcon: {
     fontSize: 20,
     marginRight: 12,
@@ -87,3 +87,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
+
+export default HelpScreen;

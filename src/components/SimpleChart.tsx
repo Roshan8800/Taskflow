@@ -33,8 +33,8 @@ export const SimpleChart: React.FC<SimpleChartProps> = ({ data, type, title }) =
               ]}
             />
           </View>
-          <Text style={styles.barLabel(theme)}>{item.label}</Text>
-          <Text style={styles.barValue(theme)}>{item.value}</Text>
+          <Text style={[styles.barLabel]}>{item.label}</Text>
+          <Text style={[styles.barValue]}>{item.value}</Text>
         </View>
       ))}
     </View>
@@ -51,17 +51,17 @@ export const SimpleChart: React.FC<SimpleChartProps> = ({ data, type, title }) =
             return (
               <View key={index} style={styles.pieItem}>
                 <View style={[styles.pieDot, { backgroundColor: item.color }]} />
-                <Text style={styles.pieLabel(theme)}>{item.label}</Text>
-                <Text style={styles.pieValue(theme)}>{percentage.toFixed(1)}%</Text>
+                <Text style={[styles.pieLabel]}>{item.label}</Text>
+                <Text style={[styles.pieValue]}>{percentage.toFixed(1)}%</Text>
               </View>
             );
           })}
         </View>
         
         <View style={styles.pieVisual}>
-          <View style={styles.pieCircle(theme)}>
-            <Text style={styles.pieTotal(theme)}>{total}</Text>
-            <Text style={styles.pieTotalLabel(theme)}>Total</Text>
+          <View style={[styles.pieCircle]}>
+            <Text style={[styles.pieTotal]}>{total}</Text>
+            <Text style={[styles.pieTotalLabel]}>Total</Text>
           </View>
         </View>
       </View>
@@ -69,28 +69,28 @@ export const SimpleChart: React.FC<SimpleChartProps> = ({ data, type, title }) =
   };
 
   return (
-    <View style={styles.container(theme)}>
-      <Text style={styles.title(theme)}>{title}</Text>
+    <View style={[styles.container]}>
+      <Text style={[styles.title]}>{title}</Text>
       {type === 'bar' ? renderBarChart() : renderPieChart()}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  container: {
+    backgroundColor: '#000000',
     borderRadius: 16,
     padding: 20,
     marginBottom: 16,
-    ...theme.shadows.md,
-  }),
-  title: (theme: any) => ({
+    ,
+  },
+  title: {
     fontSize: 18,
     fontWeight: '600',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 16,
     textAlign: 'center',
-  }),
+  },
   barChart: {
     flexDirection: 'row',
     alignItems: 'flex-end',
@@ -112,16 +112,16 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     minHeight: 4,
   },
-  barLabel: (theme: any) => ({
+  barLabel: {
     fontSize: 12,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     marginBottom: 4,
-  }),
-  barValue: (theme: any) => ({
+  },
+  barValue: {
     fontSize: 14,
     fontWeight: '600',
-    color: theme.colors.text,
-  }),
+    color: '#000000',
+  },
   pieChart: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -140,35 +140,37 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     marginRight: 8,
   },
-  pieLabel: (theme: any) => ({
+  pieLabel: {
     flex: 1,
     fontSize: 14,
-    color: theme.colors.text,
-  }),
-  pieValue: (theme: any) => ({
+    color: '#000000',
+  },
+  pieValue: {
     fontSize: 14,
     fontWeight: '600',
-    color: theme.colors.text,
-  }),
+    color: '#000000',
+  },
   pieVisual: {
     alignItems: 'center',
     marginLeft: 20,
   },
-  pieCircle: (theme: any) => ({
+  pieCircle: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: theme.colors.surfaceSecondary,
+    backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center',
-  }),
-  pieTotal: (theme: any) => ({
+  },
+  pieTotal: {
     fontSize: 20,
     fontWeight: '700',
-    color: theme.colors.text,
-  }),
-  pieTotalLabel: (theme: any) => ({
+    color: '#000000',
+  },
+  pieTotalLabel: {
     fontSize: 12,
-    color: theme.colors.textSecondary,
-  }),
+    color: '#000000',
+  },
 });
+
+export default SimpleChart;

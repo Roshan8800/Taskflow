@@ -61,7 +61,7 @@ export const MultiSelectScreen: React.FC<MultiSelectScreenProps> = ({ visible, o
   };
 
   const bulkMove = () => {
-    Alert.alert('Move Tasks', 'Move to project feature coming soon!');
+    Alert.alert('Move Tasks', 'Move to projectId feature coming soon!');
   };
 
   const renderTodoItem = ({ item }: { item: Todo }) => {
@@ -71,22 +71,22 @@ export const MultiSelectScreen: React.FC<MultiSelectScreenProps> = ({ visible, o
       <TouchableOpacity
         style={[
           styles.todoItem,
-          { backgroundColor: theme.surface },
-          isSelected && { backgroundColor: theme.primary + '20', borderColor: theme.primary, borderWidth: 2 }
+          { backgroundColor: '#FFFFFF' },
+          isSelected && { backgroundColor: '#FFFFFF' + '20', borderColor: '#CCCCCC', borderWidth: 2 }
         ]}
         onPress={() => toggleSelection(item._id.toString())}
       >
         <View style={[
           styles.checkbox,
-          { borderColor: theme.border },
-          isSelected && { backgroundColor: theme.primary, borderColor: theme.primary }
+          { borderColor: '#CCCCCC' },
+          isSelected && { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' }
         ]}>
-          {isSelected && <Text style={[styles.checkmark, { color: theme.background }]}>✓</Text>}
+          {isSelected && <Text style={[styles.checkmark, { color: '#000000' }]}>✓</Text>}
         </View>
         <View style={styles.todoContent}>
-          <Text style={[styles.todoTitle, { color: theme.text }]}>{item.title}</Text>
-          {item.project && (
-            <Text style={[styles.todoProject, { color: theme.textSecondary }]}>{item.project}</Text>
+          <Text style={[styles.todoTitle, { color: '#000000' }]}>{item.title}</Text>
+          {item.projectId && (
+            <Text style={[styles.todoProject, { color: '#000000' }]}>{item.projectId}</Text>
           )}
         </View>
         <View style={[styles.priorityBadge, { backgroundColor: getPriorityColor(item.priority) }]}>
@@ -107,24 +107,24 @@ export const MultiSelectScreen: React.FC<MultiSelectScreenProps> = ({ visible, o
 
   return (
     <View style={[styles.overlay, { backgroundColor: 'rgba(0,0,0,0.5)' }]}>
-      <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.header}>
-          <Text style={[styles.title, { color: theme.text }]}>Multi-Select Mode</Text>
+          <Text style={[styles.title, { color: '#000000' }]}>Multi-Select Mode</Text>
           <TouchableOpacity onPress={onClose}>
-            <Text style={[styles.closeBtn, { color: theme.primary }]}>Done</Text>
+            <Text style={[styles.closeBtn, { color: '#000000' }]}>Done</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.selectionInfo}>
-          <Text style={[styles.selectionText, { color: theme.text }]}>
+          <Text style={[styles.selectionText, { color: '#000000' }]}>
             {selectedIds.size} of {todos.length} selected
           </Text>
           <View style={styles.selectionActions}>
             <TouchableOpacity onPress={selectAll}>
-              <Text style={[styles.actionText, { color: theme.primary }]}>Select All</Text>
+              <Text style={[styles.actionText, { color: '#000000' }]}>Select All</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={clearSelection}>
-              <Text style={[styles.actionText, { color: theme.primary }]}>Clear</Text>
+              <Text style={[styles.actionText, { color: '#000000' }]}>Clear</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -138,7 +138,7 @@ export const MultiSelectScreen: React.FC<MultiSelectScreenProps> = ({ visible, o
         />
 
         {selectedIds.size > 0 && (
-          <View style={[styles.actionBar, { backgroundColor: theme.surface }]}>
+          <View style={[styles.actionBar, { backgroundColor: '#FFFFFF' }]}>
             <TouchableOpacity
               style={[styles.actionBtn, { backgroundColor: '#6BCF7F' }]}
               onPress={bulkComplete}
@@ -146,7 +146,7 @@ export const MultiSelectScreen: React.FC<MultiSelectScreenProps> = ({ visible, o
               <Text style={styles.actionBtnText}>Complete</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.actionBtn, { backgroundColor: theme.primary }]}
+              style={[styles.actionBtn, { backgroundColor: '#FFFFFF' }]}
               onPress={bulkMove}
             >
               <Text style={styles.actionBtnText}>Move</Text>
@@ -290,3 +290,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export default MultiSelectScreen;

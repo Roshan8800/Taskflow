@@ -40,22 +40,22 @@ export const SubtasksScreen: React.FC<SubtasksScreenProps> = ({
   const progressPercentage = subtasks.length > 0 ? (completedCount / subtasks.length) * 100 : 0;
 
   const renderSubtask = ({ item }: { item: Subtask }) => (
-    <View style={[styles.subtaskItem, { backgroundColor: theme.surface }]}>
+    <View style={[styles.subtaskItem, { backgroundColor: '#FFFFFF' }]}>
       <TouchableOpacity
         style={[
           styles.checkbox,
-          { borderColor: theme.border },
-          item.completed && { backgroundColor: theme.primary, borderColor: theme.primary }
+          { borderColor: '#CCCCCC' },
+          item.completed && { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' }
         ]}
         onPress={() => onToggleSubtask(item._id.toString())}
       >
-        {item.completed && <Text style={[styles.checkmark, { color: theme.background }]}>✓</Text>}
+        {item.completed && <Text style={[styles.checkmark, { color: '#000000' }]}>✓</Text>}
       </TouchableOpacity>
       
       <Text style={[
         styles.subtaskTitle,
-        { color: theme.text },
-        item.completed && { textDecorationLine: 'line-through', color: theme.textSecondary }
+        { color: '#000000' },
+        item.completed && { textDecorationLine: 'line-through', color: '#000000' }
       ]}>
         {item.title}
       </Text>
@@ -70,68 +70,60 @@ export const SubtasksScreen: React.FC<SubtasksScreenProps> = ({
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={onBack}>
-          <Text style={[styles.backBtn, { color: theme.primary }]}>← Back</Text>
+          <Text style={[styles.backBtn, { color: '#000000' }]}>← Back</Text>
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]} numberOfLines={1}>
+        <Text style={[styles.title, { color: '#000000' }]} numberOfLines={1}>
           {taskTitle}
         </Text>
       </View>
 
-      <View style={[styles.progressCard, { backgroundColor: theme.surface }]}>
+      <View style={[styles.progressCard, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.progressHeader}>
-          <Text style={[styles.progressTitle, { color: theme.text }]}>Subtasks Progress</Text>
-          <Text style={[styles.progressCount, { color: theme.textSecondary }]}>
+          <Text style={[styles.progressTitle, { color: '#000000' }]}>Subtasks Progress</Text>
+          <Text style={[styles.progressCount, { color: '#000000' }]}>
             {completedCount} of {subtasks.length} completed
           </Text>
         </View>
-        <View style={[styles.progressBar, { backgroundColor: theme.border }]}>
+        <View style={[styles.progressBar, { backgroundColor: '#FFFFFF' }]}>
           <View 
             style={[
               styles.progressFill,
-              { width: `${progressPercentage}%`, backgroundColor: theme.primary }
+              { width: `${progressPercentage}%`, backgroundColor: '#FFFFFF' }
             ]} 
           />
         </View>
-        <Text style={[styles.progressPercent, { color: theme.primary }]}>
+        <Text style={[styles.progressPercent, { color: '#000000' }]}>
           {Math.round(progressPercentage)}%
         </Text>
       </View>
 
       <View style={styles.addSection}>
         {showAddForm ? (
-          <View style={[styles.addForm, { backgroundColor: theme.surface }]}>
+          <View style={[styles.addForm, { backgroundColor: '#FFFFFF' }]}>
             <TextInput
-              style={[styles.input, { backgroundColor: theme.background, color: theme.text }]}
-              placeholder="Enter subtask title..."
-              placeholderTextColor={theme.textSecondary}
-              value={newSubtaskTitle}
-              onChangeText={setNewSubtaskTitle}
-              autoFocus
-            />
-            <View style={styles.formActions}>
-              <TouchableOpacity
-                style={[styles.addBtn, { backgroundColor: theme.primary }]}
+              style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+              placeholder="Enter subtask title#FFFFFF' }]}
                 onPress={handleAddSubtask}
               >
-                <Text style={[styles.addBtnText, { color: theme.background }]}>Add</Text>
+                <Text style={[styles.addBtnText, { color: '#000000' }]}>Add</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.cancelBtn, { backgroundColor: theme.border }]}
+                style={[styles.cancelBtn, { backgroundColor: '#FFFFFF' }]}
                 onPress={() => setShowAddForm(false)}
               >
-                <Text style={[styles.cancelBtnText, { color: theme.text }]}>Cancel</Text>
+                <Text style={[styles.cancelBtnText, { color: '#000000' }]}>Cancel</Text>
               </TouchableOpacity>
             </View>
           </View>
         ) : (
           <TouchableOpacity
-            style={[styles.addButton, { backgroundColor: theme.primary }]}
+            style={[styles.addButton, { backgroundColor: '#FFFFFF' }]}
             onPress={() => setShowAddForm(true)}
           >
-            <Text style={[styles.addButtonText, { color: theme.background }]}>+ Add Subtask</Text>
+            <Text style={[styles.addButtonText, { color: '#000000' }]}>+ Add Subtask</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -144,7 +136,7 @@ export const SubtasksScreen: React.FC<SubtasksScreenProps> = ({
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <View style={styles.emptyState}>
-            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
+            <Text style={[styles.emptyText, { color: '#000000' }]}>
               No subtasks yet. Add one to break down this task!
             </Text>
           </View>
@@ -298,3 +290,5 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
 });
+
+export default SubtasksScreen;

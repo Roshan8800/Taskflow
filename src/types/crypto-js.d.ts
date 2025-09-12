@@ -7,3 +7,5 @@ declare module 'crypto-js' {
     Utf8: any;
   };
 }
+
+export default AES;

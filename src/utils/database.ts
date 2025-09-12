@@ -21,8 +21,7 @@ export const initializeDefaultData = async (userId: string): Promise<void> => {
         { name: 'Work', color: '#FF6B6B', icon: '💼' },
         { name: 'Personal', color: '#4ECDC4', icon: '👤' },
         { name: 'Ideas', color: '#FFD93D', icon: '💡' },
-        { name: 'Notes', color: '#96CEB4', icon: '📝' },
-      ];
+        { name: 'Notes', color: '#96CEB4', icon: '📝' }];
 
       categories.forEach(cat => {
         realm.create<MemoryCategory>('MemoryCategory', {

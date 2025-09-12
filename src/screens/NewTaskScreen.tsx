@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useTheme } from '../hooks/useTheme';
@@ -42,44 +43,33 @@ export const NewTaskScreen: React.FC = () => {
 
   const getPriorityColor = (p: string) => {
     switch (p) {
-      case 'high': return theme.colors.error;
-      case 'medium': return theme.colors.warning;
-      case 'low': return theme.colors.success;
-      default: return theme.colors.textMuted;
+      case 'high': return theme.error;
+      case 'medium': return theme.warning;
+      case 'low': return theme.success;
+      default: return theme.textSecondary;
     }
   };
 
   return (
-    <ScrollView style={styles.container(theme)}>
-      <View style={styles.form(theme)}>
-        <Text style={styles.sectionTitle(theme)}>Task Details</Text>
+    <ScrollView style={[styles.container]}>
+      <View style={[styles.form]}>
+        <Text style={[styles.sectionTitle]}>Task Details</Text>
         
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Title</Text>
+          <Text style={[styles.label]}>Title</Text>
           <TextInput
-            style={styles.input(theme)}
-            placeholder="Enter task title..."
-            placeholderTextColor={theme.colors.textMuted}
-            value={title}
-            onChangeText={setTitle}
-            autoFocus
-          />
-        </View>
-
-        <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Priority</Text>
-          <View style={styles.priorityButtons}>
-            {['low', 'medium', 'high'].map(p => (
+            style={[styles.input]}
+            placeholder="Enter task titlelow', 'medium', 'high'].map(p => (
               <TouchableOpacity
                 key={p}
                 style={[
-                  styles.priorityButton(theme),
+                  styles.priorityButton,
                   priority === p && { backgroundColor: getPriorityColor(p) }
                 ]}
                 onPress={() => setPriority(p)}
               >
                 <Text style={[
-                  styles.priorityText(theme),
+                  styles.priorityText,
                   priority === p && { color: '#FFFFFF' }
                 ]}>
                   {p.charAt(0).toUpperCase() + p.slice(1)}
@@ -90,37 +80,37 @@ export const NewTaskScreen: React.FC = () => {
         </View>
 
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Project</Text>
-          <View style={styles.projectButtons}>
+          <Text style={[styles.label]}>Project</Text>
+          <View style={styles.projectIdButtons}>
             <TouchableOpacity
               style={[
-                styles.projectButton(theme),
-                selectedProjectId === '' && styles.activeProject(theme)
+                styles.projectIdButton,
+                selectedProjectId === '' && styles.activeProject
               ]}
               onPress={() => setSelectedProjectId('')}
             >
               <Text style={[
-                styles.projectText(theme),
+                styles.projectIdText,
                 selectedProjectId === '' && { color: '#FFFFFF' }
               ]}>
                 None
               </Text>
             </TouchableOpacity>
-            {projects.map(project => (
+            {projects.map(projectId => (
               <TouchableOpacity
-                key={project._id.toString()}
+                key={projectId._id.toString()}
                 style={[
-                  styles.projectButton(theme),
-                  selectedProjectId === project._id.toString() && styles.activeProject(theme)
+                  styles.projectIdButton,
+                  selectedProjectId === projectId._id.toString() && styles.activeProject
                 ]}
-                onPress={() => setSelectedProjectId(project._id.toString())}
+                onPress={() => setSelectedProjectId(projectId._id.toString())}
               >
-                <View style={[styles.projectColorDot, { backgroundColor: project.color }]} />
+                <View style={[styles.projectIdColorDot, { backgroundColor: projectId.color }]} />
                 <Text style={[
-                  styles.projectText(theme),
-                  selectedProjectId === project._id.toString() && { color: '#FFFFFF' }
+                  styles.projectIdText,
+                  selectedProjectId === projectId._id.toString() && { color: '#FFFFFF' }
                 ]} numberOfLines={1}>
-                  {project.name}
+                  {projectId.name}
                 </Text>
               </TouchableOpacity>
             ))}
@@ -130,17 +120,17 @@ export const NewTaskScreen: React.FC = () => {
 
       <View style={styles.actions}>
         <TouchableOpacity
-          style={styles.saveButton(theme)}
+          style={[styles.saveButton]}
           onPress={handleSave}
         >
           <Text style={styles.saveText}>Create Task</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.cancelButton(theme)}
+          style={[styles.cancelButton]}
           onPress={() => navigation.goBack()}
         >
-          <Text style={styles.cancelText(theme)}>Cancel</Text>
+          <Text style={[styles.cancelText]}>Cancel</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -148,108 +138,110 @@ export const NewTaskScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     padding: 20,
-  }),
-  form: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  },
+  form: {
+    backgroundColor: '#000000',
     borderRadius: 16,
     padding: 20,
     marginBottom: 20,
-    ...theme.shadows.md,
-  }),
-  sectionTitle: (theme: any) => ({
+    ,
+  },
+  sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 20,
-  }),
+  },
   inputGroup: {
     marginBottom: 20,
   },
-  label: (theme: any) => ({
+  label: {
     fontSize: 16,
     fontWeight: '500',
-    color: theme.colors.textSecondary,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  input: (theme: any) => ({
-    backgroundColor: theme.colors.background,
+  },
+  input: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    color: theme.colors.text,
+    color: '#000000',
     borderWidth: 1,
-    borderColor: theme.colors.border,
-  }),
+    borderColor: '#000000',
+  },
   priorityButtons: {
     flexDirection: 'row',
     gap: 8,
   },
-  priorityButton: (theme: any) => ({
+  priorityButton: {
     flex: 1,
-    backgroundColor: theme.colors.surfaceSecondary,
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 12,
     alignItems: 'center',
-  }),
-  priorityText: (theme: any) => ({
+  },
+  priorityText: {
     fontSize: 14,
-    color: theme.colors.text,
+    color: '#000000',
     fontWeight: '500',
-  }),
+  },
   projectButtons: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,
   },
-  projectButton: (theme: any) => ({
-    backgroundColor: theme.colors.surfaceSecondary,
+  projectButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 12,
     alignItems: 'center',
     flexDirection: 'row',
     minWidth: 80,
-  }),
-  activeProject: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
-  }),
+  },
+  activeProject: {
+    backgroundColor: '#000000',
+  },
   projectColorDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
     marginRight: 6,
   },
-  projectText: (theme: any) => ({
+  projectText: {
     fontSize: 14,
-    color: theme.colors.text,
+    color: '#000000',
     fontWeight: '500',
-  }),
+  },
   actions: {
     gap: 12,
   },
-  saveButton: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
+  saveButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
+  },
   saveText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
   },
-  cancelButton: (theme: any) => ({
-    backgroundColor: theme.colors.surfaceSecondary,
+  cancelButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
-  cancelText: (theme: any) => ({
-    color: theme.colors.text,
+  },
+  cancelText: {
+    color: '#000000',
     fontSize: 16,
     fontWeight: '500',
-  }),
+  },
 });
+
+export default NewTaskScreen;

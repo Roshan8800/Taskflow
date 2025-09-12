@@ -42,8 +42,7 @@ export const MemoryBankScreen: React.FC = () => {
       'Are you sure you want to delete this memory?',
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Delete', style: 'destructive', onPress: () => deleteMemory(id) },
-      ]
+        { text: 'Delete', style: 'destructive', onPress: () => deleteMemory(id) }]
     );
   };
 
@@ -57,9 +56,9 @@ export const MemoryBankScreen: React.FC = () => {
   };
 
   const renderMemoryItem = ({ item }: { item: MemoryItem }) => (
-    <View style={[styles.memoryCard, { backgroundColor: theme.surface }]}>
+    <View style={[styles.memoryCard, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.memoryHeader}>
-        <Text style={[styles.memoryTitle, { color: theme.text }]}>{item.title}</Text>
+        <Text style={[styles.memoryTitle, { color: '#000000' }]}>{item.title}</Text>
         <View style={styles.memoryMeta}>
           <View style={[styles.priorityBadge, { backgroundColor: getPriorityColor(item.priority) }]}>
             <Text style={styles.priorityText}>{item.priority.toUpperCase()}</Text>
@@ -70,13 +69,13 @@ export const MemoryBankScreen: React.FC = () => {
         </View>
       </View>
       
-      <Text style={[styles.memoryContent, { color: theme.textSecondary }]} numberOfLines={3}>
+      <Text style={[styles.memoryContent, { color: '#000000' }]} numberOfLines={3}>
         {item.content}
       </Text>
       
       <View style={styles.memoryFooter}>
-        <Text style={[styles.category, { color: theme.primary }]}>{item.category}</Text>
-        <Text style={[styles.date, { color: theme.textSecondary }]}>
+        <Text style={[styles.category, { color: '#000000' }]}>{item.category}</Text>
+        <Text style={[styles.date, { color: '#000000' }]}>
           {item.updatedAt.toLocaleDateString()}
         </Text>
       </View>
@@ -84,8 +83,8 @@ export const MemoryBankScreen: React.FC = () => {
       {item.tags.length > 0 && (
         <View style={styles.tagsContainer}>
           {item.tags.map((tag, index) => (
-            <View key={index} style={[styles.tag, { backgroundColor: theme.primary + '20' }]}>
-              <Text style={[styles.tagText, { color: theme.primary }]}>#{tag}</Text>
+            <View key={index} style={[styles.tag, { backgroundColor: '#FFFFFF' + '20' }]}>
+              <Text style={[styles.tagText, { color: '#000000' }]}>#{tag}</Text>
             </View>
           ))}
         </View>
@@ -95,60 +94,39 @@ export const MemoryBankScreen: React.FC = () => {
 
   if (loading) {
     return (
-      <View style={[styles.container, styles.centered, { backgroundColor: theme.background }]}>
-        <Text style={[styles.loadingText, { color: theme.text }]}>Loading memories...</Text>
+      <View style={[styles.container, styles.centered, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.loadingText, { color: '#000000' }]}>Loading memories...</Text>
       </View>
     );
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.header}>
         <TextInput
-          style={[styles.searchInput, { backgroundColor: theme.surface, color: theme.text }]}
-          placeholder="Search memories..."
-          placeholderTextColor={theme.textSecondary}
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-        <TouchableOpacity
-          style={[styles.addBtn, { backgroundColor: theme.primary }]}
+          style={[styles.searchInput, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+          placeholder="Search memories#FFFFFF' }]}
           onPress={() => setShowAddForm(true)}
         >
-          <Text style={[styles.addBtnText, { color: theme.background }]}>+</Text>
+          <Text style={[styles.addBtnText, { color: '#000000' }]}>+</Text>
         </TouchableOpacity>
       </View>
 
       {showAddForm && (
-        <View style={[styles.addForm, { backgroundColor: theme.surface }]}>
+        <View style={[styles.addForm, { backgroundColor: '#FFFFFF' }]}>
           <TextInput
-            style={[styles.input, { backgroundColor: theme.background, color: theme.text }]}
-            placeholder="Memory title..."
-            placeholderTextColor={theme.textSecondary}
-            value={newMemory.title}
-            onChangeText={(text) => setNewMemory({ ...newMemory, title: text })}
-          />
-          <TextInput
-            style={[styles.textArea, { backgroundColor: theme.background, color: theme.text }]}
-            placeholder="Memory content..."
-            placeholderTextColor={theme.textSecondary}
-            value={newMemory.content}
-            onChangeText={(text) => setNewMemory({ ...newMemory, content: text })}
-            multiline
-            numberOfLines={4}
-          />
-          <View style={styles.formActions}>
-            <TouchableOpacity
-              style={[styles.saveBtn, { backgroundColor: theme.primary }]}
+            style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
+            placeholder="Memory title#FFFFFF', color: '#000000' }]}
+            placeholder="Memory content#FFFFFF' }]}
               onPress={handleAddMemory}
             >
-              <Text style={[styles.saveBtnText, { color: theme.background }]}>Save</Text>
+              <Text style={[styles.saveBtnText, { color: '#000000' }]}>Save</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.cancelBtn, { backgroundColor: theme.border }]}
+              style={[styles.cancelBtn, { backgroundColor: '#FFFFFF' }]}
               onPress={() => setShowAddForm(false)}
             >
-              <Text style={[styles.cancelBtnText, { color: theme.text }]}>Cancel</Text>
+              <Text style={[styles.cancelBtnText, { color: '#000000' }]}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -313,3 +291,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
+
+export default MemoryBankScreen;

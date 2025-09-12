@@ -36,7 +36,7 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
           {
             id: '1',
             title: 'Task Reminder',
-            message: 'Complete project presentation due today',
+            message: 'Complete projectId presentation due today',
             type: 'reminder',
             timestamp: new Date(Date.now() - 1000 * 60 * 30),
             read: false,
@@ -64,8 +64,7 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
             type: 'system',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24),
             read: true,
-          },
-        ];
+          }];
         setNotifications(demoNotifications);
         await AsyncStorage.setItem('notifications', JSON.stringify(demoNotifications));
       }
@@ -140,7 +139,7 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
             <Text style={{
               fontSize: 16,
               fontWeight: '600',
-              color: theme.text,
+              color: '#000000',
               flex: 1,
             }}>
               {item.title}
@@ -150,14 +149,14 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
                 width: 8,
                 height: 8,
                 borderRadius: 4,
-                backgroundColor: theme.primary,
+                backgroundColor: '#FFFFFF',
                 marginLeft: 8,
               }} />
             )}
           </View>
           <Text style={{
             fontSize: 14,
-            color: theme.textSecondary,
+            color: '#000000',
             lineHeight: 20,
             marginBottom: 8,
           }}>
@@ -165,7 +164,7 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
           </Text>
           <Text style={{
             fontSize: 12,
-            color: theme.textSecondary,
+            color: '#000000',
           }}>
             {item.timestamp.toLocaleString()}
           </Text>
@@ -175,9 +174,9 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
   );
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.background }}>
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={{
-        backgroundColor: theme.surface,
+        backgroundColor: '#FFFFFF',
         paddingTop: 50,
         paddingHorizontal: 16,
         paddingBottom: 16,
@@ -186,13 +185,13 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
       }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{ fontSize: 18, color: theme.text }}>←</Text>
+            <Text style={{ fontSize: 18, color: '#000000' }}>←</Text>
           </TouchableOpacity>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: theme.text }}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>
             Notifications {unreadCount > 0 && `(${unreadCount})`}
           </Text>
           <TouchableOpacity onPress={markAllAsRead}>
-            <Text style={{ fontSize: 14, color: theme.primary, fontWeight: '600' }}>
+            <Text style={{ fontSize: 14, color: '#000000', fontWeight: '600' }}>
               Mark All Read
             </Text>
           </TouchableOpacity>
@@ -244,7 +243,7 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
         ListEmptyComponent={
           <View style={{ alignItems: 'center', marginTop: 50 }}>
             <Text style={{ fontSize: 48, marginBottom: 16 }}>🔔</Text>
-            <Text style={{ fontSize: 18, color: theme.textSecondary, textAlign: 'center' }}>
+            <Text style={{ fontSize: 18, color: '#000000', textAlign: 'center' }}>
               {filter === 'unread' ? 'No unread notifications' : 'No notifications yet'}
             </Text>
           </View>
@@ -256,7 +255,7 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
           <TouchableOpacity
             onPress={clearAll}
             style={{
-              backgroundColor: theme.error,
+              backgroundColor: '#FFFFFF',
               padding: 12,
               borderRadius: 8,
               alignItems: 'center',
@@ -271,3 +270,5 @@ export const NotificationCenterScreen: React.FC<{ navigation: any }> = ({ naviga
     </View>
   );
 };
+
+export default NotificationCenterScreen;

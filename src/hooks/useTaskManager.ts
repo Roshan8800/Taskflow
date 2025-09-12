@@ -11,7 +11,7 @@ import { createNextOccurrence, RepeatRule } from '../utils/repeatLogic';
 export interface TaskFilters {
   priority?: string[];
   labels?: string[];
-  project?: string;
+  projectId?: string;
   dueDateRange?: { start: Date; end: Date };
   completed?: boolean;
   archived?: boolean;
@@ -52,7 +52,7 @@ export const useTaskManager = () => {
       }
 
       if (filters.project) {
-        query += ' AND project == $' + params.length;
+        query += ' AND projectId == $' + params.length;
         params.push(filters.project);
       }
 
@@ -74,11 +74,11 @@ export const useTaskManager = () => {
       }
 
       // Filter by due date range
-      if (filters.dueDateRange) {
+      if (filters.dueAtRange) {
         filteredTasks = filteredTasks.filter(task => 
-          task.dueDate && 
-          task.dueDate >= filters.dueDateRange!.start && 
-          task.dueDate <= filters.dueDateRange!.end
+          task.dueAt && 
+          task.dueAt >= filters.dueAtRange!.start && 
+          task.dueAt <= filters.dueAtRange!.end
         );
       }
 
@@ -95,7 +95,7 @@ export const useTaskManager = () => {
     title: string;
     description?: string;
     priority?: 'low' | 'medium' | 'high' | 'urgent';
-    project?: string;
+    projectId?: string;
     labels?: string[];
     color?: string;
     dueDate?: Date;
@@ -115,10 +115,10 @@ export const useTaskManager = () => {
           title: taskData.title,
           description: taskData.description || '',
           priority: taskData.priority || 'medium',
-          project: taskData.project || '',
+          projectId: taskData.projectId || '',
           labels: taskData.labels || [],
           color: taskData.color || getPriorityColor(taskData.priority || 'medium'),
-          dueDate: taskData.dueDate,
+          dueAt: taskData.dueAt,
           reminderDate: taskData.reminderDate,
           notes: taskData.notes || '',
           isRecurring: taskData.isRecurring || false,
@@ -211,7 +211,7 @@ export const useTaskManager = () => {
   const createRecurringInstances = (baseTask: Todo) => {
     if (!baseTask.isRecurring || !baseTask.recurringType) return;
 
-    const realm = getRealm();
+    const realm = await getRealm();
     const instances = generateRecurringDates(baseTask);
     
     instances.forEach(date => {
@@ -221,10 +221,10 @@ export const useTaskManager = () => {
           title: baseTask.title,
           description: baseTask.description,
           priority: baseTask.priority,
-          project: baseTask.project,
+          projectId: baseTask.projectId,
           labels: baseTask.labels,
           color: baseTask.color,
-          dueDate: date,
+          dueAt: date,
           notes: baseTask.notes,
           isRecurring: false,
           completed: false,
@@ -240,7 +240,7 @@ export const useTaskManager = () => {
 
   const generateRecurringDates = (task: Todo): Date[] => {
     const dates: Date[] = [];
-    const startDate = task.dueDate || new Date();
+    const startDate = task.dueAt || new Date();
     const endDate = new Date();
     endDate.setMonth(endDate.getMonth() + 3); // Generate 3 months ahead
 
@@ -328,7 +328,7 @@ export const useTaskManager = () => {
     }
   };
 
-  const bulkMove = async (taskIds: string[], project: string) => {
+  const bulkMove = async (taskIds: string[], projectId: string) => {
     try {
       const realm = await getRealm();
       
@@ -336,7 +336,7 @@ export const useTaskManager = () => {
         taskIds.forEach(id => {
           const task = realm.objectForPrimaryKey<Todo>('Todo', new BSON.ObjectId(id));
           if (task) {
-            task.project = project;
+            task.project = projectId;
             task.updatedAt = new Date();
           }
         });
@@ -462,7 +462,7 @@ export const useTaskManager = () => {
                 title: nextTask.title!,
                 description: nextTask.description,
                 priority: nextTask.priority as any,
-                dueDate: nextTask.dueAt,
+                dueAt: nextTask.dueAt,
               });
             }
           } catch (error) {

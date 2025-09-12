@@ -25,7 +25,7 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
   const doneTasks = todos.filter(todo => todo.status === 'done' || todo.completed);
 
   const renderColumn = (title: string, tasks: Todo[], color: string) => (
-    <View style={styles.column(theme)}>
+    <View style={[styles.column]}>
       <View style={[styles.columnHeader, { backgroundColor: color }]}>
         <Text style={styles.columnTitle}>{title}</Text>
         <Text style={styles.columnCount}>{tasks.length}</Text>
@@ -53,27 +53,27 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
   );
 
   return (
-    <ScrollView horizontal style={styles.container(theme)} showsHorizontalScrollIndicator={false}>
-      {renderColumn('To-Do', todoTasks, theme.colors.error)}
-      {renderColumn('In Progress', inProgressTasks, theme.colors.warning)}
-      {renderColumn('Done', doneTasks, theme.colors.success)}
+    <ScrollView horizontal style={[styles.container]} showsHorizontalScrollIndicator={false}>
+      {renderColumn('To-Do', todoTasks, theme.error)}
+      {renderColumn('In Progress', inProgressTasks, theme.warning)}
+      {renderColumn('Done', doneTasks, theme.success)}
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
-  }),
-  column: (theme: any) => ({
+    backgroundColor: '#000000',
+  },
+  column: {
     width: 280,
     marginHorizontal: 8,
-    backgroundColor: theme.colors.surface,
+    backgroundColor: '#000000',
     borderRadius: 12,
     marginVertical: 8,
-    ...theme.shadows.sm,
-  }),
+    ,
+  },
   columnHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -100,3 +100,5 @@ const styles = StyleSheet.create({
     padding: 8,
   },
 });
+
+export default KanbanBoard;

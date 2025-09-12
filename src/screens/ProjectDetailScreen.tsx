@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { useTheme } from '../hooks/useTheme';
@@ -31,8 +32,7 @@ export const ProjectDetailScreen: React.FC = () => {
         { text: 'To-Do', onPress: () => updateTodoStatus(id, 'todo') },
         { text: 'In Progress', onPress: () => updateTodoStatus(id, 'inprogress') },
         { text: 'Done', onPress: () => updateTodoStatus(id, 'done') },
-        { text: 'Cancel', style: 'cancel' },
-      ]
+        { text: 'Cancel', style: 'cancel' }]
     );
   };
 
@@ -56,16 +56,16 @@ export const ProjectDetailScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container(theme)}>
-      {/* Header */}
-      <View style={styles.header(theme)}>
+    <View style={[styles.container]}>
+      {}
+      <View style={[styles.header]}>
         <View style={styles.headerTop}>
           <View>
-            <Text style={styles.title(theme)}>{projectName}</Text>
-            <Text style={styles.subtitle(theme)}>{totalCount} tasks</Text>
+            <Text style={[styles.title]}>{projectName}</Text>
+            <Text style={[styles.subtitle]}>{totalCount} tasks</Text>
           </View>
           <TouchableOpacity
-            style={styles.toggleButton(theme)}
+            style={[styles.toggleButton]}
             onPress={() => setIsKanban(!isKanban)}
           >
             <Text style={styles.toggleIcon}>{isKanban ? '📋' : '📊'}</Text>
@@ -74,7 +74,7 @@ export const ProjectDetailScreen: React.FC = () => {
 
         {totalCount > 0 && (
           <View style={styles.progressSection}>
-            <Text style={styles.progressText(theme)}>
+            <Text style={[styles.progressText]}>
               {completedCount} of {totalCount} completed
             </Text>
             <ProgressBar progress={completedCount / totalCount} />
@@ -82,7 +82,7 @@ export const ProjectDetailScreen: React.FC = () => {
         )}
       </View>
 
-      {/* Tasks View */}
+      {}
       {isKanban ? (
         <KanbanBoard
           todos={projectTasks}
@@ -101,22 +101,22 @@ export const ProjectDetailScreen: React.FC = () => {
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <Text style={styles.emptyIcon}>📝</Text>
-              <Text style={styles.emptyTitle(theme)}>No tasks in this project</Text>
-              <Text style={styles.emptyText(theme)}>Add your first task to get started</Text>
+              <Text style={[styles.emptyTitle]}>No tasks in this projectId</Text>
+              <Text style={[styles.emptyText]}>Add your first task to get started</Text>
             </View>
           }
         />
       )}
 
-      {/* FAB */}
-      <TouchableOpacity style={styles.fab(theme)} onPress={handleAddTask}>
+      {}
+      <TouchableOpacity style={[styles.fab]} onPress={handleAddTask}>
         <Text style={styles.fabIcon}>+</Text>
       </TouchableOpacity>
       
-      {/* Settings FAB */}
+      {}
       <TouchableOpacity 
-        style={styles.settingsFab(theme)} 
-        onPress={() => navigation.navigate('ProjectSettings' as never, { project: { _id: projectId, name: projectName } } as never)}
+        style={[styles.settingsFab]} 
+        onPress={() => navigation.navigate('ProjectSettings' as never, { projectId: { _id: projectId, name: projectName } } as never)}
       >
         <Text style={styles.settingsIcon}>⚙️</Text>
       </TouchableOpacity>
@@ -125,50 +125,50 @@ export const ProjectDetailScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
-  }),
-  header: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+    backgroundColor: '#000000',
+  },
+  header: {
+    backgroundColor: '#000000',
     padding: 20,
-    ...theme.shadows.sm,
-  }),
+    ,
+  },
   headerTop: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     marginBottom: 16,
   },
-  title: (theme: any) => ({
+  title: {
     fontSize: 24,
     fontWeight: '700',
-    color: theme.colors.text,
-  }),
-  subtitle: (theme: any) => ({
+    color: '#000000',
+  },
+  subtitle: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     marginTop: 4,
-  }),
-  toggleButton: (theme: any) => ({
+  },
+  toggleButton: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: theme.colors.surfaceSecondary,
+    backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center',
-  }),
+  },
   toggleIcon: {
     fontSize: 20,
   },
   progressSection: {
     gap: 8,
   },
-  progressText: (theme: any) => ({
+  progressText: {
     fontSize: 14,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     textAlign: 'center',
-  }),
+  },
   list: {
     flex: 1,
     paddingTop: 8,
@@ -186,49 +186,51 @@ const styles = StyleSheet.create({
     fontSize: 64,
     marginBottom: 24,
   },
-  emptyTitle: (theme: any) => ({
+  emptyTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: theme.colors.text,
+    color: '#000000',
     textAlign: 'center',
     marginBottom: 8,
-  }),
-  emptyText: (theme: any) => ({
+  },
+  emptyText: {
     fontSize: 16,
-    color: theme.colors.textSecondary,
+    color: '#000000',
     textAlign: 'center',
     lineHeight: 24,
-  }),
-  fab: (theme: any) => ({
+  },
+  fab: {
     position: 'absolute',
     bottom: 20,
     right: 20,
     width: 56,
     height: 56,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: '#000000',
     borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
-    ...theme.shadows.lg,
-  }),
+    .lg,
+  },
   fabIcon: {
     color: '#FFFFFF',
     fontSize: 24,
     fontWeight: '600',
   },
-  settingsFab: (theme: any) => ({
+  settingsFab: {
     position: 'absolute',
     bottom: 90,
     right: 20,
     width: 48,
     height: 48,
-    backgroundColor: theme.colors.surfaceSecondary,
+    backgroundColor: '#000000',
     borderRadius: 24,
     alignItems: 'center',
     justifyContent: 'center',
-    ...theme.shadows.md,
-  }),
+    ,
+  },
   settingsIcon: {
     fontSize: 20,
   },
 });
+
+export default ProjectDetailScreen;

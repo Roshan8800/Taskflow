@@ -32,3 +32,5 @@ export const AuthScreen: React.FC = () => {
     </View>
   );
 };
+
+export default AuthScreen;

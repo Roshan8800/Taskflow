@@ -28,7 +28,7 @@ export const useProjectManager = () => {
         });
       });
     } catch (err) {
-      setError('Failed to create project');
+      setError('Failed to create projectId');
       throw err;
     } finally {
       setLoading(false);
@@ -41,14 +41,14 @@ export const useProjectManager = () => {
       setError(null);
       
       const realm = await getRealm();
-      const project = realm.objectForPrimaryKey('Project', id);
-      if (!project) throw new Error('Project not found');
+      const projectId = realm.objectForPrimaryKey('Project', id);
+      if (!projectId) throw new Error('Project not found');
       
       realm.write(() => {
-        Object.assign(project, { ...data, updatedAt: new Date() });
+        Object.assign(projectId, { ...data, updatedAt: new Date() });
       });
     } catch (err) {
-      setError('Failed to update project');
+      setError('Failed to update projectId');
       throw err;
     } finally {
       setLoading(false);
@@ -61,19 +61,19 @@ export const useProjectManager = () => {
       setError(null);
       
       const realm = await getRealm();
-      const project = realm.objectForPrimaryKey('Project', id);
-      if (!project) throw new Error('Project not found');
+      const projectId = realm.objectForPrimaryKey('Project', id);
+      if (!projectId) throw new Error('Project not found');
       
       realm.write(() => {
-        // Remove project from all tasks
+        // Remove projectId from all tasks
         const tasks = realm.objects('Todo').filtered('projectId == $0', id);
         tasks.forEach(task => {
-          task.projectId = undefined;
+          task.project = undefined;
         });
-        realm.delete(project);
+        realm.delete(projectId);
       });
     } catch (err) {
-      setError('Failed to delete project');
+      setError('Failed to delete projectId');
       throw err;
     } finally {
       setLoading(false);
@@ -86,15 +86,15 @@ export const useProjectManager = () => {
       setError(null);
       
       const realm = await getRealm();
-      const project = realm.objectForPrimaryKey('Project', id);
-      if (!project) throw new Error('Project not found');
+      const projectId = realm.objectForPrimaryKey('Project', id);
+      if (!projectId) throw new Error('Project not found');
       
       realm.write(() => {
-        project.isArchived = archive;
-        project.updatedAt = new Date();
+        projectId.archived = archive;
+        projectId.updatedAt = new Date();
       });
     } catch (err) {
-      setError('Failed to archive project');
+      setError('Failed to archive projectId');
       throw err;
     } finally {
       setLoading(false);
@@ -111,7 +111,7 @@ export const useProjectManager = () => {
       if (!task) throw new Error('Task not found');
       
       realm.write(() => {
-        task.projectId = projectId;
+        task.project = projectId;
         task.updatedAt = new Date();
       });
     } catch (err) {

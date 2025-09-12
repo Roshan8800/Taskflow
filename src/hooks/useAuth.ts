@@ -126,6 +126,60 @@ export const useAuth = () => {
     }
   };
 
+  const signIn = async (email: string, password: string) => {
+    try {
+      // Demo authentication - always succeeds for demo purposes
+      const demoUser = { id: 'user_1', email, name: email.split('@')[0] };
+      setUser(demoUser);
+      await AsyncStorage.setItem('user', JSON.stringify(demoUser));
+      return true;
+    } catch (error) {
+      console.error('Sign in failed:', error);
+      return false;
+    }
+  };
+
+  const signUp = async (email: string, password: string, name: string) => {
+    try {
+      // Demo sign up - always succeeds
+      const newUser = { id: Date.now().toString(), email, name };
+      setUser(newUser);
+      await AsyncStorage.setItem('user', JSON.stringify(newUser));
+      return true;
+    } catch (error) {
+      console.error('Sign up failed:', error);
+      return false;
+    }
+  };
+
+  const signOut = async () => {
+    try {
+      setUser(null);
+      await AsyncStorage.removeItem('user');
+      return true;
+    } catch (error) {
+      console.error('Sign out failed:', error);
+      return false;
+    }
+  };
+
+  const logout = signOut; // Alias
+
+  const updateProfile = async (updates: Partial<User>) => {
+    try {
+      if (user) {
+        const updatedUser = { ...user, ...updates };
+        setUser(updatedUser);
+        await AsyncStorage.setItem('user', JSON.stringify(updatedUser));
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Profile update failed:', error);
+      return false;
+    }
+  };
+
   return {
     user,
     isLocked,
@@ -136,5 +190,10 @@ export const useAuth = () => {
     authenticateWithBiometric,
     setPIN,
     disableAppLock,
+    signIn,
+    signUp,
+    signOut,
+    logout,
+    updateProfile,
   };
 };

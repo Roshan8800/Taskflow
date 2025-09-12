@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useTheme } from '../hooks/useTheme';
@@ -10,11 +11,11 @@ export const ProjectSettingsScreen: React.FC = () => {
   const route = useRoute();
   const navigation = useNavigation();
   
-  const { project } = route.params as { project: any };
+  const { projectId } = route.params as { projectId: any };
   
-  const [name, setName] = useState(project.name);
-  const [description, setDescription] = useState(project.description || '');
-  const [selectedColor, setSelectedColor] = useState(project.color);
+  const [name, setName] = useState(projectId.name);
+  const [description, setDescription] = useState(projectId.description || '');
+  const [selectedColor, setSelectedColor] = useState(projectId.color);
 
   const colors = ['#6366F1', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#06B6D4', '#84CC16', '#F97316'];
 
@@ -24,21 +25,21 @@ export const ProjectSettingsScreen: React.FC = () => {
       return;
     }
     
-    updateProject(project._id, name.trim(), description.trim(), selectedColor);
+    updateProject(projectId._id, name.trim(), description.trim(), selectedColor);
     navigation.goBack();
   };
 
   const handleDelete = () => {
     Alert.alert(
       'Delete Project',
-      `Are you sure you want to delete "${project.name}"? All tasks will be moved to unassigned.`,
+      `Are you sure you want to delete "${projectId.name}"? All tasks will be moved to unassigned.`,
       [
         { text: 'Cancel', style: 'cancel' },
         {
           text: 'Delete',
           style: 'destructive',
           onPress: () => {
-            deleteProject(project._id);
+            deleteProject(projectId._id);
             navigation.goBack();
           }
         }
@@ -47,36 +48,36 @@ export const ProjectSettingsScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container(theme)}>
-      <View style={styles.form(theme)}>
-        <Text style={styles.title(theme)}>Project Settings</Text>
+    <View style={[styles.container]}>
+      <View style={[styles.form]}>
+        <Text style={[styles.title]}>Project Settings</Text>
         
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Name</Text>
+          <Text style={[styles.label]}>Name</Text>
           <TextInput
-            style={styles.input(theme)}
+            style={[styles.input]}
             value={name}
             onChangeText={setName}
             placeholder="Project name"
-            placeholderTextColor={theme.colors.textMuted}
+            placeholderTextColor={theme.textSecondary}
           />
         </View>
 
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Description</Text>
+          <Text style={[styles.label]}>Description</Text>
           <TextInput
-            style={styles.textArea(theme)}
+            style={[styles.textArea]}
             value={description}
             onChangeText={setDescription}
             placeholder="Project description (optional)"
-            placeholderTextColor={theme.colors.textMuted}
+            placeholderTextColor={theme.textSecondary}
             multiline
             numberOfLines={3}
           />
         </View>
 
         <View style={styles.inputGroup}>
-          <Text style={styles.label(theme)}>Color</Text>
+          <Text style={[styles.label]}>Color</Text>
           <View style={styles.colorGrid}>
             {colors.map(color => (
               <TouchableOpacity
@@ -84,7 +85,7 @@ export const ProjectSettingsScreen: React.FC = () => {
                 style={[
                   styles.colorOption,
                   { backgroundColor: color },
-                  selectedColor === color && styles.selectedColor(theme)
+                  selectedColor === color && styles.selectedColor
                 ]}
                 onPress={() => setSelectedColor(color)}
               />
@@ -94,16 +95,16 @@ export const ProjectSettingsScreen: React.FC = () => {
       </View>
 
       <View style={styles.actions}>
-        <TouchableOpacity style={styles.saveButton(theme)} onPress={handleSave}>
+        <TouchableOpacity style={[styles.saveButton]} onPress={handleSave}>
           <Text style={styles.saveText}>Save Changes</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.deleteButton(theme)} onPress={handleDelete}>
+        <TouchableOpacity style={[styles.deleteButton]} onPress={handleDelete}>
           <Text style={styles.deleteText}>Delete Project</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.cancelButton(theme)} onPress={() => navigation.goBack()}>
-          <Text style={styles.cancelText(theme)}>Cancel</Text>
+        <TouchableOpacity style={[styles.cancelButton]} onPress={() => navigation.goBack()}>
+          <Text style={[styles.cancelText]}>Cancel</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -111,52 +112,52 @@ export const ProjectSettingsScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000000',
     padding: 20,
-  }),
-  form: (theme: any) => ({
-    backgroundColor: theme.colors.surface,
+  },
+  form: {
+    backgroundColor: '#000000',
     borderRadius: 16,
     padding: 20,
     marginBottom: 20,
-    ...theme.shadows.md,
-  }),
-  title: (theme: any) => ({
+    ,
+  },
+  title: {
     fontSize: 24,
     fontWeight: '700',
-    color: theme.colors.text,
+    color: '#000000',
     marginBottom: 20,
-  }),
+  },
   inputGroup: {
     marginBottom: 20,
   },
-  label: (theme: any) => ({
+  label: {
     fontSize: 16,
     fontWeight: '500',
-    color: theme.colors.textSecondary,
+    color: '#000000',
     marginBottom: 8,
-  }),
-  input: (theme: any) => ({
-    backgroundColor: theme.colors.background,
+  },
+  input: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    color: theme.colors.text,
+    color: '#000000',
     borderWidth: 1,
-    borderColor: theme.colors.border,
-  }),
-  textArea: (theme: any) => ({
-    backgroundColor: theme.colors.background,
+    borderColor: '#000000',
+  },
+  textArea: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    color: theme.colors.text,
+    color: '#000000',
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: '#000000',
     textAlignVertical: 'top',
-  }),
+  },
   colorGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -167,44 +168,46 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
   },
-  selectedColor: (theme: any) => ({
+  selectedColor: {
     borderWidth: 3,
-    borderColor: theme.colors.text,
-  }),
+    borderColor: '#000000',
+  },
   actions: {
     gap: 12,
   },
-  saveButton: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
+  saveButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
+  },
   saveText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
   },
-  deleteButton: (theme: any) => ({
-    backgroundColor: theme.colors.error,
+  deleteButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
+  },
   deleteText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
   },
-  cancelButton: (theme: any) => ({
-    backgroundColor: theme.colors.surfaceSecondary,
+  cancelButton: {
+    backgroundColor: '#000000',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-  }),
-  cancelText: (theme: any) => ({
-    color: theme.colors.text,
+  },
+  cancelText: {
+    color: '#000000',
     fontSize: 16,
     fontWeight: '500',
-  }),
+  },
 });
+
+export default ProjectSettingsScreen;

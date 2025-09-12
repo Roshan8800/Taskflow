@@ -31,8 +31,7 @@ export const getRealm = async (): Promise<Realm> => {
         Attachment.schema,
         StatsSnapshot.schema,
         Achievement.schema,
-        Backup.schema,
-      ],
+        Backup.schema],
       schemaVersion: 2,
     });
     

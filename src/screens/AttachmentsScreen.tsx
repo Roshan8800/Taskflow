@@ -17,8 +17,7 @@ export const AttachmentsScreen: React.FC = () => {
   const [attachments, setAttachments] = useState<Attachment[]>([
     { id: '1', name: 'project_spec.pdf', type: 'document', size: '2.4 MB', taskId: '1', createdAt: new Date() },
     { id: '2', name: 'screenshot.png', type: 'image', size: '1.2 MB', projectId: '1', createdAt: new Date() },
-    { id: '3', name: 'meeting_recording.mp3', type: 'audio', size: '15.6 MB', taskId: '2', createdAt: new Date() },
-  ]);
+    { id: '3', name: 'meeting_recording.mp3', type: 'audio', size: '15.6 MB', taskId: '2', createdAt: new Date() }]);
 
   const getTypeIcon = (type: string) => {
     switch (type) {
@@ -54,19 +53,19 @@ export const AttachmentsScreen: React.FC = () => {
   };
 
   const renderAttachment = ({ item }: { item: Attachment }) => (
-    <View style={[styles.attachmentCard, { backgroundColor: theme.surface }]}>
+    <View style={[styles.attachmentCard, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.attachmentInfo}>
         <View style={[styles.typeIcon, { backgroundColor: getTypeColor(item.type) }]}>
           <Text style={styles.iconText}>{getTypeIcon(item.type)}</Text>
         </View>
         <View style={styles.attachmentDetails}>
-          <Text style={[styles.attachmentName, { color: theme.text }]} numberOfLines={1}>
+          <Text style={[styles.attachmentName, { color: '#000000' }]} numberOfLines={1}>
             {item.name}
           </Text>
-          <Text style={[styles.attachmentMeta, { color: theme.textSecondary }]}>
+          <Text style={[styles.attachmentMeta, { color: '#000000' }]}>
             {item.size} • {item.createdAt.toLocaleDateString()}
           </Text>
-          <Text style={[styles.attachmentSource, { color: theme.primary }]}>
+          <Text style={[styles.attachmentSource, { color: '#000000' }]}>
             {item.taskId ? 'Task' : 'Project'} attachment
           </Text>
         </View>
@@ -94,21 +93,21 @@ export const AttachmentsScreen: React.FC = () => {
   }, 0);
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Attachments</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Attachments</Text>
       
-      <View style={[styles.summary, { backgroundColor: theme.surface }]}>
+      <View style={[styles.summary, { backgroundColor: '#FFFFFF' }]}>
         <View style={styles.summaryItem}>
-          <Text style={[styles.summaryNumber, { color: theme.primary }]}>
+          <Text style={[styles.summaryNumber, { color: '#000000' }]}>
             {attachments.length}
           </Text>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>Files</Text>
+          <Text style={[styles.summaryLabel, { color: '#000000' }]}>Files</Text>
         </View>
         <View style={styles.summaryItem}>
-          <Text style={[styles.summaryNumber, { color: theme.primary }]}>
+          <Text style={[styles.summaryNumber, { color: '#000000' }]}>
             {totalSize.toFixed(1)} MB
           </Text>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>Total Size</Text>
+          <Text style={[styles.summaryLabel, { color: '#000000' }]}>Total Size</Text>
         </View>
       </View>
 
@@ -119,8 +118,8 @@ export const AttachmentsScreen: React.FC = () => {
         contentContainerStyle={styles.list}
       />
 
-      <TouchableOpacity style={[styles.addBtn, { backgroundColor: theme.primary }]}>
-        <Text style={[styles.addBtnText, { color: theme.background }]}>+ Add Attachment</Text>
+      <TouchableOpacity style={[styles.addBtn, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.addBtnText, { color: '#000000' }]}>+ Add Attachment</Text>
       </TouchableOpacity>
     </View>
   );
@@ -148,3 +147,5 @@ const styles = StyleSheet.create({
   addBtn: { position: 'absolute', bottom: 20, left: 16, right: 16, padding: 16, borderRadius: 8, alignItems: 'center' },
   addBtnText: { fontSize: 16, fontWeight: '600' },
 });
+
+export default AttachmentsScreen;

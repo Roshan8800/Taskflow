@@ -67,3 +67,5 @@ export const AchievementCard: React.FC<AchievementCardProps> = ({ achievement })
     </View>
   );
 };
+
+export default AchievementCard;

@@ -32,24 +32,24 @@ export const RecycleBinScreen: React.FC = () => {
   };
 
   const renderTask = ({ item }: { item: Todo }) => (
-    <View style={[styles.taskItem, { backgroundColor: theme.surface, borderColor: theme.border }]}>
+    <View style={[styles.taskItem, { backgroundColor: '#FFFFFF', borderColor: '#CCCCCC' }]}>
       <View style={styles.taskContent}>
-        <Text style={[styles.taskTitle, { color: theme.text }]}>{item.title}</Text>
-        <Text style={[styles.deletedDate, { color: theme.textSecondary }]}>
+        <Text style={[styles.taskTitle, { color: '#000000' }]}>{item.title}</Text>
+        <Text style={[styles.deletedDate, { color: '#000000' }]}>
           Deleted: {item.deletedAt?.toLocaleDateString()}
         </Text>
       </View>
       
       <View style={styles.actions}>
         <TouchableOpacity
-          style={[styles.actionButton, { backgroundColor: theme.primary }]}
+          style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
           onPress={() => handleRecover(item._id.toString())}
         >
           <Text style={styles.actionText}>Recover</Text>
         </TouchableOpacity>
         
         <TouchableOpacity
-          style={[styles.actionButton, { backgroundColor: theme.error }]}
+          style={[styles.actionButton, { backgroundColor: '#FFFFFF' }]}
           onPress={() => handlePermanentDelete(item._id.toString())}
         >
           <Text style={styles.actionText}>Delete</Text>
@@ -59,12 +59,12 @@ export const RecycleBinScreen: React.FC = () => {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Recycle Bin</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Recycle Bin</Text>
       
       {deletedTasks.length === 0 ? (
         <View style={styles.emptyState}>
-          <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
+          <Text style={[styles.emptyText, { color: '#000000' }]}>
             No deleted tasks
           </Text>
         </View>
@@ -94,3 +94,5 @@ const styles = StyleSheet.create({
   emptyState: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   emptyText: { fontSize: 16 }
 });
+
+export default RecycleBinScreen;

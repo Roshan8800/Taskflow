@@ -17,6 +17,20 @@ export class Todo extends Realm.Object<Todo> {
   deletedAt?: Date;
   repeatRule?: string;
   parentTaskId?: Realm.BSON.ObjectId;
+  // Legacy property aliases for compatibility
+  dueDate?: Date;
+  projectId?: string;
+  notes?: string;
+  isDeleted?: boolean;
+  isArchived?: boolean;
+  isRecurring?: boolean;
+  recurringType?: string;
+  recurringDays?: number[];
+  recurringInterval?: number;
+  snoozeUntil?: Date;
+  reminderDate?: Date;
+  attachments?: string[];
+  userId?: string;
 
   static schema: Realm.ObjectSchema = {
     name: 'Todo',
@@ -38,6 +52,20 @@ export class Todo extends Realm.Object<Todo> {
       deletedAt: 'date?',
       repeatRule: 'string?',
       parentTaskId: 'objectId?',
+      // Legacy compatibility properties
+      dueAt: 'date?',
+      projectId: 'string?',
+      notes: 'string?',
+      isDeleted: { type: 'bool', default: false },
+      isArchived: { type: 'bool', default: false },
+      isRecurring: { type: 'bool', default: false },
+      recurringType: 'string?',
+      recurringDays: { type: 'list', objectType: 'int' },
+      recurringInterval: 'int?',
+      snoozeUntil: 'date?',
+      reminderDate: 'date?',
+      attachments: { type: 'list', objectType: 'string' },
+      userId: 'string?',
     },
   };
 }

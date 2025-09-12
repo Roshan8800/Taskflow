@@ -37,7 +37,7 @@ export const AnalyticsScreen: React.FC<{ navigation: any }> = ({ navigation }) =
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
-      {/* Header */}
+      {}
       <View style={{
         backgroundColor: 'white',
         paddingTop: 50,
@@ -58,19 +58,18 @@ export const AnalyticsScreen: React.FC<{ navigation: any }> = ({ navigation }) =
               [
                 { text: 'JSON', onPress: () => handleExport('json') },
                 { text: 'CSV', onPress: () => handleExport('csv') },
-                { text: 'Cancel', style: 'cancel' },
-              ]
+                { text: 'Cancel', style: 'cancel' }]
             )}
             disabled={exporting}
           >
             <Text style={{ fontSize: 16, color: '#4A90E2' }}>
-              {exporting ? 'Exporting...' : 'Export'}
+              {exporting ? 'ExportingExport'}
             </Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      {/* Task Completion Stats */}
+      {}
       <View style={{ padding: 8 }}>
         <Text style={{ fontSize: 18, fontWeight: 'bold', marginLeft: 8, marginBottom: 8, color: '#333' }}>
           Task Statistics
@@ -119,7 +118,7 @@ export const AnalyticsScreen: React.FC<{ navigation: any }> = ({ navigation }) =
         />
       </View>
 
-      {/* Streak Tracking */}
+      {}
       <View style={{ padding: 8 }}>
         <Text style={{ fontSize: 18, fontWeight: 'bold', marginLeft: 8, marginBottom: 8, color: '#333' }}>
           Streak Tracking
@@ -144,10 +143,10 @@ export const AnalyticsScreen: React.FC<{ navigation: any }> = ({ navigation }) =
         </View>
       </View>
 
-      {/* Weekly Productivity Graph */}
+      {}
       <WeeklyChart data={weeklyData} />
 
-      {/* Achievements & Badges */}
+      {}
       <View style={{ padding: 8 }}>
         <Text style={{ fontSize: 18, fontWeight: 'bold', marginLeft: 8, marginBottom: 8, color: '#333' }}>
           Achievements
@@ -161,7 +160,7 @@ export const AnalyticsScreen: React.FC<{ navigation: any }> = ({ navigation }) =
         </View>
       </View>
 
-      {/* Summary */}
+      {}
       <View style={{
         backgroundColor: 'white',
         margin: 8,
@@ -187,3 +186,5 @@ export const AnalyticsScreen: React.FC<{ navigation: any }> = ({ navigation }) =
     </ScrollView>
   );
 };
+
+export default AnalyticsScreen;

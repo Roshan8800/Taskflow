@@ -40,9 +40,9 @@ export const BackupWorkflow = () => {
           task.priority,
           task.status,
           task.dueAt?.toISOString() || '',
-          task.projectId?.toString() || '',
+          task.project?.toString() || '',
           task.labels.join(';'),
-          task.createdAt.toISOString()
+          task.createdAt instanceof Date ? task.createdAt.toISOString() : ''
         ].map(field => `"${field}"`).join(',')).join('\n');
         
         content = csvHeaders + csvRows;
@@ -113,7 +113,7 @@ export const BackupWorkflow = () => {
       } else {
         Alert.alert(
           'Import Successful',
-          `Imported ${importedData.tasks?.length || 0} tasks and ${importedData.projects?.length || 0} projects.`
+          `Imported ${importedData.tasks?.length || 0} tasks and ${importedData.projectIds?.length || 0} projects.`
         );
       }
     } catch (error) {
@@ -124,58 +124,58 @@ export const BackupWorkflow = () => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Backup & Export</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Backup & Export</Text>
       
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Export Data</Text>
-        <Text style={[styles.description, { color: theme.textSecondary }]}>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Export Data</Text>
+        <Text style={[styles.description, { color: '#000000' }]}>
           Save your tasks and projects to device storage
         </Text>
         
         <View style={styles.buttonGroup}>
           <TouchableOpacity
-            style={[styles.exportButton, { backgroundColor: theme.primary }]}
+            style={[styles.exportButton, { backgroundColor: '#FFFFFF' }]}
             onPress={() => exportData('json')}
             disabled={isExporting}
           >
             <Text style={styles.buttonText}>
-              {isExporting ? 'Exporting...' : 'Export JSON'}
+              {isExporting ? 'ExportingExport JSON'}
             </Text>
           </TouchableOpacity>
           
           <TouchableOpacity
-            style={[styles.exportButton, { backgroundColor: theme.success }]}
+            style={[styles.exportButton, { backgroundColor: '#FFFFFF' }]}
             onPress={() => exportData('csv')}
             disabled={isExporting}
           >
             <Text style={styles.buttonText}>
-              {isExporting ? 'Exporting...' : 'Export CSV'}
+              {isExporting ? 'ExportingExport CSV'}
             </Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>Import Data</Text>
-        <Text style={[styles.description, { color: theme.textSecondary }]}>
+        <Text style={[styles.sectionTitle, { color: '#000000' }]}>Import Data</Text>
+        <Text style={[styles.description, { color: '#000000' }]}>
           Restore tasks and projects from a backup file
         </Text>
         
         <TouchableOpacity
-          style={[styles.importButton, { backgroundColor: theme.warning }]}
+          style={[styles.importButton, { backgroundColor: '#FFFFFF' }]}
           onPress={importData}
           disabled={isImporting}
         >
           <Text style={styles.buttonText}>
-            {isImporting ? 'Importing...' : 'Import Backup'}
+            {isImporting ? 'ImportingImport Backup'}
           </Text>
         </TouchableOpacity>
       </View>
 
-      <View style={[styles.infoBox, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.infoTitle, { color: theme.text }]}>Backup Information</Text>
-        <Text style={[styles.infoText, { color: theme.textSecondary }]}>
+      <View style={[styles.infoBox, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.infoTitle, { color: '#000000' }]}>Backup Information</Text>
+        <Text style={[styles.infoText, { color: '#000000' }]}>
           • JSON format preserves all data and relationships{'\n'}
           • CSV format is compatible with spreadsheet applications{'\n'}
           • Backups are saved to your device's Documents folder{'\n'}

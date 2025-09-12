@@ -35,8 +35,7 @@ export const TaskDetailScreen: React.FC = () => {
           onPress: () => {
             deleteTask(task._id.toString());
           }
-        },
-      ]
+        }]
     );
   };
 
@@ -190,3 +189,5 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
 });
+
+export default TaskDetailScreen;

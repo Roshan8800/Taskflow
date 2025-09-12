@@ -42,22 +42,22 @@ export const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
 
   return (
     <Modal visible={visible} animationType="slide">
-      <View style={[styles.container, { backgroundColor: theme.background }]}>
-        <View style={[styles.header, { backgroundColor: theme.surface }]}>
+      <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+        <View style={[styles.header, { backgroundColor: '#FFFFFF' }]}>
           <TouchableOpacity onPress={onClose}>
-            <Text style={[styles.closeBtn, { color: theme.primary }]}>Cancel</Text>
+            <Text style={[styles.closeBtn, { color: '#000000' }]}>Cancel</Text>
           </TouchableOpacity>
-          <Text style={[styles.title, { color: theme.text }]}>Task Details</Text>
+          <Text style={[styles.title, { color: '#000000' }]}>Task Details</Text>
           <TouchableOpacity onPress={() => onSave({ title, description })}>
-            <Text style={[styles.saveBtn, { color: theme.primary }]}>Save</Text>
+            <Text style={[styles.saveBtn, { color: '#000000' }]}>Save</Text>
           </TouchableOpacity>
         </View>
 
         <ScrollView style={styles.content}>
           <View style={styles.section}>
-            <Text style={[styles.label, { color: theme.text }]}>Title</Text>
+            <Text style={[styles.label, { color: '#000000' }]}>Title</Text>
             <TextInput
-              style={[styles.input, { backgroundColor: theme.surface, color: theme.text }]}
+              style={[styles.input, { backgroundColor: '#FFFFFF', color: '#000000' }]}
               value={title}
               onChangeText={setTitle}
               placeholder="Task title"
@@ -66,9 +66,9 @@ export const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
           </View>
 
           <View style={styles.section}>
-            <Text style={[styles.label, { color: theme.text }]}>Description</Text>
+            <Text style={[styles.label, { color: '#000000' }]}>Description</Text>
             <TextInput
-              style={[styles.textArea, { backgroundColor: theme.surface, color: theme.text }]}
+              style={[styles.textArea, { backgroundColor: '#FFFFFF', color: '#000000' }]}
               value={description}
               onChangeText={setDescription}
               placeholder="Task description"
@@ -79,13 +79,13 @@ export const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
           </View>
 
           <TouchableOpacity
-            style={[styles.subtasksBtn, { backgroundColor: theme.surface }]}
+            style={[styles.subtasksBtn, { backgroundColor: '#FFFFFF' }]}
             onPress={() => setShowSubtasks(true)}
           >
-            <Text style={[styles.subtasksBtnText, { color: theme.text }]}>
+            <Text style={[styles.subtasksBtnText, { color: '#000000' }]}>
               📋 Manage Subtasks
             </Text>
-            <Text style={[styles.arrow, { color: theme.textSecondary }]}>→</Text>
+            <Text style={[styles.arrow, { color: '#000000' }]}>→</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
@@ -155,3 +155,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
+
+export default TaskDetailModal;

@@ -5,7 +5,7 @@ import { useTheme } from '../hooks/useTheme';
 interface ArchivedItem {
   id: string;
   title: string;
-  type: 'task' | 'project';
+  type: 'task' | 'projectId';
   archivedAt: Date;
   originalData: any;
 }
@@ -14,10 +14,9 @@ export const ArchiveScreen: React.FC = () => {
   const { theme } = useTheme();
   const [filter, setFilter] = useState<'all' | 'tasks' | 'projects'>('all');
   const [archivedItems] = useState<ArchivedItem[]>([
-    { id: '1', title: 'Completed Project Alpha', type: 'project', archivedAt: new Date(2024, 0, 15), originalData: {} },
+    { id: '1', title: 'Completed Project Alpha', type: 'projectId', archivedAt: new Date(2024, 0, 15), originalData: {} },
     { id: '2', title: 'Old task from last month', type: 'task', archivedAt: new Date(2024, 0, 10), originalData: {} },
-    { id: '3', title: 'Finished Marketing Campaign', type: 'project', archivedAt: new Date(2024, 0, 5), originalData: {} },
-  ]);
+    { id: '3', title: 'Finished Marketing Campaign', type: 'projectId', archivedAt: new Date(2024, 0, 5), originalData: {} }]);
 
   const filteredItems = archivedItems.filter(item => 
     filter === 'all' || item.type === filter.slice(0, -1)
@@ -38,22 +37,22 @@ export const ArchiveScreen: React.FC = () => {
   };
 
   const renderItem = ({ item }: { item: ArchivedItem }) => (
-    <View style={[styles.itemCard, { backgroundColor: theme.surface }]}>
+    <View style={[styles.itemCard, { backgroundColor: '#FFFFFF' }]}>
       <View style={styles.itemInfo}>
         <Text style={styles.typeIcon}>{getTypeIcon(item.type)}</Text>
         <View style={styles.itemDetails}>
-          <Text style={[styles.itemTitle, { color: theme.text }]}>{item.title}</Text>
-          <Text style={[styles.itemMeta, { color: theme.textSecondary }]}>
+          <Text style={[styles.itemTitle, { color: '#000000' }]}>{item.title}</Text>
+          <Text style={[styles.itemMeta, { color: '#000000' }]}>
             {item.type.charAt(0).toUpperCase() + item.type.slice(1)} • Archived {item.archivedAt.toLocaleDateString()}
           </Text>
         </View>
       </View>
       <View style={styles.actions}>
         <TouchableOpacity
-          style={[styles.actionBtn, { backgroundColor: theme.primary }]}
+          style={[styles.actionBtn, { backgroundColor: '#FFFFFF' }]}
           onPress={() => restoreItem(item.id)}
         >
-          <Text style={[styles.actionText, { color: theme.background }]}>Restore</Text>
+          <Text style={[styles.actionText, { color: '#000000' }]}>Restore</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionBtn, { backgroundColor: '#FF6B6B' }]}
@@ -66,8 +65,8 @@ export const ArchiveScreen: React.FC = () => {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Archive</Text>
+    <View style={[styles.container, { backgroundColor: '#FFFFFF' }]}>
+      <Text style={[styles.title, { color: '#000000' }]}>Archive</Text>
       
       <View style={styles.filters}>
         {['all', 'tasks', 'projects'].map((f) => (
@@ -89,8 +88,8 @@ export const ArchiveScreen: React.FC = () => {
         ))}
       </View>
 
-      <View style={[styles.summary, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.summaryText, { color: theme.textSecondary }]}>
+      <View style={[styles.summary, { backgroundColor: '#FFFFFF' }]}>
+        <Text style={[styles.summaryText, { color: '#000000' }]}>
           {filteredItems.length} archived items
         </Text>
       </View>
@@ -103,7 +102,7 @@ export const ArchiveScreen: React.FC = () => {
         ListEmptyComponent={
           <View style={styles.emptyState}>
             <Text style={styles.emptyIcon}>📦</Text>
-            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
+            <Text style={[styles.emptyText, { color: '#000000' }]}>
               No archived items found
             </Text>
           </View>
@@ -135,3 +134,5 @@ const styles = StyleSheet.create({
   emptyIcon: { fontSize: 48, marginBottom: 16 },
   emptyText: { fontSize: 16 },
 });
+
+export default ArchiveScreen;

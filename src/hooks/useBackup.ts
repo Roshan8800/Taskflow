@@ -30,24 +30,24 @@ export const useBackup = () => {
           description: task.description,
           completed: task.completed,
           priority: task.priority,
-          project: task.project,
+          projectId: task.project,
           labels: task.labels,
           color: task.color,
-          dueDate: task.dueDate?.toISOString(),
+          dueAt: task.dueAt?.toISOString(),
           reminderDate: task.reminderDate?.toISOString(),
           notes: task.notes,
           isRecurring: task.isRecurring,
           recurringType: task.recurringType,
-          createdAt: task.createdAt.toISOString(),
-          updatedAt: task.updatedAt.toISOString(),
+          createdAt: task.createdAt instanceof Date ? task.createdAt.toISOString() : '',
+          updatedAt: task.updatedAt instanceof Date ? task.updatedAt.toISOString() : '',
         })),
-        projects: projects.map(project => ({
-          id: project._id.toString(),
-          name: project.name,
-          description: project.description,
-          color: project.color,
-          icon: project.icon,
-          createdAt: project.createdAt.toISOString(),
+        projects: projects.map(projectId => ({
+          id: projectId._id.toString(),
+          name: projectId.name,
+          description: projectId.description,
+          color: projectId.color,
+          icon: projectId.icon,
+          createdAt: projectId.createdAt instanceof Date ? projectId.createdAt.toISOString() : '',
         })),
       };
 
@@ -100,11 +100,10 @@ export const useBackup = () => {
 
       Alert.alert(
         'Import Backup',
-        `Found ${backupData.tasks.length} tasks and ${backupData.projects?.length || 0} projects. This will replace your current data.`,
+        `Found ${backupData.tasks.length} tasks and ${backupData.projectIds?.length || 0} projects. This will replace your current data.`,
         [
           { text: 'Cancel', style: 'cancel' },
-          { text: 'Import', onPress: () => performImport(backupData) },
-        ]
+          { text: 'Import', onPress: () => performImport(backupData) }]
       );
 
     } catch (error) {
@@ -126,16 +125,16 @@ export const useBackup = () => {
         realm.delete(existingProjects);
 
         // Import projects
-        if (backupData.projects) {
-          backupData.projects.forEach((project: any) => {
+        if (backupData.projectIds) {
+          backupData.projectIds.forEach((projectId: any) => {
             realm.create('Project', {
               _id: new realm.BSON.ObjectId(),
-              name: project.name,
-              description: project.description || '',
-              color: project.color,
-              icon: project.icon,
+              name: projectId.name,
+              description: projectId.description || '',
+              color: projectId.color,
+              icon: projectId.icon,
               isArchived: false,
-              createdAt: new Date(project.createdAt),
+              createdAt: new Date(projectId.createdAt),
               updatedAt: new Date(),
             });
           });
@@ -149,10 +148,10 @@ export const useBackup = () => {
             description: task.description || '',
             completed: task.completed,
             priority: task.priority || 'medium',
-            project: task.project || '',
+            projectId: task.project || '',
             labels: task.labels || [],
             color: task.color || '#4A90E2',
-            dueDate: task.dueDate ? new Date(task.dueDate) : null,
+            dueAt: task.dueAt ? new Date(task.dueAt) : null,
             reminderDate: task.reminderDate ? new Date(task.reminderDate) : null,
             notes: task.notes || '',
             isRecurring: task.isRecurring || false,
@@ -182,9 +181,8 @@ export const useBackup = () => {
       task.priority,
       task.project || '',
       `"${task.labels?.join(', ') || ''}"`,
-      task.dueDate || '',
-      task.createdAt,
-    ]);
+      task.dueAt || '',
+      task.createdAt]);
     
     return [headers, ...rows].map(row => row.join(',')).join('\n');
   };

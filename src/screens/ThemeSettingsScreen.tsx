@@ -13,9 +13,9 @@ export const ThemeSettingsScreen: React.FC<{ navigation: any }> = ({ navigation 
   const { theme, toggleTheme, setThemeColor, fontSize, setFontSize, fontFamily, setFontFamily } = useTheme();
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.background }}>
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={{
-        backgroundColor: theme.surface,
+        backgroundColor: '#FFFFFF',
         paddingTop: 50,
         paddingHorizontal: 16,
         paddingBottom: 16,
@@ -24,24 +24,24 @@ export const ThemeSettingsScreen: React.FC<{ navigation: any }> = ({ navigation 
       }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginRight: 16 }}>
-            <Text style={{ fontSize: 18, color: theme.text }}>←</Text>
+            <Text style={{ fontSize: 18, color: '#000000' }}>←</Text>
           </TouchableOpacity>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: theme.text }}>Theme Settings</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>Theme Settings</Text>
         </View>
       </View>
 
       <ScrollView style={{ flex: 1, padding: 16 }}>
-        {/* Dark/Light Mode */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View>
-              <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text }}>Dark Mode</Text>
-              <Text style={{ fontSize: 14, color: theme.textSecondary, marginTop: 2 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000' }}>Dark Mode</Text>
+              <Text style={{ fontSize: 14, color: '#000000', marginTop: 2 }}>
                 Switch between light and dark themes
               </Text>
             </View>
@@ -53,14 +53,14 @@ export const ThemeSettingsScreen: React.FC<{ navigation: any }> = ({ navigation 
           </View>
         </View>
 
-        {/* Theme Colors */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000', marginBottom: 12 }}>
             Primary Color
           </Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
@@ -74,28 +74,28 @@ export const ThemeSettingsScreen: React.FC<{ navigation: any }> = ({ navigation 
                   borderRadius: 20,
                   backgroundColor: color,
                   borderWidth: theme.primary === color ? 3 : 0,
-                  borderColor: theme.text,
+                  borderColor: '#CCCCCC',
                 }}
               />
             ))}
           </View>
         </View>
 
-        {/* Font Size */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000', marginBottom: 12 }}>
             Font Size: {fontSize}px
           </Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
             <TouchableOpacity
               onPress={() => setFontSize(Math.max(12, fontSize - 2))}
               style={{
-                backgroundColor: theme.primary,
+                backgroundColor: '#FFFFFF',
                 paddingHorizontal: 16,
                 paddingVertical: 8,
                 borderRadius: 8,
@@ -103,13 +103,13 @@ export const ThemeSettingsScreen: React.FC<{ navigation: any }> = ({ navigation 
             >
               <Text style={{ color: 'white', fontWeight: '600' }}>A-</Text>
             </TouchableOpacity>
-            <Text style={{ flex: 1, textAlign: 'center', fontSize, color: theme.text }}>
+            <Text style={{ flex: 1, textAlign: 'center', fontSize, color: '#000000' }}>
               Sample Text
             </Text>
             <TouchableOpacity
               onPress={() => setFontSize(Math.min(24, fontSize + 2))}
               style={{
-                backgroundColor: theme.primary,
+                backgroundColor: '#FFFFFF',
                 paddingHorizontal: 16,
                 paddingVertical: 8,
                 borderRadius: 8,
@@ -120,14 +120,14 @@ export const ThemeSettingsScreen: React.FC<{ navigation: any }> = ({ navigation 
           </View>
         </View>
 
-        {/* Font Family */}
+        {}
         <View style={{
-          backgroundColor: theme.surface,
+          backgroundColor: '#FFFFFF',
           borderRadius: 12,
           padding: 16,
           marginBottom: 16,
         }}>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: theme.text, marginBottom: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000000', marginBottom: 12 }}>
             Font Family
           </Text>
           {FONT_FAMILIES.map(family => (
@@ -156,3 +156,5 @@ export const ThemeSettingsScreen: React.FC<{ navigation: any }> = ({ navigation 
     </View>
   );
 };
+
+export default ThemeSettingsScreen;

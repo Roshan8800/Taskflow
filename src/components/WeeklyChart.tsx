@@ -73,3 +73,5 @@ export const WeeklyChart: React.FC<WeeklyChartProps> = ({ data }) => {
     </View>
   );
 };
+
+export default WeeklyChart;

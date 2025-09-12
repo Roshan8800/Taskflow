@@ -24,15 +24,14 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   const handlePress = () => {
     Animated.sequence([
       Animated.timing(scaleValue, { duration: 100, toValue: 0.95, useNativeDriver: true }),
-      Animated.timing(scaleValue, { duration: 100, toValue: 1, useNativeDriver: true }),
-    ]).start();
+      Animated.timing(scaleValue, { duration: 100, toValue: 1, useNativeDriver: true })]).start();
     onToggle(id);
   };
 
   return (
-    <Animated.View style={[styles.container(theme), { transform: [{ scale: scaleValue }] }]}>
+    <Animated.View style={[styles.container, { transform: [{ scale: scaleValue }] }]}>
       <TouchableOpacity
-        style={[styles.checkbox(theme), completed && styles.checked(theme)]}
+        style={[styles.checkbox, completed && styles.checked]}
         onPress={handlePress}
         accessibilityRole="checkbox"
         accessibilityState={{ checked: completed }}
@@ -43,12 +42,12 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         </Animated.Text>
       </TouchableOpacity>
       
-      <Text style={[styles.title(theme), completed && styles.completedTitle(theme)]} numberOfLines={2}>
+      <Text style={[styles.title, completed && styles.completedTitle]} numberOfLines={2}>
         {title}
       </Text>
       
       <TouchableOpacity
-        style={styles.deleteButton(theme)}
+        style={[styles.deleteButton]}
         onPress={() => onDelete(id)}
         accessibilityRole="button"
         accessibilityLabel={`Delete ${title}`}
@@ -60,56 +59,58 @@ export const TodoItem: React.FC<TodoItemProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: (theme: any) => ({
+  container: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: theme.colors.surface,
+    backgroundColor: '#000000',
     marginVertical: 6,
     marginHorizontal: 20,
     borderRadius: 16,
-    ...theme.shadows.md,
-  }),
-  checkbox: (theme: any) => ({
+    ,
+  },
+  checkbox: {
     width: 28,
     height: 28,
     borderRadius: 14,
     borderWidth: 2.5,
-    borderColor: theme.colors.primary,
+    borderColor: '#000000',
     marginRight: 16,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-  }),
-  checked: (theme: any) => ({
-    backgroundColor: theme.colors.primary,
-    borderColor: theme.colors.primary,
-  }),
+  },
+  checked: {
+    backgroundColor: '#000000',
+    borderColor: '#000000',
+  },
   checkmark: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '700',
   },
-  title: (theme: any) => ({
+  title: {
     flex: 1,
     fontSize: 16,
     fontWeight: '500',
-    color: theme.colors.text,
+    color: '#000000',
     lineHeight: 22,
-  }),
-  completedTitle: (theme: any) => ({
+  },
+  completedTitle: {
     textDecorationLine: 'line-through',
-    color: theme.colors.textMuted,
-  }),
-  deleteButton: (theme: any) => ({
+    color: '#000000',
+  },
+  deleteButton: {
     width: 40,
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.surfaceSecondary,
+    backgroundColor: '#000000',
     borderRadius: 12,
-  }),
+  },
   deleteIcon: {
     fontSize: 18,
   },
 });
+
+export default TodoItem;

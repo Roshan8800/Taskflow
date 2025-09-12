@@ -12,3 +12,5 @@ declare module 'react-native-document-picker' {
     json: string;
   };
 }
+
+export default pick;

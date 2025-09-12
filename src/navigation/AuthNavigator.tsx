@@ -61,3 +61,5 @@ export const AuthNavigator: React.FC = () => {
     </NavigationContainer>
   );
 };
+
+export default AuthNavigator;

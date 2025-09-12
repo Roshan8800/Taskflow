@@ -56,8 +56,7 @@ export const useAnalytics = () => {
         loadTaskStats(),
         loadWeeklyData(),
         loadStreakData(),
-        loadAchievements(),
-      ]);
+        loadAchievements()]);
     } catch (error) {
       handleError(error, 'Loading Analytics');
     } finally {
@@ -251,11 +250,10 @@ export const useAnalytics = () => {
           title: 'Organizer',
           description: 'Create 5 projects',
           icon: '📁',
-          unlocked: false, // Would need project count
+          unlocked: false, // Would need projectId count
           progress: 0,
           target: 5,
-        },
-      ];
+        }];
       
       setAchievements(achievementList);
     } catch (error) {
@@ -284,10 +282,10 @@ export const useAnalytics = () => {
           title: task.title,
           completed: task.completed,
           priority: task.priority,
-          createdAt: task.createdAt.toISOString(),
-          completedAt: task.completed ? task.updatedAt.toISOString() : null,
-          dueDate: task.dueDate?.toISOString() || null,
-          project: task.project,
+          createdAt: task.createdAt instanceof Date ? task.createdAt.toISOString() : '',
+          completedAt: task.completed && task.updatedAt instanceof Date ? task.updatedAt.toISOString() : null,
+          dueAt: task.dueAt?.toISOString() || null,
+          projectId: task.project,
           labels: task.labels,
         })),
       };
@@ -312,10 +310,9 @@ export const useAnalytics = () => {
       task.priority,
       task.createdAt,
       task.completedAt || '',
-      task.dueDate || '',
+      task.dueAt || '',
       task.project || '',
-      `"${task.labels.join(', ')}"`,
-    ]);
+      `"${task.labels.join(', ')}"`]);
     
     return [headers, ...rows].map(row => row.join(',')).join('\n');
   };

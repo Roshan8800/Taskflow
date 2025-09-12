@@ -6,13 +6,9 @@ interface LoadingScreenProps {
   message?: string;
 }
 
-export const LoadingScreen: React.FC<LoadingScreenProps> = ({ message = 'Loading...' }) => {
-  const { theme } = useTheme();
-
-  return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+export const LoadingScreen: React.FC<LoadingScreenProps> = ({ message = 'Loading#FFFFFF' }]}>
       <ActivityIndicator size="large" color={theme.primary} />
-      <Text style={[styles.message, { color: theme.text }]}>{message}</Text>
+      <Text style={[styles.message, { color: '#000000' }]}>{message}</Text>
     </View>
   );
 };
@@ -28,3 +24,5 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
 });
+
+export default LoadingScreen;
